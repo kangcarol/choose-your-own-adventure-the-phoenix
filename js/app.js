@@ -1,14 +1,7 @@
 
 /*-------------------------------- Constants --------------------------------*/
 
-
-
-/*-------------------------------- Variables --------------------------------*/
-
-let featherTotal = 0
-const environmentGrid =[]  // invisible
-
-// these variable indices will correspond to the right environment
+// the indices will correspond to the right environment
 const secretPhoenixLocation = []
 const secretFeatherLocations = []
 const environmentsImgs = [] //maybe unnecessary
@@ -19,21 +12,42 @@ const choiceMessageE1 = ['choice E1-A', 'choice E1-A']
 const choiceMessageE2 = ['choice E2-A', 'choice E2-A']
 const choiceMessageE3 = ['choice E3-A', 'choice E3-A']
 
+/*-------------------------------- Variables --------------------------------*/
+
+let featherTotal = 0
+let environmentGrid
 
 /*------------------------ Cached Element References ------------------------*/
 
+const cellEls = document.querySelectorAll('.cell') // all cells
+const messageEl = document.getElementById('message')
+const startBtn = document.getElementById('start-btn')
+const resetBtn = document.getElementById('reset-btn')
+const nextBtn = document.getElementById('next-btn')
+const choice1Btn = document.getElementById('choice-btn')
+const choice2Btn = document.getElementById('choice2-btn')
 
+// const header = document.querySelector('h1')`
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 
+startBtn.addEventListener('click', init)
+
 
 /*-------------------------------- Functions --------------------------------*/
 
-  function init(){
+init()
 
-  }
+function init (){
+
+  renderEnvironment()
+  resetBtn.setAttribute('hidden', true)
+  nextBtn.setAttribute('hidden', true)
+  choice1Btn.setAttribute('hidden', true)
+  choice2Btn.setAttribute('hidden', true)
+}
 
 
   function renderStart(){
@@ -41,8 +55,14 @@ const choiceMessageE3 = ['choice E3-A', 'choice E3-A']
   }
 
 
-  function renderEnvironments(){
-
+  function renderEnvironment(){
+    let environmentGrid =[
+      null,null,null,null,null,
+      null,null,null,null,null,
+      null,null,null,null,null,
+      null,null,null,null,null,
+      null,null,null,null,null,
+      ]  // this should be invisible
   }
 
 
@@ -90,17 +110,18 @@ const choiceMessageE3 = ['choice E3-A', 'choice E3-A']
 
 /*-------------------------------- FRIDAY/WKEND GOALS --------------------------------*/
 
-  // Reorgainze pseudocode
+  //// Reorgainze pseudocode
   //// Add variables
   //// Set up HTML, buttons, divs, ids, classes
-  // Add cached element references
-  // Set up blank functions for what needs to happen
-
+  //// Add cached element references
+  //// Set up blank functions for what needs to happen
   // Setup basic CSS so that I can test
+  // Write out functions
+  // Add event listeners
 
   //// function init()
   //// function renderStart()
-  //// function renderEnvironments()
+  //// function renderEnvironment()
   //// function renderStoryOver()
   //// function renderConsolation()
   //// function renderPhoenixEnd()
@@ -110,19 +131,18 @@ const choiceMessageE3 = ['choice E3-A', 'choice E3-A']
   //// function handleClickReset()
   //// function timer()
 
-
-  // HTML buttons needed:
-    // start-btn
-    // reset-btn
-    // choice1-btn
-    // choice2-btn
-    // next-btn (at the end, before phoenix screen)
+  //// HTML buttons needed:
+    //// start-btn
+    //// reset-btn
+    //// choice1-btn
+    //// choice2-btn
+    //// next-btn (at the end, before phoenix screen)
 
 
   // Dedicated divs needed:
     // environment (body?)
-    // hint box
-    // feather box
+    //// hint box
+    //// feather box
 
 
   // Alert needed:
@@ -136,7 +156,7 @@ const choiceMessageE3 = ['choice E3-A', 'choice E3-A']
 // Sound
 // Favicon
 
-// Copywriting of messages/hints
+// Copy of messages/hints
 
 
 /*----------------------------------------------------------------------------------*/
@@ -147,6 +167,7 @@ const choiceMessageE3 = ['choice E3-A', 'choice E3-A']
   // HTML will already have the img source loaded for the start screen.
   // HTML will have a message box
   // HTML will have a start button
+  // HTML will have the restart button hidden
   // CSS to have an invisible grid for clicks (to find feather or phoenix)
 
 
@@ -170,10 +191,10 @@ const choiceMessageE3 = ['choice E3-A', 'choice E3-A']
 // AddListener function (target.id) for the two choice buttons:
 
 // It will be if/else conditional:
-  // If one is clicked will set into motion ENVIRONMENT TWO (similar to above, just don’t have to deal with Start button
-  // If the other one is clicked, it will check to see if feather variable is greater than zero
-      // If so then alert will pop up and tell them they are using one of their feathers for resurrection, after the close alert, takes then to ENVIRONMENT THREE.
-      // If feather variable is 0, then window image changes to STORY OVER image
+// If one is clicked will set into motion ENVIRONMENT TWO (similar to above, just don’t have to deal with Start button
+// If the other one is clicked, it will check to see if feather variable is greater than zero
+  // If so then alert will pop up and tell them they are using one of their feathers for resurrection, after the close alert, takes then to ENVIRONMENT THREE.
+  // If feather variable is 0, then window image changes to STORY OVER image
 
 
 // ENVIRONMENT THREE will follow the same as above but instead of sending you to new environment, will have message screen

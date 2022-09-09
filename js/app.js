@@ -20,9 +20,8 @@ const choiceMessageE2 = ['choice E2-A', 'choice E2-A']
 const choiceMessageE3 = ['choice E3-A', 'choice E3-A']
 
 
-
-
 /*------------------------ Cached Element References ------------------------*/
+
 
 
 
@@ -93,7 +92,7 @@ const choiceMessageE3 = ['choice E3-A', 'choice E3-A']
 
   // Reorgainze pseudocode
   //// Add variables
-  // Set up HTML, buttons, divs, ids, classes
+  //// Set up HTML, buttons, divs, ids, classes
   // Add cached element references
   // Set up blank functions for what needs to happen
 

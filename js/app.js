@@ -24,16 +24,20 @@ const messageEl = document.getElementById('message')
 const startBtn = document.getElementById('start-btn')
 const resetBtn = document.getElementById('reset-btn')
 const nextBtn = document.getElementById('next-btn')
-const choice1Btn = document.getElementById('choice-btn')
+const choice1Btn = document.getElementById('choice1-btn')
 const choice2Btn = document.getElementById('choice2-btn')
-
-// const header = document.querySelector('h1')`
-
+const featherBox = document.getElementById('feather-box')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 
-startBtn.addEventListener('click', init)
+startBtn.addEventListener('click', handleClickStart)
+
+cellEls.forEach(function(cellSelect) {
+  cellSelect.addEventListener('click', handleClickFeather)
+})
+
+resetBtn.addEventListener('click', init) // maybe start elsewhere, further in?
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -41,29 +45,42 @@ startBtn.addEventListener('click', init)
 init()
 
 function init (){
-
-  renderEnvironment()
+  // *** After functioning, refactor the environmentGrid, and the cell IDs ***
+  environmentGrid = [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+  console.log("init!!!")
+  // Upon loading page, it should show image of phoenix and intro message
+  // IMAGE -> Phoenix intro drawing
+  // MESSAGE -> intro about phoenix mythology & how the game works
+  // BUTTONS -> only START button should be visible, hide all others
+  // TIMER -> hidden
+  // FEATHER-BOX -> hidden
+  startBtn.removeAttribute('hidden')
   resetBtn.setAttribute('hidden', true)
-  nextBtn.setAttribute('hidden', true)
   choice1Btn.setAttribute('hidden', true)
   choice2Btn.setAttribute('hidden', true)
+  featherBox.setAttribute('hidden', true)
 }
 
 
-  function renderStart(){
+function handleClickStart(evt){
+  renderEnvironment()
+  console.log("START")
 
-  }
+}
 
+function renderEnvironment(){
+  // IMAGE -> change out to Environment-1 image
+  // MESSAGE -> change out to Environment-1 hint message
+  // BUTTONS -> hide START button, show all other buttons
+  // TIMER -> show
+  // FEATHER-BOX -> show
+  startBtn.setAttribute('hidden', true)
+  resetBtn.removeAttribute('hidden')
+  choice1Btn.removeAttribute('hidden')
+  choice2Btn.removeAttribute('hidden')
+  featherBox.removeAttribute('hidden')
 
-  function renderEnvironment(){
-    let environmentGrid =[
-      null,null,null,null,null,
-      null,null,null,null,null,
-      null,null,null,null,null,
-      null,null,null,null,null,
-      null,null,null,null,null,
-      ]  // this should be invisible
-  }
+}
 
 
   function renderStoryOver(){
@@ -75,11 +92,9 @@ function init (){
 
   }
 
-
   function renderPhoenixEnd(){
 
   }
-
 
   function handleClickChoice(){
 
@@ -102,9 +117,6 @@ function init (){
 
 
   function timer(){
-
-
-
   }
 
 
@@ -117,7 +129,7 @@ function init (){
   //// Set up blank functions for what needs to happen
   // Setup basic CSS so that I can test
   // Write out functions
-  // Add event listeners
+  //// Add event listeners
 
   //// function init()
   //// function renderStart()
@@ -151,7 +163,7 @@ function init (){
 
 /*------------------------------- NEXT WEEK ----------------------------------------*/
 
-
+// Images & copywrite the hints
 // Timer
 // Sound
 // Favicon

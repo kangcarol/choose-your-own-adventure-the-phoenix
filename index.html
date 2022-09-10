@@ -5,23 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
-  <script src="./js/app.js"></script>
+  <script defer src="./js/app.js"></script>
   <title>The Phoenix</title>
+
+  <link
+  id="favicon"
+  rel="icon"
+  href="./images/phoenix-silhouette.png"
+  type="image/png"
+  sizes="32x32"
+  >
 </head>
 
 <body>
 
   <div class="main">
     <h1>The Phoenix</h1>
-    <!-- use this for opening intro / environment hint / consolation -->
-    <h2 id="message">Message</h2>
-    <div id="feather-box">feather count area</div>
+    <h2 id="message">INTRO Message</h2>
+    <div id="feather-box" hidden>feather count area</div>
+    <div id="timer-area" hidden>timer area</div>
   </div>
+    <!-- finish filling out img below -->
+
+    <img id="main-img" src="" alt="">
 
   <section class="locationCells">
-    <!-- finish filling out img below -->
-    <img id="enviro-img" src="" alt="">
-
     <div id="c0" class="cell"></div>
     <div id="c1" class="cell"></div>
     <div id="c2" class="cell"></div>
@@ -49,13 +57,13 @@
     <div id="c24" class="cell"></div>
   </section>
 
-<div class="buttonArea">
-  <button id="start-btn">Start</button>
-  <button id="reset-btn">Reset</button>
-  <button id="next-btn">Next</button>
-  <button id="choice1-btn">Choice 1</button>
-  <button id="choice2-btn">Choice 2</button>
-</div>
+<!-- <div class="buttonArea"> -->
+  <button id="start-btn" type="button">Start</button>
+  <button id="reset-btn" type="button" hidden>Reset</button>
+  <button id="next-btn" type="button" hidden>Next</button>
+  <button id="choice1-btn" type="button" hidden>Choice 1</button>
+  <button id="choice2-btn" type="button" hidden>Choice 2</button>
+<!-- </div> -->
 
 </body>
 </html>

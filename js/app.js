@@ -1,59 +1,85 @@
 
 /*-------------------------------- Constants --------------------------------*/
 
-// the indices will correspond to the right environment
-const secretPhoenixLocation = []
-const secretFeatherLocations = [] // for each environment, needs to work with renderEnvironment function below
-const environmentsImgs = [] //maybe unnecessary
-const enviromentHints = ["hint1","hint2","hint3"]
 
-// message variables:
-const choiceMessageE1 = ['choice E1-A', 'choice E1-A']
-const choiceMessageE2 = ['choice E2-A', 'choice E2-A']
-const choiceMessageE3 = ['choice E3-A', 'choice E3-A']
+const environment1 = {
+  environNum: 1,
+  image: 'tbd',
+  hint: 'hint 1',
+  secretLocation: 0,
+  choiceMessageA: 'choice 1A',
+  choiceMessageB: 'choice 1B',
+}
 
-/*-------------------------------- Variables --------------------------------*/
+const environment2 = {
+  environNum: 2,
+  image: 'tbd2',
+  hint: 'hint 2',
+  secretLocation: 4,
+  choiceMessageA: 'choice 2A',
+  choiceMessageB: 'choice 2B',
+}
 
-let environmentNum = 3 // MAKE DYNAMIC
-let featherTotal = 0
-let environmentGrid
+const environment3 = {
+  environNum: 3,
+  image: 'tbd3',
+  hint: 'hint 3',
+  secretLocation: 24,
+  choiceMessageA: 'choice 3A',
+  choiceMessageB: 'choice 3B',
+}
 
-/*------------------------ Cached Element References ------------------------*/
+const environment4 = { //this is environment to find phoenix
+  environNum: 4,
+  image: 'tbd4',
+  hint: 'hint for phoenix',
+  secretLocation: 7,
+}
 
-const cellEls = document.querySelectorAll('.cell') // all cells
+  /*-------------------------------- Variables --------------------------------*/
 
-const messageEl = document.getElementById('message')
-const startBtn = document.getElementById('start-btn')
-const resetBtn = document.getElementById('reset-btn')
-const nextBtn = document.getElementById('next-btn')
-const choice1Btn = document.getElementById('choice1-btn')
-const choice2Btn = document.getElementById('choice2-btn')
+  let featherTotal = 0
+  let environment
+  let environmentGrid
 
-const featherBox = document.getElementById('feather-box')
-const timerArea = document.getElementById('timer-area')
+  /*------------------------ Cached Element References ------------------------*/
 
-const mainImg = document.getElementById('main-img')
+  const cellEls = document.querySelectorAll('.cell') // all cells
 
-/*----------------------------- Event Listeners -----------------------------*/
+  const messageEl = document.getElementById('message')
+  const startBtn = document.getElementById('start-btn')
+  const resetBtn = document.getElementById('reset-btn')
+  const nextBtn = document.getElementById('next-btn')
+  const choice1Btn = document.getElementById('choice1-btn')
+  const choice2Btn = document.getElementById('choice2-btn')
+
+  const featherBox = document.getElementById('feather-box')
+  const timerArea = document.getElementById('timer-area')
+
+  const mainImg = document.getElementById('main-img')
+
+  /*----------------------------- Event Listeners -----------------------------*/
 
 
-startBtn.addEventListener('click', handleClickStart)
+  startBtn.addEventListener('click', handleClickStart)
 
-cellEls.forEach(function(cellSelect) {
-  cellSelect.addEventListener('click', handleClickFind)
-})
+  cellEls.forEach(function(cellSelect) {
+    cellSelect.addEventListener('click', handleClickFind)
+  })
 
-resetBtn.addEventListener('click', init) // maybe start elsewhere, further in?
+  resetBtn.addEventListener('click', init) // maybe start elsewhere, further in?
 
 
-/*-------------------------------- Functions --------------------------------*/
+  /*-------------------------------- Functions --------------------------------*/
 
-init()
+  init()
 
-function init (){
-  // *** After functioning, refactor the environmentGrid, and the cell IDs ***
+  function init (){
+
   environmentGrid = [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+
   console.log("init!!!")
+
   // Upon loading page, it should show image of phoenix and intro message
   // IMAGE -> Phoenix intro drawing
   // MESSAGE -> intro about phoenix mythology & how the game works
@@ -67,25 +93,27 @@ function init (){
   featherBox.setAttribute('hidden', true)
   timerArea.setAttribute('hidden', true)
 
+
   // CLEAR PREVIOUSLY FOUND FEATHERS
   environmentGrid.forEach((cell,i) => {
     if (cellEls[i].textContent = 'phx'){
-      cellEls[i].textContent = ''
+      cellEls[i].textContent = null
     }
   })
-
-   // CLEAR TIMER
-
 
 
 }
 
 function handleClickStart(evt){
+  // let environment = environment1
+  environmentGrid[environment1.secretLocation] = 'feather'
   renderEnvironment()
   console.log("START")
 }
 
 function renderEnvironment(){
+
+   // CLEAR TIMER
   // IMAGE -> change out to Environment-1 image
   // MESSAGE -> change out to Environment-1 hint message
   // BUTTONS -> hide START button, show all other buttons
@@ -97,46 +125,29 @@ function renderEnvironment(){
   choice2Btn.removeAttribute('hidden')
   featherBox.removeAttribute('hidden')
   timerArea.removeAttribute('hidden')
-
-  // ASSIGN FEATHER LOCATION PER ENVIRONMENT
-  if (environmentNum === 1){
-    environmentGrid[0] = 'feather'
-  } else if (environmentNum === 2){
-    environmentGrid[4] = 'feather'
-  } else if (environmentNum === 3){
-    environmentGrid[24] = 'feather'
-  }
-
-  // FIND FEATHER
-  handleClickFind()
-
-  // CHOICE BUTTONS
-  handleClickChoice()
 }
 
 function handleClickFind(evt){
-   // FEATHER
-     // player finds cell (handleClickFind) that feather is assigned for THIS environment by clicking on cell.
-     // when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
+  // FEATHER
+    // player finds cell (handleClickFind) that feather is assigned for THIS environment by clicking on cell.
+    // when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
   const sqIdx = parseInt(evt.target.id.replace('c', ''))
-
   environmentGrid.forEach((cell,i) => {
   if (environmentGrid[sqIdx] === 'feather'){
     let locationCell = cellEls[sqIdx]
     locationCell.textContent = 'phx'
     locationCell.style.color = 'red'
     featherTotal += 1
+    if (environmentGrid[sqIdx]){
+      return
+    }
     console.log(featherTotal)
-    // environmentGrid[i].className = 'animate__animated animate__zoomIn'
+    // environmentGrid[i].className = 'animate__animated animate__ANIMATION-NAME'
   }
 })
 }
 
-
-
-
     // the location cell cannot be clicked again to add more than 1 feather during that environment
-    // const sqIdx = parseInt(evt.target.id.replace('c', ''))
 
 
   function renderStoryOver(){
@@ -182,41 +193,13 @@ function handleClickFind(evt){
 
 /*-------------------------------- FRIDAY/WKEND GOALS --------------------------------*/
 
-  //// Reorgainze pseudocode
-  //// Add variables
-  //// Set up HTML, buttons, divs, ids, classes
-  //// Add cached element references
-  //// Set up blank functions for what needs to happen
-  // Setup basic CSS so that I can test
-  // Write out functions
-  //// Add event listeners
-
-  //// function init()
-  //// function renderStart()
-  //// function renderEnvironment()
-  //// function renderStoryOver()
-  //// function renderConsolation()
-  //// function renderPhoenixEnd()
-  //// function handleClickChoice()
-  //// function handleClickFind()
-  //// function timer()
-
-  //// HTML buttons needed:
-    //// start-btn
-    //// reset-btn
-    //// choice1-btn
-    //// choice2-btn
-    //// next-btn (at the end, before phoenix screen)
-
-
-  // Dedicated divs needed:
-    // environment (body?)
-    //// hint box
-    //// feather box
-
-
   // Alert needed:
     // resurrection alert
+
+  // FIX so that at start cannot click to find feather or phoenix
+  // FIX so that feather count doesn't increase after getting 1 count
+
+  // changing out environments as loop ??????
 
 
 /*------------------------------- NEXT WEEK ----------------------------------------*/

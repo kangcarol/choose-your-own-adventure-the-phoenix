@@ -1,9 +1,7 @@
 
 /*-------------------------------- Constants --------------------------------*/
 
-
 const environment1 = {
-  environNum: 1,
   image: 'tbd',
   hint: 'hint 1',
   secretLocation: 0,
@@ -12,7 +10,6 @@ const environment1 = {
 }
 
 const environment2 = {
-  environNum: 2,
   image: 'tbd2',
   hint: 'hint 2',
   secretLocation: 4,
@@ -21,7 +18,6 @@ const environment2 = {
 }
 
 const environment3 = {
-  environNum: 3,
   image: 'tbd3',
   hint: 'hint 3',
   secretLocation: 24,
@@ -29,18 +25,15 @@ const environment3 = {
   choiceMessageB: 'choice 3B',
 }
 
-const environment4 = { //this is environment to find phoenix
-  environNum: 4,
+const environmentPhoenix = { //this is environment to find phoenix
   image: 'tbd4',
   hint: 'hint for phoenix',
   secretLocation: 7,
 }
-
   /*-------------------------------- Variables --------------------------------*/
 
   let featherTotal = 0
-  let environment
-  let environmentGrid
+  let environment, environmentGrid
 
   /*------------------------ Cached Element References ------------------------*/
 
@@ -60,7 +53,6 @@ const environment4 = { //this is environment to find phoenix
 
   /*----------------------------- Event Listeners -----------------------------*/
 
-
   startBtn.addEventListener('click', handleClickStart)
 
   cellEls.forEach(function(cellSelect) {
@@ -68,7 +60,6 @@ const environment4 = { //this is environment to find phoenix
   })
 
   resetBtn.addEventListener('click', init) // maybe start elsewhere, further in?
-
 
   /*-------------------------------- Functions --------------------------------*/
 
@@ -78,7 +69,7 @@ const environment4 = { //this is environment to find phoenix
 
   environmentGrid = [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
 
-  console.log("init!!!")
+  console.log('INIT',`feather total = ${featherTotal}`)
 
   // Upon loading page, it should show image of phoenix and intro message
   // IMAGE -> Phoenix intro drawing
@@ -93,27 +84,24 @@ const environment4 = { //this is environment to find phoenix
   featherBox.setAttribute('hidden', true)
   timerArea.setAttribute('hidden', true)
 
-
   // CLEAR PREVIOUSLY FOUND FEATHERS
   environmentGrid.forEach((cell,i) => {
     if (cellEls[i].textContent = 'phx'){
       cellEls[i].textContent = null
     }
   })
-
-
+  featherTotal = 0
 }
 
 function handleClickStart(evt){
-  // let environment = environment1
+  // let environment = environment1 // to change out
   environmentGrid[environment1.secretLocation] = 'feather'
   renderEnvironment()
-  console.log("START")
+  //todo START TIMER
+  console.log("START", `feather total = ${featherTotal}`)
 }
 
 function renderEnvironment(){
-
-   // CLEAR TIMER
   // IMAGE -> change out to Environment-1 image
   // MESSAGE -> change out to Environment-1 hint message
   // BUTTONS -> hide START button, show all other buttons
@@ -132,19 +120,16 @@ function handleClickFind(evt){
     // player finds cell (handleClickFind) that feather is assigned for THIS environment by clicking on cell.
     // when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
   const sqIdx = parseInt(evt.target.id.replace('c', ''))
-  environmentGrid.forEach((cell,i) => {
+  // if (environmentGrid[sqIdx])
   if (environmentGrid[sqIdx] === 'feather'){
     let locationCell = cellEls[sqIdx]
     locationCell.textContent = 'phx'
     locationCell.style.color = 'red'
+    //todo locationCell.className = 'animate__animated animate__ANIMATION-NAME'
     featherTotal += 1
-    if (environmentGrid[sqIdx]){
-      return
-    }
-    console.log(featherTotal)
-    // environmentGrid[i].className = 'animate__animated animate__ANIMATION-NAME'
+    console.log('AFTER FIND feather total', `${featherTotal}`)
+    environmentGrid[sqIdx] === null
   }
-})
 }
 
     // the location cell cannot be clicked again to add more than 1 feather during that environment
@@ -198,6 +183,8 @@ function handleClickFind(evt){
 
   // FIX so that at start cannot click to find feather or phoenix
   // FIX so that feather count doesn't increase after getting 1 count
+
+  // ADD Hover
 
   // changing out environments as loop ??????
 

@@ -1,35 +1,64 @@
 
 /*-------------------------------- Constants --------------------------------*/
 
+const environmentIntro = {
+  enviroId: 0,
+  image: 'tbd0',
+  message: 'mythology message & how to read story',
+}
+
 const environment1 = {
+  enviroId: 1,
   image: 'tbd',
-  hint: 'hint 1',
+  message: 'hint 1',
   secretLocation: 0,
   choiceMessageA: 'choice 1A',
   choiceMessageB: 'choice 1B',
 }
 
 const environment2 = {
+  enviroId: 2,
   image: 'tbd2',
-  hint: 'hint 2',
+  message: 'hint 2',
   secretLocation: 4,
   choiceMessageA: 'choice 2A',
   choiceMessageB: 'choice 2B',
 }
 
 const environment3 = {
+  enviroId: 3,
   image: 'tbd3',
-  hint: 'hint 3',
+  message: 'hint 3',
   secretLocation: 24,
   choiceMessageA: 'choice 3A',
   choiceMessageB: 'choice 3B',
 }
 
-const environmentPhoenix = { //this is environment to find phoenix
+const environmentstoryOver = { //environment when story is over
+  enviroId: 4,
   image: 'tbd4',
-  hint: 'hint for phoenix',
+  message: 'story over message ...',
+}
+
+const environmentConsolation = { //environment when made alive but < 3 feathers
+  enviroId: 5,
+  image: 'tbd consolation',
+  message: 'consolation message',
+}
+
+const environmentPhoenix = { //environment to find phoenix
+  enviroId: 6,
+  image: 'tbd4',
+  message: 'hint for phoenix',
   secretLocation: 7,
 }
+
+const environmentCongrats = { //environment w congrats image
+  enviroId: 7,
+  image: 'tbd4',
+  message: 'congrats',
+}
+
 
   /*-------------------------------- Variables --------------------------------*/
 
@@ -175,6 +204,10 @@ const environmentPhoenix = { //this is environment to find phoenix
         cellEls[i].textContent = null
       }
     })
+    choice1Btn.setAttribute('hidden', true)
+    choice2Btn.setAttribute('hidden', true)
+    featherBox.setAttribute('hidden', true)
+    timerArea.setAttribute('hidden', true)
     mainImg.style.backgroundImage = "url('../images/forest.png')"
 
   }

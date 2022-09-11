@@ -200,7 +200,6 @@ function handleClickChoice(evt){
   }
 }
 
-
 function renderStoryOver(){
   // IMAGE -> change out to StoryOver image
   // MESSAGE -> change out to StoryOver message
@@ -210,11 +209,10 @@ function renderStoryOver(){
   // Clear out the feather found on visual
   console.log("RENDER STORY OVER")
 
-  enviroGrid.forEach((cell,i) => {
-    if (cellEls[i].textContent = 'FEATHER'){
-      cellEls[i].textContent = null
-    }
-  })
+  //todo clear out feather icon
+  
+  // CLEAR PREVIOUSLY FOUND FEATHERS
+  cellEls.forEach(cell => cell.textContent ='')
 
   mainImg.style.backgroundImage = enviroArrays[4].image
   messageEl.textContent = enviroArrays[4].message

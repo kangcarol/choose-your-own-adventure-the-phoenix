@@ -32,6 +32,13 @@ With the last environment, if you have 3 feathers you have the opportunity to se
   <!-- List of the technologies used, for example: JavaScript, HTML, CSS, etc. -->
 
 
+**Credits**:
+Wikipedia
+Friedrich Justin Bertuch, Carl Bertuch
+
+IntroImage: https://commons.wikimedia.org/wiki/File:Bertuch-fabelwesen.JPG#/media/File:Phoenix-Fabelwesen.jpg
+
+Volcano: https://digi.ub.uni-heidelberg.de/diglit/bertuch1798bd3/0159/image
 
 **Next Steps**:
   <!-- Planned future enhancements (icebox items). -->

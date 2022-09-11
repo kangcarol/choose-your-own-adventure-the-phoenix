@@ -1,31 +1,31 @@
 
 /*-------------------------------- Constants --------------------------------*/
 
-const environmentIntro = {
+const enviroIntro = {
   enviroId: 0,
-  image: 'tbd0',
-  message: 'mythology message & how to read story',
+  image: "url('../images/Phoenix-Fabelwesen.jpeg')",
+  message: '"The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor." -- Wikipedia',
 }
 
-const environment1 = {
+const enviro1 = {
   enviroId: 1,
-  image: 'tbd',
-  message: 'hint 1',
-  secretLocation: 0,
+  image: "url('../images/Enviro1Volcano.png')",
+  message: 'Some legends say it dies in a show of flames and combustion, others that it simply dies and decomposes before being born again. -- Wikipedia',
+  secretLocation: 8,
   choiceMessageA: 'choice 1A',
   choiceMessageB: 'choice 1B',
 }
 
-const environment2 = {
+const enviro2 = {
   enviroId: 2,
-  image: 'tbd2',
+  image: "url('../images/forest.png')",
   message: 'hint 2',
   secretLocation: 4,
   choiceMessageA: 'choice 2A',
   choiceMessageB: 'choice 2B',
 }
 
-const environment3 = {
+const enviro3 = {
   enviroId: 3,
   image: 'tbd3',
   message: 'hint 3',
@@ -34,26 +34,29 @@ const environment3 = {
   choiceMessageB: 'choice 3B',
 }
 
-const environmentstoryOver = { //environment when story is over
+const enviroStoryOver = { //environment when story is over
   enviroId: 4,
-  image: 'tbd4',
+  image: "url('../images/StoryOverPlaceholder.png')",
   message: 'story over message ...',
 }
 
-const environmentConsolation = { //environment when made alive but < 3 feathers
+const enviroConsolation = { //environment when made alive but < 3 feathers
   enviroId: 5,
   image: 'tbd consolation',
   message: 'consolation message',
+  // secretLocation: undefined,
+  // choiceMessageA: undefined,
+  // choiceMessageB: undefined,
 }
 
-const environmentPhoenix = { //environment to find phoenix
+const enviroPhoenix = { //environment to find phoenix
   enviroId: 6,
   image: 'tbd4',
   message: 'hint for phoenix',
   secretLocation: 7,
 }
 
-const environmentCongrats = { //environment w congrats image
+const environCongrats = { //environment w congrats image
   enviroId: 7,
   image: 'tbd4',
   message: 'congrats',
@@ -101,7 +104,17 @@ const environmentCongrats = { //environment w congrats image
 
     console.log('INIT',`feather total = ${featherTotal}`)
 
-    // Upon loading page, it should show image of phoenix and intro message
+    // CLEAR PREVIOUSLY FOUND FEATHERS
+    enviroGrid.forEach((cell,i) => {
+      if (cellEls[i].textContent = 'FEATHER'){
+        cellEls[i].textContent = null
+      }
+    })
+
+    // LOADING & RESET WILL REVERT TO INTRO IMAGE & MESSAGE
+    mainImg.style.backgroundImage = enviroIntro.image
+    messageEl.textContent = enviroIntro.message
+
     // IMAGE -> Phoenix intro drawing
     // MESSAGE -> intro about phoenix mythology & how the game works
     // BUTTONS -> only START button should be visible, hide all others
@@ -113,30 +126,21 @@ const environmentCongrats = { //environment w congrats image
     choice2Btn.setAttribute('hidden', true)
     featherBox.setAttribute('hidden', true)
     timerArea.setAttribute('hidden', true)
-
-    // CLEAR PREVIOUSLY FOUND FEATHERS
-    enviroGrid.forEach((cell,i) => {
-      if (cellEls[i].textContent = 'FEATHER'){
-        cellEls[i].textContent = null
-      }
-    })
-
-    // REVERT TO INTRO IMAGE
-    mainImg.style.backgroundImage = "url('../images/catherdral.jpg')"
-
   }
 
   function handleClickStart(evt){
-    renderEnvironment()
+    renderEnvironment(enviro1)
     //todo START TIMER
     console.log("START", `feather total = ${featherTotal}`) //! delete later
   }
 
-  function renderEnvironment(){
-    enviro = environment1 // to change out
+  function renderEnvironment(enviro){
+    enviro = enviro1 // to change out
     enviroGrid[enviro.secretLocation] = 'feather'
     //todo IMAGE -> change out to Environment-1 image
+    mainImg.style.backgroundImage = enviro.image
     //todo MESSAGE -> change out to Environment-1 hint message
+    messageEl.textContent = enviro.message
     // BUTTONS -> hide START button, show all other buttons
     // FEATHER-BOX -> show
     // TIMER -> show
@@ -169,14 +173,14 @@ const environmentCongrats = { //environment w congrats image
 }
 
   function handleClickChoice(evt){
- //todo CHOICE BUTTONS (MAth.random the buttons??)
     // if player clicks on CHOICE button1 for Enviroment1, it will change renderEnvironment for Environment2
     // if player clicks on CHOICE button2, it will check if featherTotal > 0,
-      // if greater than 0, an alert pops up saying that they had chosen a fatal situation but their feather has granted them another life. After player clicks OK it will take them to Environment2
-      // if feather is less than 0, will take them to StoryOver
+    // if greater than 0, an alert pops up saying that they had chosen a fatal situation but their feather has granted them another life. After player clicks OK it will take them to Environment2
+    // if feather is less than 0, will take them to StoryOver
     if (evt.target.id === 'choice1-btn'){
       console.log('CHOICE 1')
-      environment = environment2 //todo change out to new img/hint/secretLocation
+      //todo change out to new img/hint/secretLocation/choice btn descriptions
+      renderEnvironment()
     }else if (evt.target.id === 'choice2-btn'){
       console.log('CHOICE 2')
       if (featherTotal > 0){
@@ -193,41 +197,45 @@ const environmentCongrats = { //environment w congrats image
 
 
   function renderStoryOver(){
-  // IMAGE -> change out to StoryOver image
-  // MESSAGE -> change out to StoryOver message
-  // BUTTONS -> hide all buttons, except reset
-  // FEATHER-BOX -> show (????)
-  // TIMER -> hide
+    // IMAGE -> change out to StoryOver image
+    // MESSAGE -> change out to StoryOver message
+    // BUTTONS -> hide all buttons, except reset
+    // FEATHER-BOX -> show (????)
+    // TIMER -> hide
+    // Clear out the feather found on visual
     console.log("RENDER STORY OVER")
+
     enviroGrid.forEach((cell,i) => {
       if (cellEls[i].textContent = 'FEATHER'){
         cellEls[i].textContent = null
       }
     })
+
+    mainImg.style.backgroundImage = enviroStoryOver.image
+    messageEl.textContent = enviroStoryOver.message
     choice1Btn.setAttribute('hidden', true)
     choice2Btn.setAttribute('hidden', true)
     featherBox.setAttribute('hidden', true)
     timerArea.setAttribute('hidden', true)
-    mainImg.style.backgroundImage = "url('../images/forest.png')"
 
   }
 
   function renderConsolation(){
-  // IMAGE -> change out to Consolation image
-  // MESSAGE -> change out to Consolation message
-  // BUTTONS -> hide all buttons, except reset
-  // FEATHER-BOX -> show (????)
-  // TIMER -> hide
+    // IMAGE -> change out to Consolation image
+    // MESSAGE -> change out to Consolation message
+    // BUTTONS -> hide all buttons, except reset
+    // FEATHER-BOX -> show (????)
+    // TIMER -> hide
   }
 
   function renderPhoenixEnd(){
-  // IMAGE -> change out to final Environment image to find phoenix
-  // MESSAGE -> change out to hint to find phoenix
-  // BUTTONS -> hide all buttons, except reset
-  // FEATHER-BOX -> hide
-  // TIMER -> show
+    // IMAGE -> change out to final Environment image to find phoenix
+    // MESSAGE -> change out to hint to find phoenix
+    // BUTTONS -> hide all buttons, except reset
+    // FEATHER-BOX -> hide
+    // TIMER -> show
 
-  // if find phoenix (by handleCickFind) show the phoenix and change out message to Congratulations! (add animation, and sound?)
+    // if find phoenix (by handleCickFind) show the phoenix and change out message to Congratulations! (add animation, and sound?)
 
 
   }
@@ -236,51 +244,37 @@ const environmentCongrats = { //environment w congrats image
   }
 
 
-/*-------------------------------- FRIDAY/WKEND GOALS --------------------------------*/
+  /*-------------------------------- FRIDAY/WKEND GOALS --------------------------------*/
 
   //todo changing out environments as loop ??????
-  //todo ADD Hover
+  //todo ADD Hover, glow animation?
   //todo ADD timer
 
   //todo research phoenix mythology for images/sounds
   //todo find images BLACK & WHITE LINE DRAWINGS ???
 
+  //todo CHOICE BUTTONS (MAth.random the buttons??)
+  //todo
 
 
 /*------------------------------- NEXT WEEK ----------------------------------------*/
 
-// Images & copywrite the hints
-// Copy of messages/hints
-// TIMER
+//todo NEXT WEEK
+//todo Images & copywrite the hints
+//todo Copy of messages/hints
+//todo TIMER
 
-// Font
-// Add HOVER feature
-// Add animation
-// Sound
+//todo Font
+//todo Add HOVER feature
+//todo Add animation
+//todo Sound
+//todo README
+
+//todo check indentation
+//todo delete console.logs and unnecessary comments
 //! Make sure image doesn't get distored
 
-
-
 /*----------------------------------------------------------------------------------*/
-
-
-
-// AddListener function for the start button, render:
-  // When clicked it will change out the image to the FIRST ENVIRONMENT
-  // Message box should change message out to FIRST ENVIRONMENT’s hint
-  // Start button should then disappear, reset appear
-  // Two choice buttons should appear (this will detail out w description, change w ea new environment)
-  // Turn on hover, so that if they are hovering over the hidden location cell of the feather, it’ll glow (?)
-
-
-// AddListener function (target.id) for the two choice buttons:
-
-// It will be if/else conditional:
-// If one is clicked will set into motion ENVIRONMENT TWO (similar to above, just don’t have to deal with Start button
-// If the other one is clicked, it will check to see if feather variable is greater than zero
-  // If so then alert will pop up and tell them they are using one of their feathers for resurrection, after the close alert, takes then to ENVIRONMENT THREE.
-  // If feather variable is 0, then window image changes to STORY OVER image
-
 
 // ENVIRONMENT THREE will follow the same as above but instead of sending you to new environment, will have message screen
   // Remove choice buttons

@@ -33,7 +33,7 @@ const environmentPhoenix = { //this is environment to find phoenix
 
   /*-------------------------------- Variables --------------------------------*/
 
-  let featherTotal, environment, enviroGrid
+  let featherTotal, enviro, enviroGrid
 
   /*------------------------ Cached Element References ------------------------*/
 
@@ -49,20 +49,18 @@ const environmentPhoenix = { //this is environment to find phoenix
   const featherBox = document.getElementById('feather-box')
   const timerArea = document.getElementById('timer-area')
 
-  const mainImg = document.getElementById('main-img')
+  // const mainImg = document.getElementById('main-img')
 
   /*----------------------------- Event Listeners -----------------------------*/
 
   startBtn.addEventListener('click', handleClickStart)
 
-  cellEls.forEach(function(cellSelect) {
-    cellSelect.addEventListener('click', handleClickFind)
-  })
+  cellEls.forEach(cellSelect => { cellSelect.addEventListener('click', handleClickFind)})
 
   choice1Btn.addEventListener('click', handleClickChoice)
   choice2Btn.addEventListener('click', handleClickChoice)
 
-  resetBtn.addEventListener('click', init) // maybe start elsewhere, further in?
+  resetBtn.addEventListener('click', init)
 
   /*-------------------------------- Functions --------------------------------*/
 
@@ -90,7 +88,7 @@ const environmentPhoenix = { //this is environment to find phoenix
 
   // CLEAR PREVIOUSLY FOUND FEATHERS
   enviroGrid.forEach((cell,i) => {
-    if (cellEls[i].textContent = 'phx'){
+    if (cellEls[i].textContent = 'FEATHER'){
       cellEls[i].textContent = null
     }
   })
@@ -103,7 +101,7 @@ function handleClickStart(evt){
   console.log("START", `feather total = ${featherTotal}`) //! delete later
 }
 
-function renderEnvironment(enviro){
+function renderEnvironment(){
   enviro = environment1 // to change out
   enviroGrid[enviro.secretLocation] = 'feather'
   //todo IMAGE -> change out to Environment-1 image
@@ -127,13 +125,13 @@ function handleClickFind(evt){
 
   if (enviroGrid[sqIdx] === 'feather'){
     let locationCell = cellEls[sqIdx]
-    locationCell.textContent = 'phx'
+    locationCell.textContent = 'FEATHER'
     locationCell.style.color = 'red'
     //todo locationCell.className = 'animate__animated animate__ANIMATION-NAME'
     featherTotal += 1
     console.log('AFTER FIND feather total', `${featherTotal}`) //! delete later
     enviroGrid = [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
-    // this is so that feather count does not continue to increase  by clicking the same cell
+    // this is so that feather count does not continue to increase by clicking the same cell
     //todo refactor enviroGrid later
     //todo figure out how to loop each environment change
   }

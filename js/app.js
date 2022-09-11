@@ -1,71 +1,69 @@
 
 /*-------------------------------- Constants --------------------------------*/
-
-const enviroIntro = {
+enviroArrays =[
+{ enviroName: 'enviroIntro',
   enviroId: 0,
   image: "url('../images/Phoenix-Fabelwesen.jpeg')",
   message: '"The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor." -- Wikipedia',
-}
+},
 
-const enviro1 = {
+{ enviroName: 'enviro1',
   enviroId: 1,
   image: "url('../images/Enviro1Volcano.png')",
   message: 'Some legends say it dies in a show of flames and combustion, others that it simply dies and decomposes before being born again. -- Wikipedia',
   secretLocation: 8,
   choiceMessageA: 'choice 1A',
   choiceMessageB: 'choice 1B',
-}
+},
 
-const enviro2 = {
+{ enviroName: 'enviro2',
   enviroId: 2,
   image: "url('../images/forest.png')",
   message: 'hint 2',
   secretLocation: 4,
   choiceMessageA: 'choice 2A',
   choiceMessageB: 'choice 2B',
-}
+},
 
-const enviro3 = {
+{ enviroName: 'enviro3',
   enviroId: 3,
   image: 'tbd3',
   message: 'hint 3',
   secretLocation: 24,
   choiceMessageA: 'choice 3A',
   choiceMessageB: 'choice 3B',
-}
+},
 
-const enviroStoryOver = { //environment when story is over
+{ enviroName: 'enviroStoryOver', //environment when story is over
   enviroId: 4,
   image: "url('../images/StoryOverPlaceholder.png')",
   message: 'story over message ...',
-}
+},
 
-const enviroConsolation = { //environment when made alive but < 3 feathers
+{ enviroName: 'enviroConsolation',  //environment when alive but < 3 feathers
   enviroId: 5,
   image: 'tbd consolation',
   message: 'consolation message',
-  // secretLocation: undefined,
-  // choiceMessageA: undefined,
-  // choiceMessageB: undefined,
-}
+},
 
-const enviroPhoenix = { //environment to find phoenix
+{ enviroName: 'enviroPhoenix',  //environment to find phoenix
   enviroId: 6,
   image: 'tbd4',
   message: 'hint for phoenix',
   secretLocation: 7,
-}
+},
 
-const environCongrats = { //environment w congrats image
+{ enviroName: 'environCongrats',  //environment w congrats image
   enviroId: 7,
   image: 'tbd4',
   message: 'congrats',
 }
-
+]
 
   /*-------------------------------- Variables --------------------------------*/
 
-  let featherTotal, enviro, enviroGrid
+  let featherTotal, enviroGrid
+
 
   /*------------------------ Cached Element References ------------------------*/
 
@@ -112,8 +110,8 @@ const environCongrats = { //environment w congrats image
     })
 
     // LOADING & RESET WILL REVERT TO INTRO IMAGE & MESSAGE
-    mainImg.style.backgroundImage = enviroIntro.image
-    messageEl.textContent = enviroIntro.message
+    mainImg.style.backgroundImage = enviroArrays[0].image
+    messageEl.textContent = enviroArrays[0].message
 
     // IMAGE -> Phoenix intro drawing
     // MESSAGE -> intro about phoenix mythology & how the game works
@@ -129,13 +127,13 @@ const environCongrats = { //environment w congrats image
   }
 
   function handleClickStart(evt){
-    renderEnvironment(enviro1)
+    renderEnvironment()
     //todo START TIMER
     console.log("START", `feather total = ${featherTotal}`) //! delete later
   }
 
-  function renderEnvironment(enviro){
-    enviro = enviro1 // to change out
+  function renderEnvironment(){
+    let enviro = enviroArrays[1]
     enviroGrid[enviro.secretLocation] = 'feather'
     //todo IMAGE -> change out to Environment-1 image
     mainImg.style.backgroundImage = enviro.image
@@ -179,8 +177,9 @@ const environCongrats = { //environment w congrats image
     // if feather is less than 0, will take them to StoryOver
     if (evt.target.id === 'choice1-btn'){
       console.log('CHOICE 1')
+      enviro = (enviroArrays.find(obj => obj.enviroId === 2)) // change to enviro2
       //todo change out to new img/hint/secretLocation/choice btn descriptions
-      renderEnvironment()
+      renderEnvironment(enviro)
     }else if (evt.target.id === 'choice2-btn'){
       console.log('CHOICE 2')
       if (featherTotal > 0){
@@ -188,7 +187,6 @@ const environCongrats = { //environment w congrats image
         featherTotal -= 1
         //todo remove the visual feather from the feather box
         console.log('SPEND FEATHER feather total', `${featherTotal}`) //! delete later
-        renderStoryOver()
       } else{
         renderStoryOver()
       }
@@ -211,8 +209,8 @@ const environCongrats = { //environment w congrats image
       }
     })
 
-    mainImg.style.backgroundImage = enviroStoryOver.image
-    messageEl.textContent = enviroStoryOver.message
+    mainImg.style.backgroundImage = enviroArrays[4].image
+    messageEl.textContent = enviroArrays[4].message
     choice1Btn.setAttribute('hidden', true)
     choice2Btn.setAttribute('hidden', true)
     featherBox.setAttribute('hidden', true)

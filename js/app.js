@@ -31,13 +31,13 @@ enviroArrays = [
     message: 'You made a FATAL choice, and with zero feathers in your nest to resurrect you, it is the end.',
   },
   { enviroName: 'enviroConsolation',  //environment when alive but < 3 feathers
-    image: "url('../images/ConsolationPlaceholder.png')",
-    message: 'consolation message',
+    image: "url('../images/Phoenix-Fabelwesen.jpeg')",
+    message: `You need 3 feathers to move forward to find the phoenix, but at least you're still alive! Try again`,
   },
   { enviroName: 'enviroPhoenix',  //environment to find phoenix
-    image: 'tbd4',
-    message: 'hint for phoenix',
-    secretLocation: 7,
+    image: "url('../images/Enviro4FindPhoenix.png')",
+    message: 'find phoenix message',
+    secretLocation: 10,
   },
   { enviroName: 'environCongrats',  //environment w congrats image
     image: 'tbd4',
@@ -80,6 +80,8 @@ choice2Btn.addEventListener('click', handleClickChoice)
 
 choice1BtnAlt.addEventListener('click', handleClickChoiceAlt)
 choice2BtnAlt.addEventListener('click', handleClickChoiceAlt)
+
+findPhxBtn.addEventListener('click', handleClickPhoenix)
 
 resetBtn.addEventListener('click', init)
 
@@ -142,11 +144,11 @@ function handleClickFind(evt){
   // FEATHER
     // player finds cell (handleClickFind) that feather is assigned for THIS environment by clicking on cell.
     // when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
-  const sqIdx = parseInt(evt.target.id.replace('c', ''))
+  const cellIdx = parseInt(evt.target.id.replace('c', ''))
 
-  if (enviroGrid[sqIdx] === 'feather'){
-    let locationCell = cellEls[sqIdx]
-    locationCell.textContent = 'FEATHER'
+  if (enviroGrid[cellIdx] === 'feather'){
+    let locationCell = cellEls[cellIdx]
+    locationCell.textContent = 'FOUND'
     locationCell.style.color = 'red'
     //todo locationCell.className = 'animate__animated animate__ANIMATION-NAME'
     featherTotal += 1
@@ -156,10 +158,9 @@ function handleClickFind(evt){
   }
   if (featherTotal === 3){
     findPhxBtn.removeAttribute('hidden')
-  } else {
-    mainImg.style.backgroundImage = enviroArrays[5]
-    messageEl.textContent = enviroArrays[5]
-  }
+   } else if ((featherTotal < 3) && enviro === enviroArrays[3]){
+    renderConsolation()
+   }
 }
 
 function handleClickChoice(evt){
@@ -226,10 +227,8 @@ function renderStoryOver(){
   // BUTTONS -> hide all buttons, except reset
   // FEATHER-BOX -> show
   //todo TIMER -> hide
-  // Clear out the feather found on visual
-  console.log("RENDER STORY OVER")
-
   //todo clear out feather icon
+  console.log("RENDER STORY OVER")
 
   // CLEAR PREVIOUSLY FOUND FEATHERS
   cellEls.forEach(cell => cell.textContent ='')
@@ -246,31 +245,37 @@ function renderStoryOver(){
 }
 
 function renderConsolation(){
-  // IMAGE -> change out to Consolation image
-  // MESSAGE -> change out to Consolation message
-  // BUTTONS -> hide all buttons, except reset
-  // FEATHER-BOX -> show (????)
-  // TIMER -> hide
+  // CLEAR PREVIOUSLY FOUND FEATHERS
+  cellEls.forEach(cell => cell.textContent ='')
 
-  // enviro =enviroArrays[5]
-  // renderEnvironment()
-  // choice1Btn.setAttribute('hidden', true)
-  // choice2Btn.setAttribute('hidden', true)
-  // featherBox.setAttribute('hidden', true)
-  // timerArea.setAttribute('hidden', true)
+  enviro = enviroArrays[5]
+  renderEnvironment()
+  startBtn.setAttribute('hidden', true)
+  resetBtn.removeAttribute('hidden')
+  choice1Btn.setAttribute('hidden', true)
+  choice2Btn.setAttribute('hidden', true)
+  choice1BtnAlt.setAttribute('hidden', true)
+  choice2BtnAlt.setAttribute('hidden', true)
+  findPhxBtn.setAttribute('hidden', true)
+  featherBox.removeAttribute('hidden')
+  timerArea.setAttribute('hidden', true)
 }
 
-function renderPhoenixEnd(){
-  // IMAGE -> change out to final Environment image to find phoenix
-  // MESSAGE -> change out to hint to find phoenix
-  // BUTTONS -> hide all buttons, except reset
-  // FEATHER-BOX -> hide
-  // TIMER -> show
+function handleClickPhoenix(){
+  // CLEAR PREVIOUSLY FOUND FEATHERS
+  cellEls.forEach(cell => cell.textContent ='')
 
-  // if find phoenix (by handleCickFind) show the phoenix and change out message to Congratulations! (add animation, and sound?)
-
-  // enviro =enviroArrays[6]
-  // renderEnvironment()
+  enviro = enviroArrays[6]
+  renderEnvironment()
+  startBtn.setAttribute('hidden', true)
+  resetBtn.removeAttribute('hidden')
+  choice1Btn.setAttribute('hidden', true)
+  choice2Btn.setAttribute('hidden', true)
+  choice1BtnAlt.setAttribute('hidden', true)
+  choice2BtnAlt.setAttribute('hidden', true)
+  findPhxBtn.setAttribute('hidden', true)
+  featherBox.setAttribute('hidden', true)
+  timerArea.setAttribute('hidden', true)
 
 }
 

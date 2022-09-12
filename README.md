@@ -2,6 +2,10 @@
 <!-- A description of your game. Background info about why you chose the game is a nice touch. -->
 
 
+Artwork by Friedrich Justin Bertuch:
+  https://commons.wikimedia.org/wiki/File:Bertuch-fabelwesen.JPG
+  https://digi.ub.uni-heidelberg.de/diglit/bertuch1798bd3/0159/image,thumbs#col_thumbs
+
 Turkey: Konrul: https://en.wikipedia.org/wiki/Konrul
 China: Fenghuang: https://en.wikipedia.org/wiki/Fenghuang
 Slavic: Firebird: https://en.wikipedia.org/wiki/Firebird_(Slavic_folklore)

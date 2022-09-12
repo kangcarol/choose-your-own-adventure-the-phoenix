@@ -1,62 +1,53 @@
 
 /*-------------------------------- Constants --------------------------------*/
 enviroArrays = [
-{ enviroName: 'enviroIntro',
-  enviroId: 0,
-  image: "url('../images/Phoenix-Fabelwesen.jpeg')",
-  message: '"The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor." -- Wikipedia',
-},
-{ enviroName: 'enviro1',
-  enviroId: 1,
-  image: "url('../images/Enviro1Volcano.png')",
-  message: 'Some legends say it dies in a show of flames and combustion, others that it simply dies and decomposes before being born again. -- Wikipedia',
-  secretLocation: 8,
-  choiceMessage1: 'choice 1A',
-  choiceMessage2: 'choice 1B',
-},
-{ enviroName: 'enviro2',
-  enviroId: 2,
-  image: "url('../images/Enviro2Cave.png')",
-  message: 'hint 2',
-  secretLocation: 0,
-  choiceMessage1: 'choice 2A',
-  choiceMessage2: 'choice 2B',
-},
-{ enviroName: 'enviro3',
-  enviroId: 3,
-  image: "url('../images/Enviro3Catacombs.png')",
-  message: 'hint 3',
-  secretLocation: 4,
-  choiceMessage1: 'choice 3A',
-  choiceMessage2: 'choice 3B',
-},
-{ enviroName: 'enviroStoryOver', //environment when story is over
-  enviroId: 4,
-  image: "url('../images/StoryOverPlaceholder.png')",
-  message: 'story over message ...',
-},
-{ enviroName: 'enviroConsolation',  //environment when alive but < 3 feathers
-  enviroId: 5,
-  image: 'tbd consolation',
-  message: 'consolation message',
-},
-{ enviroName: 'enviroPhoenix',  //environment to find phoenix
-  enviroId: 6,
-  image: 'tbd4',
-  message: 'hint for phoenix',
-  secretLocation: 7,
-},
-{ enviroName: 'environCongrats',  //environment w congrats image
-  enviroId: 7,
-  image: 'tbd4',
-  message: 'congrats',
-}
+  { enviroName: 'enviroIntro',
+    image: "url('../images/Phoenix-Fabelwesen.jpeg')",
+    message: '"The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor." -- Wikipedia',
+  },
+  { enviroName: 'enviro1',
+    image: "url('../images/Enviro1Volcano.png')",
+    message: 'Some legends say it dies in a show of flames and combustion, others that it simply dies and decomposes before being born again. -- Wikipedia',
+    secretLocation: 8,
+    choiceMessage1: 'choice 1A',
+    choiceMessage2: 'choice 1B',
+  },
+  { enviroName: 'enviro2',
+    image: "url('../images/Enviro2Cave.png')",
+    message: 'hint 2',
+    secretLocation: 0,
+    choiceMessage1: 'choice 2A',
+    choiceMessage2: 'choice 2B',
+  },
+  { enviroName: 'enviro3',
+    image: "url('../images/Enviro3Catacombs.png')",
+    message: 'hint 3',
+    secretLocation: 4,
+    choiceMessage1: 'choice 3A',
+    choiceMessage2: 'choice 3B',
+  },
+  { enviroName: 'enviroStoryOver', //environment when story is over
+    image: "url('../images/StoryOverPlaceholder.png')",
+    message: 'You made a FATAL choice, and with zero feathers in your nest to resurrect you, it is the end.',
+  },
+  { enviroName: 'enviroConsolation',  //environment when alive but < 3 feathers
+    image: "url('../images/ConsolationPlaceholder.png')",
+    message: 'consolation message',
+  },
+  { enviroName: 'enviroPhoenix',  //environment to find phoenix
+    image: 'tbd4',
+    message: 'hint for phoenix',
+    secretLocation: 7,
+  },
+  { enviroName: 'environCongrats',  //environment w congrats image
+    image: 'tbd4',
+    message: 'congrats',
+  }
 ]
 
 /*-------------------------------- Variables --------------------------------*/
 
 let featherTotal, enviroGrid, enviro
-
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -165,6 +156,9 @@ function handleClickFind(evt){
   }
   if (featherTotal === 3){
     findPhxBtn.removeAttribute('hidden')
+  } else {
+    mainImg.style.backgroundImage = enviroArrays[5]
+    messageEl.textContent = enviroArrays[5]
   }
 }
 

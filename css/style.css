@@ -71,3 +71,7 @@ section.locationCells {
   margin: 0;
   justify-content: center;
 }
+
+footer {
+  font-size: 12px;
+}

@@ -139,7 +139,7 @@ function timer() {
 
 function handleClickStart(evt) {
   renderEnvironment()
-  timer()
+  // timer()
   console.log("START", `feather total = ${featherTotal}`) //! delete later
 }
 
@@ -165,6 +165,16 @@ function renderEnvironment() {
   choice2BtnAlt.textContent = enviro.choiceMessage2
 }
 
+function addFeather(){
+  // featherBox.textContent = (featherBox.textContent).split('').push('Feaaather').join('')
+  featherBox.textContent += '🪶'
+  console.log(featherBox.textContent)
+}
+
+function removeFeather(){
+  (featherBox.textContent).split('').pop.join('')
+}
+
 function clearFoundFeathers() {
   cellEls.forEach((cell) => (cell.textContent = ""));
 }
@@ -181,8 +191,10 @@ function handleClickFind(evt) {
     locationCell.style.color = "red";
     //todo locationCell.className = 'animate__animated animate__ANIMATION-NAME'
     featherTotal += 1;
-    featherBox.textContent += "🪶"
     console.log("AFTER FIND feather total", `${featherTotal}`); //! delete later
+    if (enviro !== enviroArrays[6]){
+      addFeather()
+    }
     enviroGrid = new Array(25, null); // this is so that feather count does not continue to increase by clicking the same cell
   }
   if (featherTotal === 3) {
@@ -207,7 +219,13 @@ function handleClickChoice(evt) {
         "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
       )
       featherTotal -= 1
-      featherBox.textContent -= "🪶" //TODO fix deletion of feather
+      if (featherTotal.length < 1){
+        featherBox.textContent = ''
+      } else {
+        removeFeather()
+        console.log(featherBox.content)
+      }
+      // featherBox.textContent -= "🪶" //TODO fix deletion of feather
       console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
       enviro = enviroArrays[2]
       renderEnvironment()

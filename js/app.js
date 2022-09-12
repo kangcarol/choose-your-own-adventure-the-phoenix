@@ -104,11 +104,9 @@ init();
 function init() {
   featherTotal = 0;
   enviroGrid = new Array(25, null);
+  console.log("INIT", `feather total = ${featherTotal}`) //! delete this later
 
-  console.log("INIT", `feather total = ${featherTotal}`)
-
-  // CLEAR PREVIOUSLY FOUND FEATHERS
-  cellEls.forEach((cell) => (cell.textContent = ""))
+  clearFoundFeathers()
 
   // LOADING & RESET WILL REVERT TO INTRO IMAGE & MESSAGE
   mainImg.style.backgroundImage = enviroArrays[0].image
@@ -144,9 +142,9 @@ function timer() {
 }
 
 function handleClickStart(evt) {
-  renderEnvironment();
-  timer();
-  console.log("START", `feather total = ${featherTotal}`); //! delete later
+  renderEnvironment()
+  timer()
+  console.log("START", `feather total = ${featherTotal}`) //! delete later
 }
 
 function renderEnvironment() {
@@ -200,8 +198,7 @@ function handleClickFind(evt) {
 
 function handleClickChoice(evt) {
   //todo clear out feather icon
-  // CLEAR PREVIOUSLY FOUND FEATHERS
-  cellEls.forEach((cell) => (cell.textContent = ""));
+  clearFoundFeathers()
 
   if (evt.target.id === "choice1-btn") {
     console.log("CHOICE 1");

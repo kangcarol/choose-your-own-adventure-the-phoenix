@@ -47,13 +47,8 @@ enviroArrays = [
     image: "url('../images/Enviro4FindPhoenix.png')",
     message: "find phoenix message",
     secretLocation: 10,
-  },
-  {
-    enviroName: "environOutOfTime", //environment when timer runs out
-    image: "url('../images/Enviro4FindPhoenix.png')",
-    message: "You're out of time, try again!",
-  },
-];
+  }
+]
 
 /*-------------------------------- Variables --------------------------------*/
 
@@ -74,6 +69,7 @@ const choice2Btn = document.getElementById("choice2-btn");
 const choice1BtnAlt = document.getElementById("choice1-btn-alt");
 const choice2BtnAlt = document.getElementById("choice2-btn-alt");
 
+const featherHeader = document.querySelector('h6')
 const featherBox = document.getElementById("feather-box");
 const timerArea = document.getElementById("timer-area");
 
@@ -104,6 +100,7 @@ init();
 function init() {
   featherTotal = 0;
   enviroGrid = new Array(25, null);
+  featherBox.textContent = ''
   console.log("INIT", `feather total = ${featherTotal}`) //! delete this later
 
   clearFoundFeathers()
@@ -134,8 +131,7 @@ function timer() {
     if (timeLeft < 0) {
       countdownEl.textContent = "Time is up!"
       clearInterval(timer)
-      mainImg.style.backgroundImage = enviroArrays[8].image
-      messageEl.textContent = enviroArrays[8].message
+      alert("You're out of time, try again!")
     }
     console.log(timeLeft) //! delete this later
   }, 1000)
@@ -154,6 +150,7 @@ function renderEnvironment() {
   choice2Btn.removeAttribute("hidden")
   choice1BtnAlt.setAttribute("hidden", true)
   choice2BtnAlt.setAttribute("hidden", true)
+  featherHeader.removeAttribute("hidden")
   featherBox.removeAttribute("hidden")
   timerArea.removeAttribute("hidden")
   enviroGrid[enviro.secretLocation] = "feather"
@@ -197,7 +194,6 @@ function handleClickFind(evt) {
 }
 
 function handleClickChoice(evt) {
-  //todo clear out feather icon
   clearFoundFeathers()
 
   if (evt.target.id === "choice1-btn") {
@@ -209,10 +205,10 @@ function handleClickChoice(evt) {
     if (featherTotal > 0) {
       alert(
         "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
-      );
+      )
       featherTotal -= 1
-      featherBox.textContent -= "🪶"
-      console.log("SPEND FEATHER feather total", `${featherTotal}`); //! delete later
+      featherBox.textContent -= "🪶" //TODO fix deletion of feather
+      console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
       enviro = enviroArrays[2]
       renderEnvironment()
     } else {
@@ -241,7 +237,7 @@ function handleClickChoiceAlt(evt) {
       )
       featherTotal -= 1
       //todo remove the visual feather from the feather box
-      console.log("SPEND FEATHER feather total", `${featherTotal}`); //! delete later
+      console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
       enviro = enviroArrays[3]
       renderEnvironment()
     } else {
@@ -309,9 +305,11 @@ function handleClickPhoenix() {
 /*-------------------------------- FRIDAY/WKEND GOALS --------------------------------*/
 
 //todo ADD Hover, glow animation?
-//todo ADD timer
+//todo ADD PHOENIX RISING animation at the end
 
-//todo changing out environments as loop ??????
+//todo randomize location of the feathers
+//todo randomize perilous choice (????)
+
 //todo research phoenix mythology for images/sounds
 //todo find images BLACK & WHITE LINE DRAWINGS ???
 

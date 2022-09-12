@@ -279,6 +279,7 @@ function handleClickPhoenix(){
   featherBox.setAttribute('hidden', true)
   timerArea.setAttribute('hidden', true)
 
+  clearFoundFeathers()
 }
 
 

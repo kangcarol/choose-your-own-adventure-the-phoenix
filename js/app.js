@@ -49,9 +49,9 @@ enviroArrays = [
     secretLocation: 10,
   },
   {
-    enviroName: "environCongrats", //environment w congrats image
-    image: "tbd4",
-    message: "congrats",
+    enviroName: "environOutOfTime", //environment when timer runs out
+    image: "url('../images/Enviro4FindPhoenix.png')",
+    message: "You're out of time, try again!",
   },
 ];
 
@@ -105,40 +105,42 @@ function init() {
   featherTotal = 0;
   enviroGrid = new Array(25, null);
 
-  console.log("INIT", `feather total = ${featherTotal}`);
+  console.log("INIT", `feather total = ${featherTotal}`)
 
   // CLEAR PREVIOUSLY FOUND FEATHERS
-  cellEls.forEach((cell) => (cell.textContent = ""));
+  cellEls.forEach((cell) => (cell.textContent = ""))
 
   // LOADING & RESET WILL REVERT TO INTRO IMAGE & MESSAGE
-  mainImg.style.backgroundImage = enviroArrays[0].image;
-  messageEl.textContent = enviroArrays[0].message;
+  mainImg.style.backgroundImage = enviroArrays[0].image
+  messageEl.textContent = enviroArrays[0].message
 
-  startBtn.removeAttribute("hidden");
-  resetBtn.setAttribute("hidden", true);
-  choice1Btn.setAttribute("hidden", true);
-  choice2Btn.setAttribute("hidden", true);
-  choice1BtnAlt.setAttribute("hidden", true);
-  choice2BtnAlt.setAttribute("hidden", true);
-  findPhxBtn.setAttribute("hidden", true);
-  featherBox.setAttribute("hidden", true);
-  timerArea.setAttribute("hidden", true);
+  startBtn.removeAttribute("hidden")
+  resetBtn.setAttribute("hidden", true)
+  choice1Btn.setAttribute("hidden", true)
+  choice2Btn.setAttribute("hidden", true)
+  choice1BtnAlt.setAttribute("hidden", true)
+  choice2BtnAlt.setAttribute("hidden", true)
+  findPhxBtn.setAttribute("hidden", true)
+  featherBox.setAttribute("hidden", true)
+  timerArea.setAttribute("hidden", true)
 
   enviro = enviroArrays[1];
 }
 
 function timer() {
-  let countdownEl = document.getElementById("timer-area");
-  let timeLeft = 15;
+  let countdownEl = document.getElementById("timer-area")
+  let timeLeft = 15
   let timer = setInterval(function () {
-    countdownEl.textContent = timeLeft + " seconds remaining.";
-    timeLeft -= 1;
+    countdownEl.textContent = timeLeft + " seconds remaining."
+    timeLeft -= 1
     if (timeLeft < 0) {
-      countdownEl.textContent = "Finished!";
-      clearInterval(timer);
+      countdownEl.textContent = "Time is up!"
+      clearInterval(timer)
+      mainImg.style.backgroundImage = enviroArrays[8].image
+      messageEl.textContent = enviroArrays[8].message
     }
-    console.log(timeLeft); //! delete this later
-  }, 1000);
+    console.log(timeLeft) //! delete this later
+  }, 1000)
 }
 
 function handleClickStart(evt) {
@@ -148,24 +150,24 @@ function handleClickStart(evt) {
 }
 
 function renderEnvironment() {
-  startBtn.setAttribute("hidden", true);
-  resetBtn.removeAttribute("hidden");
-  choice1Btn.removeAttribute("hidden");
-  choice2Btn.removeAttribute("hidden");
-  choice1BtnAlt.setAttribute("hidden", true);
-  choice2BtnAlt.setAttribute("hidden", true);
-  featherBox.removeAttribute("hidden");
-  timerArea.removeAttribute("hidden");
-  enviroGrid[enviro.secretLocation] = "feather";
+  startBtn.setAttribute("hidden", true)
+  resetBtn.removeAttribute("hidden")
+  choice1Btn.removeAttribute("hidden")
+  choice2Btn.removeAttribute("hidden")
+  choice1BtnAlt.setAttribute("hidden", true)
+  choice2BtnAlt.setAttribute("hidden", true)
+  featherBox.removeAttribute("hidden")
+  timerArea.removeAttribute("hidden")
+  enviroGrid[enviro.secretLocation] = "feather"
   // IMAGE -> change out to Environment-1 image
-  mainImg.style.backgroundImage = enviro.image;
+  mainImg.style.backgroundImage = enviro.image
   // MESSAGE -> change out to Environment-1 hint message
   messageEl.textContent = enviro.message;
   // CHOICE BUTTONS -> descriptions change out
-  choice1Btn.textContent = enviro.choiceMessage1;
-  choice2Btn.textContent = enviro.choiceMessage2;
-  choice1BtnAlt.textContent = enviro.choiceMessage1;
-  choice2BtnAlt.textContent = enviro.choiceMessage2;
+  choice1Btn.textContent = enviro.choiceMessage1
+  choice2Btn.textContent = enviro.choiceMessage2
+  choice1BtnAlt.textContent = enviro.choiceMessage1
+  choice2BtnAlt.textContent = enviro.choiceMessage2
 }
 
 function clearFoundFeathers() {
@@ -217,7 +219,7 @@ function handleClickChoice(evt) {
       enviro = enviroArrays[2];
       renderEnvironment();
     } else {
-      renderStoryOver();
+      renderStoryOver()
     }
   }
   choice1Btn.setAttribute("hidden", true);

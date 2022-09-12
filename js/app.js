@@ -9,22 +9,22 @@ enviroArrays = [
     image: "url('../images/Enviro1Volcano.png')",
     message: 'Some legends say it dies in a show of flames and combustion, others that it simply dies and decomposes before being born again. -- Wikipedia',
     secretLocation: 8,
-    choiceMessage1: 'choice 1A',
-    choiceMessage2: 'choice 1B',
+    choiceMessage1: 'CAVE',
+    choiceMessage2: 'MOUNTAINS',
   },
   { enviroName: 'enviro2',
     image: "url('../images/Enviro2Cave.png')",
     message: 'hint 2',
     secretLocation: 0,
-    choiceMessage1: 'choice 2A',
-    choiceMessage2: 'choice 2B',
+    choiceMessage1: 'CATACOMBS',
+    choiceMessage2: 'SEA',
   },
   { enviroName: 'enviro3',
     image: "url('../images/Enviro3Catacombs.png')",
     message: 'hint 3',
     secretLocation: 4,
-    choiceMessage1: 'choice 3A',
-    choiceMessage2: 'choice 3B',
+    // choiceMessage1: 'choice 3A',
+    // choiceMessage2: 'choice 3B',
   },
   { enviroName: 'enviroStoryOver', //environment when story is over
     image: "url('../images/StoryOverPlaceholder.png')",
@@ -138,6 +138,12 @@ function renderEnvironment(){
   // CHOICE BUTTONS -> descriptions change out
   choice1Btn.textContent = enviro.choiceMessage1
   choice2Btn.textContent = enviro.choiceMessage2
+  choice1BtnAlt.textContent = enviro.choiceMessage1
+  choice2BtnAlt.textContent = enviro.choiceMessage2
+}
+
+function clearFoundFeathers(){
+  cellEls.forEach(cell => cell.textContent ='')
 }
 
 function handleClickFind(evt){
@@ -194,8 +200,7 @@ function handleClickChoice(evt){
 
 function handleClickChoiceAlt(evt){
   //todo clear out feather icon
-  // CLEAR PREVIOUSLY FOUND FEATHERS
-  cellEls.forEach(cell => cell.textContent ='')
+  clearFoundFeathers()
 
   if (evt.target.id === 'choice1-btn-alt'){
     console.log('CHOICE 1')
@@ -245,8 +250,7 @@ function renderStoryOver(){
 }
 
 function renderConsolation(){
-  // CLEAR PREVIOUSLY FOUND FEATHERS
-  cellEls.forEach(cell => cell.textContent ='')
+  clearFoundFeathers()
 
   enviro = enviroArrays[5]
   renderEnvironment()
@@ -262,8 +266,7 @@ function renderConsolation(){
 }
 
 function handleClickPhoenix(){
-  // CLEAR PREVIOUSLY FOUND FEATHERS
-  cellEls.forEach(cell => cell.textContent ='')
+  clearFoundFeathers()
 
   enviro = enviroArrays[6]
   renderEnvironment()
@@ -278,6 +281,8 @@ function handleClickPhoenix(){
   timerArea.setAttribute('hidden', true)
 
 }
+
+clearFoundFeathers()
 
 function timer(){
 }

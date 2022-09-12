@@ -6,7 +6,6 @@ enviroArrays = [
   image: "url('../images/Phoenix-Fabelwesen.jpeg')",
   message: '"The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor." -- Wikipedia',
 },
-
 { enviroName: 'enviro1',
   enviroId: 1,
   image: "url('../images/Enviro1Volcano.png')",
@@ -15,7 +14,6 @@ enviroArrays = [
   choiceMessage1: 'choice 1A',
   choiceMessage2: 'choice 1B',
 },
-
 { enviroName: 'enviro2',
   enviroId: 2,
   image: "url('../images/Enviro2Cave.png')",
@@ -24,35 +22,30 @@ enviroArrays = [
   choiceMessage1: 'choice 2A',
   choiceMessage2: 'choice 2B',
 },
-
 { enviroName: 'enviro3',
   enviroId: 3,
-  image: 'tbd3',
+  image: "url('../images/Enviro3Catacombs.png')",
   message: 'hint 3',
-  secretLocation: 24,
+  secretLocation: 4,
   choiceMessage1: 'choice 3A',
   choiceMessage2: 'choice 3B',
 },
-
 { enviroName: 'enviroStoryOver', //environment when story is over
   enviroId: 4,
   image: "url('../images/StoryOverPlaceholder.png')",
   message: 'story over message ...',
 },
-
 { enviroName: 'enviroConsolation',  //environment when alive but < 3 feathers
   enviroId: 5,
   image: 'tbd consolation',
   message: 'consolation message',
 },
-
 { enviroName: 'enviroPhoenix',  //environment to find phoenix
   enviroId: 6,
   image: 'tbd4',
   message: 'hint for phoenix',
   secretLocation: 7,
 },
-
 { enviroName: 'environCongrats',  //environment w congrats image
   enviroId: 7,
   image: 'tbd4',
@@ -73,8 +66,12 @@ const messageEl = document.getElementById('message')
 const startBtn = document.getElementById('start-btn')
 const resetBtn = document.getElementById('reset-btn')
 const nextBtn = document.getElementById('next-btn')
+
 const choice1Btn = document.getElementById('choice1-btn')
 const choice2Btn = document.getElementById('choice2-btn')
+
+const choice1BtnAlt = document.getElementById('choice1-btn-alt')
+const choice2BtnAlt = document.getElementById('choice2-btn-alt')
 
 const featherBox = document.getElementById('feather-box')
 const timerArea = document.getElementById('timer-area')
@@ -90,23 +87,14 @@ cellEls.forEach(cellSelect => { cellSelect.addEventListener('click', handleClick
 choice1Btn.addEventListener('click', handleClickChoice)
 choice2Btn.addEventListener('click', handleClickChoice)
 
+choice1BtnAlt.addEventListener('click', handleClickChoiceAlt)
+choice2BtnAlt.addEventListener('click', handleClickChoiceAlt)
+
 resetBtn.addEventListener('click', init)
 
 /*-------------------------------- Functions --------------------------------*/
 
 init()
-
-function buttonsPlay(){
-  // BUTTONS -> hide START button, show all other buttons
-  // FEATHER-BOX -> show
-  // TIMER -> show
-  startBtn.setAttribute('hidden', true)
-  resetBtn.removeAttribute('hidden')
-  choice1Btn.removeAttribute('hidden')
-  choice2Btn.removeAttribute('hidden')
-  featherBox.removeAttribute('hidden')
-  timerArea.removeAttribute('hidden')
-}
 
 function init (){
   featherTotal = 0
@@ -125,6 +113,8 @@ function init (){
   resetBtn.setAttribute('hidden', true)
   choice1Btn.setAttribute('hidden', true)
   choice2Btn.setAttribute('hidden', true)
+  choice1BtnAlt.setAttribute('hidden', true)
+  choice2BtnAlt.setAttribute('hidden', true)
   featherBox.setAttribute('hidden', true)
   timerArea.setAttribute('hidden', true)
 
@@ -137,9 +127,15 @@ function handleClickStart(evt){
   console.log("START", `feather total = ${featherTotal}`) //! delete later
 }
 
-
 function renderEnvironment(){
-  buttonsPlay()
+  startBtn.setAttribute('hidden', true)
+  resetBtn.removeAttribute('hidden')
+  choice1Btn.removeAttribute('hidden')
+  choice2Btn.removeAttribute('hidden')
+  choice1BtnAlt.setAttribute('hidden', true)
+  choice2BtnAlt.setAttribute('hidden', true)
+  featherBox.removeAttribute('hidden')
+  timerArea.removeAttribute('hidden')
   enviroGrid[enviro.secretLocation] = 'feather'
   // IMAGE -> change out to Environment-1 image
   mainImg.style.backgroundImage = enviro.image
@@ -169,19 +165,12 @@ function handleClickFind(evt){
 }
 
 function handleClickChoice(evt){
-  // if player clicks on CHOICE button1 for Enviroment1, it will change renderEnvironment for Environment2
-    // if player clicks on CHOICE button2, it will check if featherTotal > 0,
-    // if greater than 0, an alert pops up saying that they had chosen a fatal situation but their feather has granted them another life. After player clicks OK it will take them to Environment2
-  // if feather is less than 0, will take them to StoryOver
-
   //todo clear out feather icon
   // CLEAR PREVIOUSLY FOUND FEATHERS
   cellEls.forEach(cell => cell.textContent ='')
 
   if (evt.target.id === 'choice1-btn'){
     console.log('CHOICE 1')
-    //change out to new img/hint/secretLocation/choice btn descriptions
-    // enviro = (enviroArrays.find(obj => obj.enviroId === 2)) // this is if find a way to loop thru array change to enviro2
     enviro = enviroArrays[2]
     renderEnvironment()
 
@@ -193,6 +182,36 @@ function handleClickChoice(evt){
       //todo remove the visual feather from the feather box
       console.log('SPEND FEATHER feather total', `${featherTotal}`) //! delete later
       enviro = enviroArrays[2]
+      renderEnvironment()
+    } else {
+      renderStoryOver()
+    }
+  }
+  choice1Btn.setAttribute('hidden', true)
+  choice2Btn.setAttribute('hidden', true)
+  choice1BtnAlt.removeAttribute('hidden')
+  choice2BtnAlt.removeAttribute('hidden')
+}
+
+function handleClickChoiceAlt(evt){
+
+  //todo clear out feather icon
+  // CLEAR PREVIOUSLY FOUND FEATHERS
+  cellEls.forEach(cell => cell.textContent ='')
+
+  if (evt.target.id === 'choice1-btn-alt'){
+    console.log('CHOICE 1')
+    enviro = enviroArrays[3]
+    renderEnvironment()
+
+  }else if (evt.target.id === 'choice2-btn-alt'){
+    console.log('CHOICE 2')
+    if (featherTotal > 0){
+      alert('You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!')
+      featherTotal -= 1
+      //todo remove the visual feather from the feather box
+      console.log('SPEND FEATHER feather total', `${featherTotal}`) //! delete later
+      enviro = enviroArrays[3]
       renderEnvironment()
     } else {
       renderStoryOver()
@@ -210,7 +229,7 @@ function renderStoryOver(){
   console.log("RENDER STORY OVER")
 
   //todo clear out feather icon
-  
+
   // CLEAR PREVIOUSLY FOUND FEATHERS
   cellEls.forEach(cell => cell.textContent ='')
 
@@ -229,6 +248,13 @@ function renderConsolation(){
   // BUTTONS -> hide all buttons, except reset
   // FEATHER-BOX -> show (????)
   // TIMER -> hide
+
+  // enviro =enviroArrays[5]
+  // renderEnvironment()
+  // choice1Btn.setAttribute('hidden', true)
+  // choice2Btn.setAttribute('hidden', true)
+  // featherBox.setAttribute('hidden', true)
+  // timerArea.setAttribute('hidden', true)
 }
 
 function renderPhoenixEnd(){
@@ -240,6 +266,8 @@ function renderPhoenixEnd(){
 
   // if find phoenix (by handleCickFind) show the phoenix and change out message to Congratulations! (add animation, and sound?)
 
+  // enviro =enviroArrays[6]
+  // renderEnvironment()
 
 }
 

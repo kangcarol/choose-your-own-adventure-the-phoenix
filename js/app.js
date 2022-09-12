@@ -184,7 +184,7 @@ function handleClickFind(evt) {
     locationCell.style.color = "red";
     //todo locationCell.className = 'animate__animated animate__ANIMATION-NAME'
     featherTotal += 1;
-    //todo add feather icon in feather-box
+    featherBox.textContent += "🪶"
     console.log("AFTER FIND feather total", `${featherTotal}`); //! delete later
     enviroGrid = new Array(25, null); // this is so that feather count does not continue to increase by clicking the same cell
   }
@@ -201,28 +201,28 @@ function handleClickChoice(evt) {
   clearFoundFeathers()
 
   if (evt.target.id === "choice1-btn") {
-    console.log("CHOICE 1");
-    enviro = enviroArrays[2];
-    renderEnvironment();
+    console.log("CHOICE 1")
+    enviro = enviroArrays[2]
+    renderEnvironment()
   } else if (evt.target.id === "choice2-btn") {
-    console.log("CHOICE 2");
+    console.log("CHOICE 2")
     if (featherTotal > 0) {
       alert(
         "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
       );
-      featherTotal -= 1;
-      //todo remove the visual feather from the feather box
+      featherTotal -= 1
+      featherBox.textContent -= "🪶"
       console.log("SPEND FEATHER feather total", `${featherTotal}`); //! delete later
-      enviro = enviroArrays[2];
-      renderEnvironment();
+      enviro = enviroArrays[2]
+      renderEnvironment()
     } else {
       renderStoryOver()
     }
   }
-  choice1Btn.setAttribute("hidden", true);
-  choice2Btn.setAttribute("hidden", true);
-  choice1BtnAlt.removeAttribute("hidden");
-  choice2BtnAlt.removeAttribute("hidden");
+  choice1Btn.setAttribute("hidden", true)
+  choice2Btn.setAttribute("hidden", true)
+  choice1BtnAlt.removeAttribute("hidden")
+  choice2BtnAlt.removeAttribute("hidden")
 }
 
 function handleClickChoiceAlt(evt) {
@@ -230,28 +230,28 @@ function handleClickChoiceAlt(evt) {
   clearFoundFeathers();
 
   if (evt.target.id === "choice1-btn-alt") {
-    console.log("CHOICE 1");
-    enviro = enviroArrays[3];
-    renderEnvironment();
+    console.log("CHOICE 1")
+    enviro = enviroArrays[3]
+    renderEnvironment()
   } else if (evt.target.id === "choice2-btn-alt") {
-    console.log("CHOICE 2");
+    console.log("CHOICE 2")
     if (featherTotal > 0) {
       alert(
         "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
-      );
-      featherTotal -= 1;
+      )
+      featherTotal -= 1
       //todo remove the visual feather from the feather box
       console.log("SPEND FEATHER feather total", `${featherTotal}`); //! delete later
-      enviro = enviroArrays[3];
-      renderEnvironment();
+      enviro = enviroArrays[3]
+      renderEnvironment()
     } else {
-      renderStoryOver();
+      renderStoryOver()
     }
   }
-  choice1Btn.setAttribute("hidden", true);
-  choice2Btn.setAttribute("hidden", true);
-  choice1BtnAlt.setAttribute("hidden", true);
-  choice2BtnAlt.setAttribute("hidden", true);
+  choice1Btn.setAttribute("hidden", true)
+  choice2Btn.setAttribute("hidden", true)
+  choice1BtnAlt.setAttribute("hidden", true)
+  choice2BtnAlt.setAttribute("hidden", true)
 }
 
 function renderStoryOver() {
@@ -261,49 +261,49 @@ function renderStoryOver() {
   // FEATHER-BOX -> show
   //todo TIMER -> hide
   //todo clear out feather icon
-  console.log("RENDER STORY OVER");
+  console.log("RENDER STORY OVER")
 
   // CLEAR PREVIOUSLY FOUND FEATHERS
-  cellEls.forEach((cell) => (cell.textContent = ""));
+  cellEls.forEach((cell) => (cell.textContent = ""))
 
-  mainImg.style.backgroundImage = enviroArrays[4].image;
-  messageEl.textContent = enviroArrays[4].message;
-  choice1Btn.setAttribute("hidden", true);
-  choice2Btn.setAttribute("hidden", true);
-  choice1BtnAlt.setAttribute("hidden", true);
-  choice2BtnAlt.setAttribute("hidden", true);
-  timerArea.setAttribute("hidden", true);
+  mainImg.style.backgroundImage = enviroArrays[4].image
+  messageEl.textContent = enviroArrays[4].message
+  choice1Btn.setAttribute("hidden", true)
+  choice2Btn.setAttribute("hidden", true)
+  choice1BtnAlt.setAttribute("hidden", true)
+  choice2BtnAlt.setAttribute("hidden", true)
+  timerArea.setAttribute("hidden", true)
 }
 
 function renderConsolation() {
-  clearFoundFeathers();
-  enviro = enviroArrays[5];
-  renderEnvironment();
-  startBtn.setAttribute("hidden", true);
-  resetBtn.removeAttribute("hidden");
-  choice1Btn.setAttribute("hidden", true);
-  choice2Btn.setAttribute("hidden", true);
-  choice1BtnAlt.setAttribute("hidden", true);
-  choice2BtnAlt.setAttribute("hidden", true);
-  findPhxBtn.setAttribute("hidden", true);
-  featherBox.removeAttribute("hidden");
-  timerArea.setAttribute("hidden", true);
+  clearFoundFeathers()
+  enviro = enviroArrays[5]
+  renderEnvironment()
+  startBtn.setAttribute("hidden", true)
+  resetBtn.removeAttribute("hidden")
+  choice1Btn.setAttribute("hidden", true)
+  choice2Btn.setAttribute("hidden", true)
+  choice1BtnAlt.setAttribute("hidden", true)
+  choice2BtnAlt.setAttribute("hidden", true)
+  findPhxBtn.setAttribute("hidden", true)
+  featherBox.removeAttribute("hidden")
+  timerArea.setAttribute("hidden", true)
 }
 
 function handleClickPhoenix() {
-  clearFoundFeathers();
+  clearFoundFeathers()
 
-  enviro = enviroArrays[6];
-  renderEnvironment();
-  startBtn.setAttribute("hidden", true);
-  resetBtn.removeAttribute("hidden");
-  choice1Btn.setAttribute("hidden", true);
-  choice2Btn.setAttribute("hidden", true);
-  choice1BtnAlt.setAttribute("hidden", true);
-  choice2BtnAlt.setAttribute("hidden", true);
-  findPhxBtn.setAttribute("hidden", true);
-  featherBox.setAttribute("hidden", true);
-  timerArea.setAttribute("hidden", true);
+  enviro = enviroArrays[6]
+  renderEnvironment()
+  startBtn.setAttribute("hidden", true)
+  resetBtn.removeAttribute("hidden")
+  choice1Btn.setAttribute("hidden", true)
+  choice2Btn.setAttribute("hidden", true)
+  choice1BtnAlt.setAttribute("hidden", true)
+  choice2BtnAlt.setAttribute("hidden", true)
+  findPhxBtn.setAttribute("hidden", true)
+  featherBox.setAttribute("hidden", true)
+  timerArea.setAttribute("hidden", true)
 }
 
 /*-------------------------------- FRIDAY/WKEND GOALS --------------------------------*/

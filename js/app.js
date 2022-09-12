@@ -162,11 +162,13 @@ function handleClickFind(evt){
     console.log('AFTER FIND feather total', `${featherTotal}`) //! delete later
     enviroGrid = new Array (25,null) // this is so that feather count does not continue to increase by clicking the same cell
   }
-  if (featherTotal === 3){
-    findPhxBtn.removeAttribute('hidden')
-   } else if ((featherTotal < 3) && enviro === enviroArrays[3]){
-    renderConsolation()
-   }
+  setInterval(function(){
+    if (featherTotal === 3){
+      findPhxBtn.removeAttribute('hidden')
+    } else if ((featherTotal < 3) && enviro === enviroArrays[3]){
+      renderConsolation()
+    }
+  },3000)
 }
 
 function handleClickChoice(evt){
@@ -244,7 +246,6 @@ function renderStoryOver(){
   choice2Btn.setAttribute('hidden', true)
   choice1BtnAlt.setAttribute('hidden', true)
   choice2BtnAlt.setAttribute('hidden', true)
-  featherBox.setAttribute('hidden', true)
   timerArea.setAttribute('hidden', true)
 
 }
@@ -282,7 +283,6 @@ function handleClickPhoenix(){
 
 }
 
-clearFoundFeathers()
 
 function timer(){
 }

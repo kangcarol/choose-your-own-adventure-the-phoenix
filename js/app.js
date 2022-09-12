@@ -52,7 +52,7 @@ enviroArrays = [
 
 /*-------------------------------- Variables --------------------------------*/
 
-let featherTotal, enviroGrid, enviro;
+let featherTotal, enviroGrid, enviro, timer
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -99,6 +99,7 @@ resetBtn.addEventListener("click", init);
 init();
 
 function init() {
+  resetTimer()
   featherTotal = 0;
   enviroGrid = new Array(25, null);
   featherBox.textContent = ''
@@ -122,26 +123,30 @@ function init() {
 
   enviro = enviroArrays[1];
 }
+function handleClickStart(evt) {
+  renderEnvironment()
+  console.log("START", `feather total = ${featherTotal}`) //! delete later
+  startTimer()
+}
 
-function timer() {
+function startTimer(){
   let countdownEl = document.getElementById("timer-area")
   let timeLeft = 15
-  let timer = setInterval(function () {
-    countdownEl.textContent = timeLeft + " seconds remaining."
-    timeLeft -= 1
-    if (timeLeft < 0) {
-      countdownEl.textContent = "Time is up!"
-      clearInterval(timer)
-      alert("You're out of time, try again!")
-    }
-    console.log(timeLeft) //! delete this later
+
+  timer = setInterval(function () {
+  countdownEl.textContent = timeLeft + " seconds remaining."
+  timeLeft -= 1
+  if (timeLeft < 0) {
+    countdownEl.textContent = "Time is up!"
+    clearInterval(timer)
+    alert("You're out of time, try again!")
+  }
+  console.log(timeLeft) //! delete this later
   }, 1000)
 }
 
-function handleClickStart(evt) {
-  renderEnvironment()
-  // timer()
-  console.log("START", `feather total = ${featherTotal}`) //! delete later
+function resetTimer(){
+  clearInterval(timer)
 }
 
 function renderEnvironment() {

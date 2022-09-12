@@ -194,7 +194,6 @@ function handleClickChoice(evt){
 }
 
 function handleClickChoiceAlt(evt){
-
   //todo clear out feather icon
   // CLEAR PREVIOUSLY FOUND FEATHERS
   cellEls.forEach(cell => cell.textContent ='')
@@ -237,6 +236,8 @@ function renderStoryOver(){
   messageEl.textContent = enviroArrays[4].message
   choice1Btn.setAttribute('hidden', true)
   choice2Btn.setAttribute('hidden', true)
+  choice1BtnAlt.setAttribute('hidden', true)
+  choice2BtnAlt.setAttribute('hidden', true)
   featherBox.setAttribute('hidden', true)
   timerArea.setAttribute('hidden', true)
 

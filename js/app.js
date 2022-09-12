@@ -71,6 +71,7 @@ const choice2BtnAlt = document.getElementById("choice2-btn-alt");
 
 const featherHeader = document.querySelector('h6')
 const featherBox = document.getElementById("feather-box");
+
 const timerArea = document.getElementById("timer-area");
 
 const mainImg = document.querySelector(".locationCells");
@@ -165,16 +166,6 @@ function renderEnvironment() {
   choice2BtnAlt.textContent = enviro.choiceMessage2
 }
 
-function addFeather(){
-  // featherBox.textContent = (featherBox.textContent).split('').push('Feaaather').join('')
-  featherBox.textContent += '🪶'
-  console.log(featherBox.textContent)
-}
-
-function removeFeather(){
-  (featherBox.textContent).split('').pop.join('')
-}
-
 function clearFoundFeathers() {
   cellEls.forEach((cell) => (cell.textContent = ""));
 }
@@ -190,13 +181,15 @@ function handleClickFind(evt) {
     locationCell.textContent = "FOUND";
     locationCell.style.color = "red";
     //todo locationCell.className = 'animate__animated animate__ANIMATION-NAME'
-    featherTotal += 1;
-    console.log("AFTER FIND feather total", `${featherTotal}`); //! delete later
+
     if (enviro !== enviroArrays[6]){
-      addFeather()
+      featherTotal += 1;
     }
+    featherBox.textContent = featherTotal
+    console.log("AFTER FIND feather total", `${featherTotal}`); //! delete later
     enviroGrid = new Array(25, null); // this is so that feather count does not continue to increase by clicking the same cell
   }
+
   if (featherTotal === 3) {
     findPhxBtn.removeAttribute("hidden");
   } else if (featherTotal < 3 && enviro === enviroArrays[3]) {
@@ -225,7 +218,6 @@ function handleClickChoice(evt) {
         removeFeather()
         console.log(featherBox.content)
       }
-      // featherBox.textContent -= "🪶" //TODO fix deletion of feather
       console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
       enviro = enviroArrays[2]
       renderEnvironment()
@@ -240,7 +232,6 @@ function handleClickChoice(evt) {
 }
 
 function handleClickChoiceAlt(evt) {
-  //todo clear out feather icon
   clearFoundFeathers();
 
   if (evt.target.id === "choice1-btn-alt") {
@@ -254,7 +245,6 @@ function handleClickChoiceAlt(evt) {
         "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
       )
       featherTotal -= 1
-      //todo remove the visual feather from the feather box
       console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
       enviro = enviroArrays[3]
       renderEnvironment()

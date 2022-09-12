@@ -217,6 +217,7 @@ function handleClickChoice(evt) {
         "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
       )
       featherTotal -= 1
+      featherBox.textContent = featherTotal
       if (featherTotal.length < 1){
         featherBox.textContent = ''
       } else {
@@ -250,6 +251,7 @@ function handleClickChoiceAlt(evt) {
         "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
       )
       featherTotal -= 1
+      featherBox.textContent = featherTotal
       console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
       enviro = enviroArrays[3]
       renderEnvironment()

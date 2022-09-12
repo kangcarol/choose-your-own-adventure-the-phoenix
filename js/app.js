@@ -65,7 +65,7 @@ const cellEls = document.querySelectorAll('.cell') // all cells
 const messageEl = document.getElementById('message')
 const startBtn = document.getElementById('start-btn')
 const resetBtn = document.getElementById('reset-btn')
-const nextBtn = document.getElementById('next-btn')
+const findPhxBtn = document.getElementById('find-phx-btn')
 
 const choice1Btn = document.getElementById('choice1-btn')
 const choice2Btn = document.getElementById('choice2-btn')
@@ -115,6 +115,7 @@ function init (){
   choice2Btn.setAttribute('hidden', true)
   choice1BtnAlt.setAttribute('hidden', true)
   choice2BtnAlt.setAttribute('hidden', true)
+  findPhxBtn.setAttribute('hidden', true)
   featherBox.setAttribute('hidden', true)
   timerArea.setAttribute('hidden', true)
 
@@ -161,6 +162,9 @@ function handleClickFind(evt){
     //todo add feather icon in feather-box
     console.log('AFTER FIND feather total', `${featherTotal}`) //! delete later
     enviroGrid = new Array (25,null) // this is so that feather count does not continue to increase by clicking the same cell
+  }
+  if (featherTotal === 3){
+    findPhxBtn.removeAttribute('hidden')
   }
 }
 
@@ -216,14 +220,18 @@ function handleClickChoiceAlt(evt){
       renderStoryOver()
     }
   }
+  choice1Btn.setAttribute('hidden', true)
+  choice2Btn.setAttribute('hidden', true)
+  choice1BtnAlt.setAttribute('hidden', true)
+  choice2BtnAlt.setAttribute('hidden', true)
 }
 
 function renderStoryOver(){
   // IMAGE -> change out to StoryOver image
   // MESSAGE -> change out to StoryOver message
   // BUTTONS -> hide all buttons, except reset
-  // FEATHER-BOX -> show (????)
-  // TIMER -> hide
+  // FEATHER-BOX -> show
+  //todo TIMER -> hide
   // Clear out the feather found on visual
   console.log("RENDER STORY OVER")
 

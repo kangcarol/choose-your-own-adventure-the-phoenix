@@ -125,10 +125,11 @@ function init() {
   timerArea.setAttribute("hidden", true);
 
   enviro = enviroArrays[1];
+}
 
+function timer() {
   let countdownEl = document.getElementById("timer-area");
   let timeLeft = 15;
-
   let timer = setInterval(function () {
     countdownEl.textContent = timeLeft + " seconds remaining.";
     timeLeft -= 1;
@@ -136,13 +137,13 @@ function init() {
       countdownEl.textContent = "Finished!";
       clearInterval(timer);
     }
-    console.log(timeLeft); // check this later
+    console.log(timeLeft); //! delete this later
   }, 1000);
 }
 
 function handleClickStart(evt) {
   renderEnvironment();
-  //todo START TIMER
+  timer();
   console.log("START", `feather total = ${featherTotal}`); //! delete later
 }
 

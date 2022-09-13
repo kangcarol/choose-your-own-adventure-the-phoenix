@@ -205,14 +205,14 @@ function renderEnvironment() {
 
 //! PICK UP HERE
 function handleHover(evt){
-    cellEls.forEach((cell,i) => {
-        if (enviroGrid[i] === "found") {
-            cellEls[i].classList.add('.mask')
-            cellEls[i].classList.add('.overlay')
-            cellEls[i].style.backgroundColor = 'rgba(249, 49, 84, 0.2)'
-          }
-        })
-      }
+  cellEls.forEach((cell,i) => {
+    if (enviroGrid[i] === "found") {
+      cellEls[i].classList.add('.mask')
+      cellEls[i].classList.add('.overlay')
+      cellEls[i].style.backgroundColor = 'rgba(249, 49, 84, 0.2)'
+    }
+  })
+}
 
 function clearHoverColor(){
   cellEls.forEach((cell,i) => {

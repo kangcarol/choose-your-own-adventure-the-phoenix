@@ -4,7 +4,7 @@ enviroArrays = [
     enviroName: "enviroIntro",
     image: "url('../images/Phoenix-Fabelwesen.jpeg')",
     message:
-      'NOTE: NEEDS TO HAVE CONSOLE OPEN TO FIND THE FEATHER LOCATIONS UNTIL I GET HOVER CODE ----------------------- "The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor." -- Wikipedia',
+      '"The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor." - Wikipedia',
   },
   {
     enviroName: "enviro1",
@@ -57,27 +57,29 @@ let enviroGrid = new Array(25, null)
 
 /*------------------------ Cached Element References ------------------------*/
 
-const cellEls = document.querySelectorAll(".cell"); // all cells
+const cellEls = document.querySelectorAll(".cell") // all cells
 
-const messageEl = document.getElementById("message");
-const startBtn = document.getElementById("start-btn");
-const resetBtn = document.getElementById("reset-btn");
-const findPhxBtn = document.getElementById("find-phx-btn");
+const headerPhx = document.getElementById("title")
+const messageEl = document.getElementById("message")
+const startBtn = document.getElementById("start-btn")
+const resetBtn = document.getElementById("reset-btn")
+const findPhxBtn = document.getElementById("find-phx-btn")
 
-const choice1Btn = document.getElementById("choice1-btn");
-const choice2Btn = document.getElementById("choice2-btn");
+const choice1Btn = document.getElementById("choice1-btn")
+const choice2Btn = document.getElementById("choice2-btn")
 
-const choice1BtnAlt = document.getElementById("choice1-btn-alt");
-const choice2BtnAlt = document.getElementById("choice2-btn-alt");
+const choice1BtnAlt = document.getElementById("choice1-btn-alt")
+const choice2BtnAlt = document.getElementById("choice2-btn-alt")
 
 const featherHeader = document.getElementById("feather-header")
-const featherBox = document.getElementById("feather-box");
+const featherBox = document.getElementById("feather-box")
 
-const timerArea = document.getElementById("timer-area");
+const timerArea = document.getElementById("timer-area")
 
-const mainImg = document.querySelector(".locationCells");
+const mainImg = document.querySelector(".locationCells")
 
 const wings = new Audio("../audio/wings.mp3")
+const feather = document.getElementById('featherImg')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -131,8 +133,6 @@ choice2BtnAlt.addEventListener("click", function(evt){
   wings.play()
   })
 
-
-
 /*-------------------------------- Functions --------------------------------*/
 
 init();
@@ -140,14 +140,15 @@ init();
 function init() {
   resetTimer()
   clearHoverColor()
+  clearFoundFeathers()
   featherTotal = 0
   featherBox.textContent = featherTotal
   enviroGrid = new Array(25, null)
-  featherBox.textContent = ''
-
   console.log("INIT", `feather total = ${featherTotal}`) //! delete this later
 
-  clearFoundFeathers()
+  headerPhx.classList.remove('animate__fadeIn')
+  headerPhx.offsetWidth = headerPhx.offsetWidth
+  headerPhx.classList.add('animate__fadeIn')
 
   // LOADING & RESET WILL REVERT TO INTRO IMAGE & MESSAGE
   mainImg.style.backgroundImage = enviroArrays[0].image
@@ -167,9 +168,6 @@ function init() {
   enviro = enviroArrays[1]
 }
 
-function randomLocation(){
-  return Math.floor(Math.random() * 25)
-}
 
 function handleClickStart(evt) {
   renderEnvironment()
@@ -191,6 +189,10 @@ function renderEnvironment() {
   featherBox.removeAttribute("hidden")
   timerArea.removeAttribute("hidden")
   featherBox.textContent = featherTotal
+
+  headerPhx.classList.remove('animate__fadeIn')
+  headerPhx.offsetWidth = headerPhx.offsetWidth
+  headerPhx.classList.add('animate__fadeIn')
 
   // IMAGE -> change out to Environment-1 image
   mainImg.style.backgroundImage = enviro.image
@@ -223,18 +225,19 @@ function clearHoverColor(){
 function handleClickFind(evt) {
   // player finds cell (handleClickFind) that feather is assigned for THIS environment by clicking on cell.
 
-  const cellIdx = parseInt(evt.target.id.replace("c", ""));
+  const cellIdx = parseInt(evt.target.id.replace("c", ""))
 
   if (enviroGrid[cellIdx] === "found") {
-    let locationCell = cellEls[cellIdx];
-    locationCell.textContent = "FOUND";
-    locationCell.style.color = "red";
+    let locationCell = cellEls[cellIdx]
+    // startBtn.innerHTML = feather.removeAttribute("hidden")
+    // locationCell.textContent = "FOUND"
+
     clearHoverColor()
     //TODO  when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
     //todo locationCell.className = 'animate__animated animate__ANIMATION-NAME'
 
     if (enviro !== enviroArrays[6]){
-      featherTotal += 1;
+      featherTotal += 1
     }
     featherBox.textContent = featherTotal
     console.log("AFTER FIND feather total", `${featherTotal}`); //! delete later
@@ -242,17 +245,26 @@ function handleClickFind(evt) {
   }
 
   if (featherTotal === 3) {
-    findPhxBtn.removeAttribute("hidden");
+    findPhxBtn.removeAttribute("hidden")
   } else if (featherTotal < 3 && enviro === enviroArrays[3]) {
-    renderConsolation();
+    renderConsolation()
   }
-  //! get rid of phxBtn after finding phx
+
+  // PHX ENVIRO SPECIFICATIONS
+  if (enviro === enviroArrays[6]){
+    findPhxBtn.setAttribute('hidden', true)
+    featherHeader.setAttribute('hidden', true)
+    resetTimer()
+    messageEl.textContent = "Congratulations!"
+  }
 }
 
 function handleClickChoice(evt) {
   clearFoundFeathers()
 
+  enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
+
   console.log('SECRET LOCATION NEXT2: ', enviro.secretLocation)
 
   if (evt.target.id === "choice1-btn") {
@@ -267,12 +279,6 @@ function handleClickChoice(evt) {
         )
         featherTotal -= 1
         featherBox.textContent = featherTotal
-        if (featherTotal.length < 1){
-          featherBox.textContent = ''
-        } else {
-          removeFeather()
-        console.log(featherBox.content)
-      }
       console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
       enviro = enviroArrays[2]
       renderEnvironment()
@@ -291,7 +297,7 @@ function handleClickChoiceAlt(evt) {
   clearFoundFeathers()
 
   enviroGrid[enviro.secretLocation] = "found"
-  console.log('SECRET LOCATION NEXT3: ', enviro.secretLocation)
+  console.log('SECRET LOCATION NEXT3: ', enviro.secretLocation) //! delete later
 
   if (evt.target.id === "choice1-btn-alt") {
     console.log("CHOICE 1")
@@ -312,20 +318,19 @@ function handleClickChoiceAlt(evt) {
         renderStoryOver()
       }
     }
-  choice1Btn.setAttribute("hidden", true)
-  choice2Btn.setAttribute("hidden", true)
-  choice1BtnAlt.setAttribute("hidden", true)
-  choice2BtnAlt.setAttribute("hidden", true)
-}
+    choice1Btn.setAttribute("hidden", true)
+    choice2Btn.setAttribute("hidden", true)
+    choice1BtnAlt.setAttribute("hidden", true)
+    choice2BtnAlt.setAttribute("hidden", true)
+  }
 
-function renderStoryOver() {
-  // IMAGE -> change out to StoryOver image
-  // MESSAGE -> change out to StoryOver message
-  // BUTTONS -> hide all buttons, except reset
-  // FEATHER-BOX -> show
+  function renderStoryOver() {
   resetTimer()
-  //todo clear out feather icon
-  console.log("RENDER STORY OVER")
+  headerPhx.classList.remove('animate__fadeIn')
+  headerPhx.offsetWidth = headerPhx.offsetWidth
+  headerPhx.classList.add('animate__fadeIn')
+  clearFoundFeathers()
+  console.log("RENDER STORY OVER") //! delete later
 
   clearFoundFeathers()
 
@@ -340,8 +345,13 @@ function renderStoryOver() {
 
 function renderConsolation() {
   clearFoundFeathers()
-  resetTimer
+  resetTimer()
   enviro = enviroArrays[5]
+
+  headerPhx.classList.remove('animate__fadeIn')
+  headerPhx.offsetWidth = headerPhx.offsetWidth
+  headerPhx.classList.add('animate__fadeIn')
+
   renderEnvironment()
   startBtn.setAttribute("hidden", true)
   resetBtn.removeAttribute("hidden")
@@ -379,19 +389,23 @@ function startTimer(){
   let timeLeft = 60
 
   timer = setInterval(function () {
-  countdownEl.textContent = timeLeft + " seconds remaining."
-  timeLeft -= 1
-  if (timeLeft < 0) {
-    countdownEl.textContent = "Time is up!"
-    clearInterval(timer)
-    alert("You're out of time, try again!")
-  }
-  console.log(timeLeft) //! delete this later
+    countdownEl.textContent = timeLeft + " seconds remaining."
+    timeLeft -= 1
+    if (timeLeft < 0) {
+      countdownEl.textContent = "Time is up!"
+      clearInterval(timer)
+      alert("You're out of time, try again!")
+    }
+    console.log(timeLeft) //! delete this later
   }, 1000)
 }
 
 function resetTimer(){
   clearInterval(timer)
+}
+
+function randomLocation(){
+  return Math.floor(Math.random() * 25)
 }
 
 function clearFoundFeathers() {
@@ -400,9 +414,7 @@ function clearFoundFeathers() {
 
 /*-------------------------------- GOALS --------------------------------*/
 
-//todo ADD Hover, glow animation?
 //todo ADD PHOENIX RISING animation at the end
-
 //todo CHOICE BUTTONS (MAth.random the buttons??)
 
 /*-----------------------------------------------------------------------*/
@@ -411,22 +423,10 @@ function clearFoundFeathers() {
 //todo Images & copywrite the hints
 //todo Copy of messages/hints
 
-
 //todo Font
-//todo Add HOVER feature
 //todo Add animation
 //todo README
 
 //todo check indentation
 //todo delete console.logs and unnecessary comments
 //! Make sure image doesn't get distored
-
-/*----------------------------------------------------------------------------------*/
-
-// ENVIRONMENT THREE will follow the same as above but instead of sending you to new environment, will have message screen
-// Remove choice buttons
-// If have 3 feathers, add seek phoenix button, message will be confirming you have 3 feathers and to click button to move forward
-// If less than three, this will be consolation message screen
-
-// PHOENIX SCREEN (environment to look for phoenix)
-// When find phoenix, image of phoenix replaces screen with a congratulations

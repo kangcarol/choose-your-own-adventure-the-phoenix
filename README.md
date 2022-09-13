@@ -2,16 +2,17 @@
 <!-- A description of your game. Background info about why you chose the game is a nice touch. -->
 
 
-Artwork by Friedrich Justin Bertuch:
+Artwork: Friedrich Justin Bertuch:
   https://commons.wikimedia.org/wiki/File:Bertuch-fabelwesen.JPG
   https://digi.ub.uni-heidelberg.de/diglit/bertuch1798bd3/0159/image,thumbs#col_thumbs
+
+Audio: freesound.org -> https://freesound.org/people/angelkunev/sounds/561287/
 
 Turkey: Konrul: https://en.wikipedia.org/wiki/Konrul
 China: Fenghuang: https://en.wikipedia.org/wiki/Fenghuang
 Slavic: Firebird: https://en.wikipedia.org/wiki/Firebird_(Slavic_folklore)
 Hindu: Garuda:  https://en.wikipedia.org/wiki/Garuda#/media/File:Raja_Ravi_Varma,_Lord_Garuda.jpg
 Persian: https://en.wikipedia.org/wiki/Persian_mythology
-
 
 **Goal of the Game**
 The goal of the game is to have found three phoenix feathers before the timer runs out, and by the time you get to the end of the game, to earn the chance to find the phoenix.

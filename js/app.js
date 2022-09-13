@@ -106,32 +106,16 @@ resetBtn.addEventListener("click", init)
 startBtn.addEventListener("click", function(evt){
   wings.volume = .12
   wings.play()
+  wings.duration = 4
   })
 
-findPhxBtn.addEventListener("click", function(evt){
-  wings.volume = .12
-  wings.play()
+cellEls.forEach((cell) => {
+  cell.addEventListener("click", function(evt){
+    wings.volume = .12
+    wings.play()
+    wings.duration = 400
   })
-
-choice1Btn.addEventListener("click", function(evt){
-  wings.volume = .12
-  wings.play()
-  })
-
-choice2Btn.addEventListener("click", function(evt){
-  wings.volume = .12
-  wings.play()
-  })
-
-choice1BtnAlt.addEventListener("click", function(evt){
-  wings.volume = .12
-  wings.play()
-  })
-
-choice2BtnAlt.addEventListener("click", function(evt){
-  wings.volume = .12
-  wings.play()
-  })
+})
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -253,7 +237,6 @@ function handleClickFind(evt) {
   // PHX ENVIRO SPECIFICATIONS
   if (enviro === enviroArrays[6]){
     findPhxBtn.setAttribute('hidden', true)
-    featherHeader.setAttribute('hidden', true)
     resetTimer()
     messageEl.textContent = "Congratulations!"
   }
@@ -381,6 +364,7 @@ function handleClickPhoenix() {
   choice2BtnAlt.setAttribute("hidden", true)
   findPhxBtn.setAttribute("hidden", true)
   featherBox.setAttribute("hidden", true)
+  featherHeader.setAttribute('hidden', true)
   timerArea.setAttribute("hidden", true)
 }
 

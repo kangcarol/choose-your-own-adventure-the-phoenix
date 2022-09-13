@@ -205,13 +205,13 @@ function renderEnvironment() {
 
 //! PICK UP HERE
 function handleHover(evt){
-  cellEls.forEach((cell,i) => {
-    if (enviroGrid[i] === "found") {
-      cellEls[i].classList.add('.mask')
-      cellEls[i].classList.add('.overlay')
-      cellEls[i].style.backgroundColor = 'rgba(249, 49, 84, 0.2)'
+  const cellIdx2 = parseInt(evt.target.id.replace("c", ""))
+    if (enviroGrid[cellIdx2] === "found") {
+      evt.target.classList.add('.mask')
+      evt.target.classList.add('.overlay')
+      evt.target.style.backgroundColor = 'rgba(249, 49, 84, 0.2)'
     }
-  })
+
 }
 
 function clearHoverColor(){

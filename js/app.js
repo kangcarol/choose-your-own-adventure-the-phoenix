@@ -101,32 +101,32 @@ findPhxBtn.addEventListener("click", handleClickPhoenix);
 resetBtn.addEventListener("click", init);
 
 startBtn.addEventListener("click", function(evt){
-  wings.volume = .10
+  wings.volume = .12
   wings.play()
   })
 
 findPhxBtn.addEventListener("click", function(evt){
-  wings.volume = .10
+  wings.volume = .12
   wings.play()
   })
 
 choice1Btn.addEventListener("click", function(evt){
-  wings.volume = .10
+  wings.volume = .12
   wings.play()
   })
 
 choice2Btn.addEventListener("click", function(evt){
-  wings.volume = .10
+  wings.volume = .12
   wings.play()
   })
 
 choice1BtnAlt.addEventListener("click", function(evt){
-  wings.volume = .10
+  wings.volume = .12
   wings.play()
   })
 
 choice2BtnAlt.addEventListener("click", function(evt){
-  wings.volume = .10
+  wings.volume = .12
   wings.play()
   })
 

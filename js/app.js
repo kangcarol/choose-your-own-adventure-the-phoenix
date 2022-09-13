@@ -70,7 +70,7 @@ const choice2Btn = document.getElementById("choice2-btn");
 const choice1BtnAlt = document.getElementById("choice1-btn-alt");
 const choice2BtnAlt = document.getElementById("choice2-btn-alt");
 
-const featherHeader = document.querySelector('h6')
+const featherHeader = document.getElementById("feather-header")
 const featherBox = document.getElementById("feather-box");
 
 const timerArea = document.getElementById("timer-area");
@@ -144,6 +144,7 @@ function init() {
   featherBox.textContent = featherTotal
   enviroGrid = new Array(25, null)
   featherBox.textContent = ''
+
   console.log("INIT", `feather total = ${featherTotal}`) //! delete this later
 
   clearFoundFeathers()
@@ -159,6 +160,7 @@ function init() {
   choice1BtnAlt.setAttribute("hidden", true)
   choice2BtnAlt.setAttribute("hidden", true)
   findPhxBtn.setAttribute("hidden", true)
+  featherHeader.setAttribute("hidden", true)
   featherBox.setAttribute("hidden", true)
   timerArea.setAttribute("hidden", true)
 

@@ -76,6 +76,8 @@ const timerArea = document.getElementById("timer-area");
 
 const mainImg = document.querySelector(".locationCells");
 
+const wings = new Audio("../audio/wings.mp3")
+
 /*----------------------------- Event Listeners -----------------------------*/
 
 startBtn.addEventListener("click", handleClickStart);
@@ -84,8 +86,9 @@ cellEls.forEach((cellSelect) => {
   cellSelect.addEventListener("click", handleClickFind);
 });
 
+
 cellEls.forEach((cellSelect) => {
-  cellSelect.addEventListener("click", handleClickHover);
+  cellSelect.addEventListener("click", handleHover);
 });
 
 choice1Btn.addEventListener("click", handleClickChoice);
@@ -97,6 +100,38 @@ choice2BtnAlt.addEventListener("click", handleClickChoiceAlt);
 findPhxBtn.addEventListener("click", handleClickPhoenix);
 
 resetBtn.addEventListener("click", init);
+
+startBtn.addEventListener("click", function(evt){
+  wings.volume = .10
+  wings.play()
+  })
+
+findPhxBtn.addEventListener("click", function(evt){
+  wings.volume = .10
+  wings.play()
+  })
+
+choice1Btn.addEventListener("click", function(evt){
+  wings.volume = .10
+  wings.play()
+  })
+
+choice2Btn.addEventListener("click", function(evt){
+  wings.volume = .10
+  wings.play()
+  })
+
+choice1BtnAlt.addEventListener("click", function(evt){
+  wings.volume = .10
+  wings.play()
+  })
+
+choice2BtnAlt.addEventListener("click", function(evt){
+  wings.volume = .10
+  wings.play()
+  })
+
+
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -199,19 +234,14 @@ function renderEnvironment() {
 //       "
 
 //! PICK UP HERE
-function handleClickHover(evt){
-  if (enviroGrid[enviro.secretLocation] === "found") {
-    cellEls.forEach(cell => {
+function handleHover(evt){
+  cellEls.forEach(cell => {
+    if (cell === "found") {
       cell.classList.add('.mask')
       cell.classList.add('.overlay')
-      cell.style.background.add(
-        `linear-gradient(
-          45deg,
-          rgba(249, 49, 84, 0.20),
-          rgba(249, 176, 49, 0.20) 100%
-        );`
+      cell.style.backgroundColor = 'rgba(249, 49, 84, 0.2)'
     }
-  }
+  })
 }
 
 function handleClickFind(evt) {
@@ -370,31 +400,23 @@ function handleClickPhoenix() {
   timerArea.setAttribute("hidden", true)
 }
 
-/*-------------------------------- FRIDAY/WKEND GOALS --------------------------------*/
+/*-------------------------------- GOALS --------------------------------*/
 
 //todo ADD Hover, glow animation?
 //todo ADD PHOENIX RISING animation at the end
 
-//todo randomize location of the feathers
-//todo randomize perilous choice (????)
-
-//todo research phoenix mythology for images/sounds
-//todo find images BLACK & WHITE LINE DRAWINGS ???
-
 //todo CHOICE BUTTONS (MAth.random the buttons??)
-//todo
 
-/*------------------------------- NEXT WEEK ----------------------------------------*/
+/*-----------------------------------------------------------------------*/
 
 //todo NEXT WEEK
 //todo Images & copywrite the hints
 //todo Copy of messages/hints
-//todo TIMER
+
 
 //todo Font
 //todo Add HOVER feature
 //todo Add animation
-//todo Sound
 //todo README
 
 //todo check indentation

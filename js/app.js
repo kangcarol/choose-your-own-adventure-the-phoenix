@@ -52,7 +52,7 @@ enviroArrays = [
 
 /*-------------------------------- Variables --------------------------------*/
 
-let featherTotal, enviro, timer
+let featherTotal, enviro, timer, locationCell
 let enviroGrid = new Array(25, null)
 
 /*------------------------ Cached Element References ------------------------*/
@@ -79,7 +79,6 @@ const timerArea = document.getElementById("timer-area")
 const mainImg = document.querySelector(".locationCells")
 
 const wings = new Audio("../audio/wings.mp3")
-const feather = document.getElementById('featherImg')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -106,14 +105,12 @@ resetBtn.addEventListener("click", init)
 startBtn.addEventListener("click", function(evt){
   wings.volume = .12
   wings.play()
-  wings.duration = 4
   })
 
 cellEls.forEach((cell) => {
   cell.addEventListener("click", function(evt){
     wings.volume = .12
     wings.play()
-    wings.duration = 400
   })
 })
 
@@ -212,9 +209,13 @@ function handleClickFind(evt) {
   const cellIdx = parseInt(evt.target.id.replace("c", ""))
 
   if (enviroGrid[cellIdx] === "found") {
-    let locationCell = cellEls[cellIdx]
-    // startBtn.innerHTML = feather.removeAttribute("hidden")
-    // locationCell.textContent = "FOUND"
+    locationCell = cellEls[cellIdx]
+    // const newFeather = document.createElement('img')
+    // newFeather.src= "../images/feather-silhouette-feather.png"
+    // newFeather.width = '100px'
+    // newFeather.height = '140px'
+    // locationCell.innerHTML= newFeather
+    locationCell.classList.add('featherImg')
 
     clearHoverColor()
     //TODO  when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
@@ -222,6 +223,7 @@ function handleClickFind(evt) {
 
     if (enviro !== enviroArrays[6]){
       featherTotal += 1
+      locationCell.classList.remove('featherImg')
     }
     featherBox.textContent = featherTotal
     console.log("AFTER FIND feather total", `${featherTotal}`); //! delete later
@@ -248,14 +250,14 @@ function handleClickChoice(evt) {
   enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
 
-  console.log('SECRET LOCATION NEXT2: ', enviro.secretLocation)
+  console.log('SECRET LOCATION NEXT2: ', enviro.secretLocation)  //! delete later
 
   if (evt.target.id === "choice1-btn") {
-    console.log("CHOICE 1")
+    console.log("CHOICE 1") //! delete later
     enviro = enviroArrays[2]
     renderEnvironment()
   } else if (evt.target.id === "choice2-btn") {
-    console.log("CHOICE 2")
+    console.log("CHOICE 2")  //! delete later
     if (featherTotal > 0) {
       alert(
         "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
@@ -283,11 +285,11 @@ function handleClickChoiceAlt(evt) {
   console.log('SECRET LOCATION NEXT3: ', enviro.secretLocation) //! delete later
 
   if (evt.target.id === "choice1-btn-alt") {
-    console.log("CHOICE 1")
+    console.log("CHOICE 1")  //! delete later
     enviro = enviroArrays[3]
     renderEnvironment()
   } else if (evt.target.id === "choice2-btn-alt") {
-    console.log("CHOICE 2")
+    console.log("CHOICE 2")  //! delete later
     if (featherTotal > 0) {
       alert(
         "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
@@ -307,7 +309,7 @@ function handleClickChoiceAlt(evt) {
     choice2BtnAlt.setAttribute("hidden", true)
   }
 
-  function renderStoryOver() {
+function renderStoryOver() {
   resetTimer()
   headerPhx.classList.remove('animate__fadeIn')
   headerPhx.offsetWidth = headerPhx.offsetWidth
@@ -352,7 +354,7 @@ function handleClickPhoenix() {
 
   enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
-  console.log('SECRET LOCATION PHOENIX ', enviro.secretLocation)
+  console.log('SECRET LOCATION PHOENIX ', enviro.secretLocation) //! delete later
 
   enviro = enviroArrays[6]
   renderEnvironment()
@@ -393,7 +395,8 @@ function randomLocation(){
 }
 
 function clearFoundFeathers() {
-  cellEls.forEach((cell) => (cell.textContent = ""));
+  cellEls.forEach((cell) => (cell.textContent = ""))
+  // cellEls.forEach(cell => cell.classList.remove('featherImg'))
 }
 
 /*-------------------------------- GOALS --------------------------------*/

@@ -52,7 +52,8 @@ enviroArrays = [
 
 /*-------------------------------- Variables --------------------------------*/
 
-let featherTotal, enviroGrid, enviro, timer
+let featherTotal, enviro, timer
+let enviroGrid = new Array(25, null)
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -80,25 +81,27 @@ const wings = new Audio("../audio/wings.mp3")
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-startBtn.addEventListener("click", handleClickStart);
+startBtn.addEventListener("click", handleClickStart)
 
 cellEls.forEach((cellSelect) => {
-  cellSelect.addEventListener("click", handleClickFind);
-});
+  cellSelect.addEventListener("click", handleClickFind)
+})
 
-cellEls.forEach((cellSelect) => {
-  cellSelect.addEventListener("mouseover", handleHover);
-});
+cellEls.forEach((cellSelect,i) => {
+  // if (enviroGrid[i] === "found"){
+    cellSelect.addEventListener("mouseover", handleHover)
+  // }
+})
 
-choice1Btn.addEventListener("click", handleClickChoice);
-choice2Btn.addEventListener("click", handleClickChoice);
+choice1Btn.addEventListener("click", handleClickChoice)
+choice2Btn.addEventListener("click", handleClickChoice)
 
-choice1BtnAlt.addEventListener("click", handleClickChoiceAlt);
-choice2BtnAlt.addEventListener("click", handleClickChoiceAlt);
+choice1BtnAlt.addEventListener("click", handleClickChoiceAlt)
+choice2BtnAlt.addEventListener("click", handleClickChoiceAlt)
 
-findPhxBtn.addEventListener("click", handleClickPhoenix);
+findPhxBtn.addEventListener("click", handleClickPhoenix)
 
-resetBtn.addEventListener("click", init);
+resetBtn.addEventListener("click", init)
 
 startBtn.addEventListener("click", function(evt){
   wings.volume = .12
@@ -139,9 +142,9 @@ init();
 function init() {
   resetTimer()
   clearHoverColor()
-  featherTotal = 0;
+  featherTotal = 0
   featherBox.textContent = featherTotal
-  enviroGrid = new Array(25, null);
+  enviroGrid = new Array(25, null)
   featherBox.textContent = ''
   console.log("INIT", `feather total = ${featherTotal}`) //! delete this later
 
@@ -172,33 +175,9 @@ function handleClickStart(evt) {
   renderEnvironment()
   console.log("START", `feather total = ${featherTotal}`) //! delete later
   startTimer()
-  enviro.secretLocation = randomLocation()
-  enviroGrid[enviro.secretLocation] = "found"
+  // enviro.secretLocation = randomLocation()
+  enviroGrid[randomLocation()] = "found"
   console.log('SECRET LOCATION INIT: ', enviro.secretLocation)
-}
-
-function startTimer(){
-  let countdownEl = document.getElementById("timer-area")
-  let timeLeft = 60
-
-  timer = setInterval(function () {
-  countdownEl.textContent = timeLeft + " seconds remaining."
-  timeLeft -= 1
-  if (timeLeft < 0) {
-    countdownEl.textContent = "Time is up!"
-    clearInterval(timer)
-    alert("You're out of time, try again!")
-  }
-  console.log(timeLeft) //! delete this later
-  }, 1000)
-}
-
-function resetTimer(){
-  clearInterval(timer)
-}
-
-function clearFoundFeathers() {
-  cellEls.forEach((cell) => (cell.textContent = ""));
 }
 
 function renderEnvironment() {
@@ -226,28 +205,25 @@ function renderEnvironment() {
 
 //! PICK UP HERE
 function handleHover(evt){
-  cellEls.forEach((cell,i) => {
-    if (enviroGrid[i] === "found") {
-      cellEls[i].classList.add('.mask')
-      cellEls[i].classList.add('.overlay')
-      cellEls[i].style.backgroundColor = 'rgba(249, 49, 84, 0.2)'
-    }
-  })
-}
+    cellEls.forEach((cell,i) => {
+        if (enviroGrid[i] === "found") {
+            cellEls[i].classList.add('.mask')
+            cellEls[i].classList.add('.overlay')
+            cellEls[i].style.backgroundColor = 'rgba(249, 49, 84, 0.2)'
+          }
+        })
+      }
 
 function clearHoverColor(){
   cellEls.forEach((cell,i) => {
-
-      cell.classList.remove('.mask')
-      cell.classList.remove('.overlay')
-      cell.removeAttribute('style')
-
+    cell.classList.remove('.mask')
+    cell.classList.remove('.overlay')
+    cell.removeAttribute('style')
   })
 }
 
 function handleClickFind(evt) {
   // player finds cell (handleClickFind) that feather is assigned for THIS environment by clicking on cell.
-  //TODO  when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
 
   const cellIdx = parseInt(evt.target.id.replace("c", ""));
 
@@ -255,6 +231,8 @@ function handleClickFind(evt) {
     let locationCell = cellEls[cellIdx];
     locationCell.textContent = "FOUND";
     locationCell.style.color = "red";
+    clearHoverColor()
+    //TODO  when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
     //todo locationCell.className = 'animate__animated animate__ANIMATION-NAME'
 
     if (enviro !== enviroArrays[6]){
@@ -270,8 +248,7 @@ function handleClickFind(evt) {
   } else if (featherTotal < 3 && enviro === enviroArrays[3]) {
     renderConsolation();
   }
-
-  //! get rid of phx btn after finding phx
+  //! get rid of phxBtn after finding phx
 }
 
 function handleClickChoice(evt) {
@@ -290,13 +267,13 @@ function handleClickChoice(evt) {
     if (featherTotal > 0) {
       alert(
         "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
-      )
-      featherTotal -= 1
-      featherBox.textContent = featherTotal
-      if (featherTotal.length < 1){
-        featherBox.textContent = ''
-      } else {
-        removeFeather()
+        )
+        featherTotal -= 1
+        featherBox.textContent = featherTotal
+        if (featherTotal.length < 1){
+          featherBox.textContent = ''
+        } else {
+          removeFeather()
         console.log(featherBox.content)
       }
       console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
@@ -331,16 +308,16 @@ function handleClickChoiceAlt(evt) {
     if (featherTotal > 0) {
       alert(
         "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
-      )
-      featherTotal -= 1
-      featherBox.textContent = featherTotal
-      console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
-      enviro = enviroArrays[3]
-      renderEnvironment()
-    } else {
-      renderStoryOver()
+        )
+        featherTotal -= 1
+        featherBox.textContent = featherTotal
+        console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
+        enviro = enviroArrays[3]
+        renderEnvironment()
+      } else {
+        renderStoryOver()
+      }
     }
-  }
   choice1Btn.setAttribute("hidden", true)
   choice2Btn.setAttribute("hidden", true)
   choice1BtnAlt.setAttribute("hidden", true)
@@ -401,6 +378,30 @@ function handleClickPhoenix() {
   findPhxBtn.setAttribute("hidden", true)
   featherBox.setAttribute("hidden", true)
   timerArea.setAttribute("hidden", true)
+}
+
+function startTimer(){
+  let countdownEl = document.getElementById("timer-area")
+  let timeLeft = 60
+
+  timer = setInterval(function () {
+  countdownEl.textContent = timeLeft + " seconds remaining."
+  timeLeft -= 1
+  if (timeLeft < 0) {
+    countdownEl.textContent = "Time is up!"
+    clearInterval(timer)
+    alert("You're out of time, try again!")
+  }
+  console.log(timeLeft) //! delete this later
+  }, 1000)
+}
+
+function resetTimer(){
+  clearInterval(timer)
+}
+
+function clearFoundFeathers() {
+  cellEls.forEach((cell) => (cell.textContent = ""));
 }
 
 /*-------------------------------- GOALS --------------------------------*/

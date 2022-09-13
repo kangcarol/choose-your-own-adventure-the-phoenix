@@ -138,6 +138,7 @@ init();
 
 function init() {
   resetTimer()
+  clearHoverColor()
   featherTotal = 0;
   featherBox.textContent = featherTotal
   enviroGrid = new Array(25, null);
@@ -223,15 +224,6 @@ function renderEnvironment() {
   choice2BtnAlt.textContent = enviro.choiceMessage2
 }
 
-// class="mask"
-//       style="
-//         background: linear-gradient(
-//           45deg,
-//           rgba(249, 49, 84, 0.20),
-//           rgba(249, 176, 49, 0.20) 100%
-//         );
-//       "
-
 //! PICK UP HERE
 function handleHover(evt){
   cellEls.forEach((cell,i) => {
@@ -240,6 +232,16 @@ function handleHover(evt){
       cellEls[i].classList.add('.overlay')
       cellEls[i].style.backgroundColor = 'rgba(249, 49, 84, 0.2)'
     }
+  })
+}
+
+function clearHoverColor(){
+  cellEls.forEach((cell,i) => {
+
+      cell.classList.remove('.mask')
+      cell.classList.remove('.overlay')
+      cell.removeAttribute('style')
+
   })
 }
 

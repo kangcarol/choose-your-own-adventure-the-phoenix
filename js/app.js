@@ -84,6 +84,10 @@ cellEls.forEach((cellSelect) => {
   cellSelect.addEventListener("click", handleClickFind);
 });
 
+cellEls.forEach((cellSelect) => {
+  cellSelect.addEventListener("click", handleClickHover);
+});
+
 choice1Btn.addEventListener("click", handleClickChoice);
 choice2Btn.addEventListener("click", handleClickChoice);
 
@@ -183,8 +187,31 @@ function renderEnvironment() {
   choice2Btn.textContent = enviro.choiceMessage2
   choice1BtnAlt.textContent = enviro.choiceMessage1
   choice2BtnAlt.textContent = enviro.choiceMessage2
+}
 
-  //! create a hover animation if cell has "found" (ie. secret location)
+// class="mask"
+//       style="
+//         background: linear-gradient(
+//           45deg,
+//           rgba(249, 49, 84, 0.20),
+//           rgba(249, 176, 49, 0.20) 100%
+//         );
+//       "
+
+//! PICK UP HERE
+function handleClickHover(evt){
+  if (enviroGrid[enviro.secretLocation] === "found") {
+    cellEls.forEach(cell => {
+      cell.classList.add('.mask')
+      cell.classList.add('.overlay')
+      cell.style.background.add(
+        `linear-gradient(
+          45deg,
+          rgba(249, 49, 84, 0.20),
+          rgba(249, 176, 49, 0.20) 100%
+        );`
+    }
+  }
 }
 
 function handleClickFind(evt) {

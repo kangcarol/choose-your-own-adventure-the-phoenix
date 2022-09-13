@@ -52,7 +52,7 @@ enviroArrays = [
 
 /*-------------------------------- Variables --------------------------------*/
 
-let featherTotal, enviro, timer, locationCell
+let featherTotal, enviro, timer
 let enviroGrid = new Array(25, null)
 
 /*------------------------ Cached Element References ------------------------*/
@@ -209,12 +209,7 @@ function handleClickFind(evt) {
   const cellIdx = parseInt(evt.target.id.replace("c", ""))
 
   if (enviroGrid[cellIdx] === "found") {
-    locationCell = cellEls[cellIdx]
-    // const newFeather = document.createElement('img')
-    // newFeather.src= "../images/feather-silhouette-feather.png"
-    // newFeather.width = '100px'
-    // newFeather.height = '140px'
-    // locationCell.innerHTML= newFeather
+    let locationCell = cellEls[cellIdx]
     locationCell.classList.add('featherImg')
 
     clearHoverColor()
@@ -223,7 +218,7 @@ function handleClickFind(evt) {
 
     if (enviro !== enviroArrays[6]){
       featherTotal += 1
-      locationCell.classList.remove('featherImg')
+      // locationCell.classList.remove('featherImg')
     }
     featherBox.textContent = featherTotal
     console.log("AFTER FIND feather total", `${featherTotal}`); //! delete later
@@ -395,8 +390,8 @@ function randomLocation(){
 }
 
 function clearFoundFeathers() {
-  cellEls.forEach((cell) => (cell.textContent = ""))
-  // cellEls.forEach(cell => cell.classList.remove('featherImg'))
+  // cellEls.forEach((cell) => (cell.textContent = ""))
+  cellEls.forEach(cell => cell.classList.remove('featherImg'))
 }
 
 /*-------------------------------- GOALS --------------------------------*/

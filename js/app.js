@@ -101,6 +101,7 @@ init();
 function init() {
   resetTimer()
   featherTotal = 0;
+  featherBox.textContent = featherTotal
   enviroGrid = new Array(25, null);
   featherBox.textContent = ''
   console.log("INIT", `feather total = ${featherTotal}`) //! delete this later
@@ -157,6 +158,10 @@ function resetTimer(){
   clearInterval(timer)
 }
 
+function clearFoundFeathers() {
+  cellEls.forEach((cell) => (cell.textContent = ""));
+}
+
 function renderEnvironment() {
   startBtn.setAttribute("hidden", true)
   resetBtn.removeAttribute("hidden")
@@ -167,6 +172,7 @@ function renderEnvironment() {
   featherHeader.removeAttribute("hidden")
   featherBox.removeAttribute("hidden")
   timerArea.removeAttribute("hidden")
+  featherBox.textContent = featherTotal
 
   // IMAGE -> change out to Environment-1 image
   mainImg.style.backgroundImage = enviro.image
@@ -179,10 +185,6 @@ function renderEnvironment() {
   choice2BtnAlt.textContent = enviro.choiceMessage2
 
   //! create a hover animation if cell has "found" (ie. secret location)
-}
-
-function clearFoundFeathers() {
-  cellEls.forEach((cell) => (cell.textContent = ""));
 }
 
 function handleClickFind(evt) {

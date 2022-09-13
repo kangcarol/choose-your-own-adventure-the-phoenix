@@ -122,7 +122,6 @@ function init() {
   timerArea.setAttribute("hidden", true)
 
   enviro = enviroArrays[1]
-  console.log('SECRET LOCATION: ', enviro.secretLocation)
 }
 
 function randomLocation(){
@@ -133,6 +132,9 @@ function handleClickStart(evt) {
   renderEnvironment()
   console.log("START", `feather total = ${featherTotal}`) //! delete later
   startTimer()
+  enviro.secretLocation = randomLocation()
+  enviroGrid[enviro.secretLocation] = "found"
+  console.log('SECRET LOCATION INIT: ', enviro.secretLocation)
 }
 
 function startTimer(){
@@ -165,7 +167,7 @@ function renderEnvironment() {
   featherHeader.removeAttribute("hidden")
   featherBox.removeAttribute("hidden")
   timerArea.removeAttribute("hidden")
-  enviroGrid[enviro.secretLocation] = "found"
+
   // IMAGE -> change out to Environment-1 image
   mainImg.style.backgroundImage = enviro.image
   // MESSAGE -> change out to Environment-1 hint message
@@ -175,6 +177,8 @@ function renderEnvironment() {
   choice2Btn.textContent = enviro.choiceMessage2
   choice1BtnAlt.textContent = enviro.choiceMessage1
   choice2BtnAlt.textContent = enviro.choiceMessage2
+
+  //! create a hover animation if cell has "found" (ie. secret location)
 }
 
 function clearFoundFeathers() {
@@ -182,9 +186,8 @@ function clearFoundFeathers() {
 }
 
 function handleClickFind(evt) {
-  // FEATHER
   // player finds cell (handleClickFind) that feather is assigned for THIS environment by clicking on cell.
-  // when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
+  //TODO  when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
   const cellIdx = parseInt(evt.target.id.replace("c", ""));
 
   if (enviroGrid[cellIdx] === "found") {
@@ -212,6 +215,10 @@ function handleClickFind(evt) {
 function handleClickChoice(evt) {
   clearFoundFeathers()
 
+  enviro.secretLocation = randomLocation()
+  enviroGrid[enviro.secretLocation] = "found"
+  console.log('SECRET LOCATION NEXT2: ', enviro.secretLocation)
+
   if (evt.target.id === "choice1-btn") {
     console.log("CHOICE 1")
     enviro = enviroArrays[2]
@@ -233,6 +240,9 @@ function handleClickChoice(evt) {
       console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
       enviro = enviroArrays[2]
       renderEnvironment()
+      enviro.secretLocation = randomLocation()
+      // enviroGrid[enviro.secretLocation] = "found"
+      // console.log('SECRET LOCATION NEXT: ', enviro.secretLocation)
     } else {
       renderStoryOver()
     }
@@ -244,7 +254,11 @@ function handleClickChoice(evt) {
 }
 
 function handleClickChoiceAlt(evt) {
-  clearFoundFeathers();
+  clearFoundFeathers()
+
+  enviro.secretLocation = randomLocation()
+  enviroGrid[enviro.secretLocation] = "found"
+  console.log('SECRET LOCATION NEXT3: ', enviro.secretLocation)
 
   if (evt.target.id === "choice1-btn-alt") {
     console.log("CHOICE 1")
@@ -276,12 +290,11 @@ function renderStoryOver() {
   // MESSAGE -> change out to StoryOver message
   // BUTTONS -> hide all buttons, except reset
   // FEATHER-BOX -> show
-  //todo TIMER -> hide
+  resetTimer()
   //todo clear out feather icon
   console.log("RENDER STORY OVER")
 
-  // CLEAR PREVIOUSLY FOUND FEATHERS
-  cellEls.forEach((cell) => (cell.textContent = ""))
+  clearFoundFeathers()
 
   mainImg.style.backgroundImage = enviroArrays[4].image
   messageEl.textContent = enviroArrays[4].message
@@ -294,6 +307,7 @@ function renderStoryOver() {
 
 function renderConsolation() {
   clearFoundFeathers()
+  resetTimer
   enviro = enviroArrays[5]
   renderEnvironment()
   startBtn.setAttribute("hidden", true)
@@ -309,6 +323,10 @@ function renderConsolation() {
 
 function handleClickPhoenix() {
   clearFoundFeathers()
+
+  enviro.secretLocation = randomLocation()
+  enviroGrid[enviro.secretLocation] = "found"
+  console.log('SECRET LOCATION PHOENIX ', enviro.secretLocation)
 
   enviro = enviroArrays[6]
   renderEnvironment()

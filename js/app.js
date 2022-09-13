@@ -11,7 +11,7 @@ enviroArrays = [
     image: "url('../images/Enviro1Volcano.png')",
     message:
       "Some legends say it dies in a show of flames and combustion, others that it simply dies and decomposes before being born again. -- Wikipedia",
-    secretLocation: 8,
+    secretLocation: randomLocation(),
     choiceMessage1: "CAVE",
     choiceMessage2: "MOUNTAINS",
   },
@@ -123,6 +123,11 @@ function init() {
 
   enviro = enviroArrays[1];
 }
+
+function randomLocation(){
+  return Math.floor(Math.random() * 25)
+}
+
 function handleClickStart(evt) {
   renderEnvironment()
   console.log("START", `feather total = ${featherTotal}`) //! delete later
@@ -159,7 +164,7 @@ function renderEnvironment() {
   featherHeader.removeAttribute("hidden")
   featherBox.removeAttribute("hidden")
   timerArea.removeAttribute("hidden")
-  enviroGrid[enviro.secretLocation] = "feather"
+  enviroGrid[enviro.secretLocation] = "found"
   // IMAGE -> change out to Environment-1 image
   mainImg.style.backgroundImage = enviro.image
   // MESSAGE -> change out to Environment-1 hint message
@@ -181,7 +186,7 @@ function handleClickFind(evt) {
   // when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
   const cellIdx = parseInt(evt.target.id.replace("c", ""));
 
-  if (enviroGrid[cellIdx] === "feather") {
+  if (enviroGrid[cellIdx] === "found") {
     let locationCell = cellEls[cellIdx];
     locationCell.textContent = "FOUND";
     locationCell.style.color = "red";

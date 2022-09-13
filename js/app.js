@@ -4,7 +4,7 @@ enviroArrays = [
     enviroName: "enviroIntro",
     image: "url('../images/Phoenix-Fabelwesen.jpeg')",
     message:
-      '"The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor." -- Wikipedia',
+      'NOTE: NEEDS TO HAVE CONSOLE OPEN TO FIND THE FEATHER LOCATIONS UNTIL I GET HOVER CODE ----------------------- "The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor." -- Wikipedia',
   },
   {
     enviroName: "enviro1",
@@ -247,6 +247,7 @@ function handleHover(evt){
 function handleClickFind(evt) {
   // player finds cell (handleClickFind) that feather is assigned for THIS environment by clicking on cell.
   //TODO  when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
+
   const cellIdx = parseInt(evt.target.id.replace("c", ""));
 
   if (enviroGrid[cellIdx] === "found") {
@@ -266,9 +267,10 @@ function handleClickFind(evt) {
   if (featherTotal === 3) {
     findPhxBtn.removeAttribute("hidden");
   } else if (featherTotal < 3 && enviro === enviroArrays[3]) {
-    // setInterval(renderConsolation(),4000)
     renderConsolation();
   }
+
+  //! get rid of phx btn after finding phx
 }
 
 function handleClickChoice(evt) {

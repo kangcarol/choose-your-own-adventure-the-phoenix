@@ -19,7 +19,7 @@ enviroArrays = [
     enviroName: "enviro2",
     image: "url('../images/Enviro2Cave.png')",
     message: "hint 2",
-    secretLocation: 0,
+    secretLocation: randomLocation(),
     choiceMessage1: "CATACOMBS",
     choiceMessage2: "SEA",
   },
@@ -27,7 +27,7 @@ enviroArrays = [
     enviroName: "enviro3",
     image: "url('../images/Enviro3Catacombs.png')",
     message: "hint 3",
-    secretLocation: 4,
+    secretLocation: randomLocation(),
     // choiceMessage1: 'choice 3A',
     // choiceMessage2: 'choice 3B',
   },
@@ -46,7 +46,7 @@ enviroArrays = [
     enviroName: "enviroPhoenix", //environment to find phoenix
     image: "url('../images/Enviro4FindPhoenix.png')",
     message: "find phoenix message",
-    secretLocation: 10,
+    secretLocation: randomLocation(),
   }
 ]
 
@@ -121,7 +121,8 @@ function init() {
   featherBox.setAttribute("hidden", true)
   timerArea.setAttribute("hidden", true)
 
-  enviro = enviroArrays[1];
+  enviro = enviroArrays[1]
+  console.log('SECRET LOCATION: ', enviro.secretLocation)
 }
 
 function randomLocation(){
@@ -136,7 +137,7 @@ function handleClickStart(evt) {
 
 function startTimer(){
   let countdownEl = document.getElementById("timer-area")
-  let timeLeft = 15
+  let timeLeft = 60
 
   timer = setInterval(function () {
   countdownEl.textContent = timeLeft + " seconds remaining."

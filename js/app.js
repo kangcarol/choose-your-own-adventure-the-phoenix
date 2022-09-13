@@ -203,15 +203,13 @@ function renderEnvironment() {
   choice2BtnAlt.textContent = enviro.choiceMessage2
 }
 
-//! PICK UP HERE
 function handleHover(evt){
   const cellIdx2 = parseInt(evt.target.id.replace("c", ""))
-    if (enviroGrid[cellIdx2] === "found") {
-      evt.target.classList.add('.mask')
-      evt.target.classList.add('.overlay')
-      evt.target.style.backgroundColor = 'rgba(249, 49, 84, 0.2)'
-    }
-
+  if (enviroGrid[cellIdx2] === "found") {
+    evt.target.classList.add('.mask')
+    evt.target.classList.add('.overlay')
+    evt.target.style.backgroundColor = 'rgba(249, 49, 84, 0.2)'
+  }
 }
 
 function clearHoverColor(){
@@ -254,7 +252,6 @@ function handleClickFind(evt) {
 function handleClickChoice(evt) {
   clearFoundFeathers()
 
-  enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
   console.log('SECRET LOCATION NEXT2: ', enviro.secretLocation)
 
@@ -295,7 +292,6 @@ function handleClickChoice(evt) {
 function handleClickChoiceAlt(evt) {
   clearFoundFeathers()
 
-  enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
   console.log('SECRET LOCATION NEXT3: ', enviro.secretLocation)
 

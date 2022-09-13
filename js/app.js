@@ -88,9 +88,7 @@ cellEls.forEach((cellSelect) => {
 })
 
 cellEls.forEach((cellSelect,i) => {
-  // if (enviroGrid[i] === "found"){
     cellSelect.addEventListener("mouseover", handleHover)
-  // }
 })
 
 choice1Btn.addEventListener("click", handleClickChoice)
@@ -175,9 +173,9 @@ function handleClickStart(evt) {
   renderEnvironment()
   console.log("START", `feather total = ${featherTotal}`) //! delete later
   startTimer()
-  // enviro.secretLocation = randomLocation()
-  enviroGrid[randomLocation()] = "found"
-  console.log('SECRET LOCATION INIT: ', enviro.secretLocation)
+  enviro.secretLocation = randomLocation()
+  enviroGrid[enviro.secretLocation] = "found"
+  console.log('SECRET LOCATION INIT: ', enviro.secretLocation) //! delete later
 }
 
 function renderEnvironment() {
@@ -277,8 +275,6 @@ function handleClickChoice(evt) {
       enviro = enviroArrays[2]
       renderEnvironment()
       enviro.secretLocation = randomLocation()
-      // enviroGrid[enviro.secretLocation] = "found"
-      // console.log('SECRET LOCATION NEXT: ', enviro.secretLocation)
     } else {
       renderStoryOver()
     }

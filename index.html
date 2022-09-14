@@ -83,21 +83,20 @@
     <!-- </div> -->
 
 
-  <img id="featherImgAnimate" class="featherClass" src="./images/feather-silhouette-feather.png" width="100px" height="150px">
+  <img id="featherImgAnimate" class="featherClass" hidden src="./images/feather-silhouette-feather.png" width="100px" height="150px">
 
   <script>
     const animateObj = document.getElementById('featherImgAnimate')
-
-    let yPos = 0;
+  
+    let yPos = 500;
 
     function animate() {
-      yPos += 3;
+      yPos -= 3;
       animateObj.style.transform = `translateY(${yPos}px)`
 
-      if (Math.abs(yPos) >= 900) {
-        yPos = -500;
+      if (Math.abs(yPos) >= 600) {
+        yPos = 500;
       }
-
       requestAnimationFrame(animate);
     }
   </script>

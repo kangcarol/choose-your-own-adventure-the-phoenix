@@ -243,6 +243,7 @@ function handleClickFind(evt) {
     // mainImg.classList.add('animate__fadeOut')
     // mainImg.style.backgroundImage = enviroArrays[0].image
     clearFoundFeathers()
+    animateObj.removeAttribute('hidden')
     animate()
 
   }

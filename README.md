@@ -31,6 +31,7 @@ With the last environment, if you have 3 feathers you have the opportunity to se
 
 
 **Getting Started**:
+https://carol-kang-cyoa-the-phoenix.netlify.app/
   <!-- Include a link to your deployed game and any instructions you deem important. -->
 
 
@@ -41,7 +42,7 @@ With the last environment, if you have 3 feathers you have the opportunity to se
 
 
 **Technologies Used**:
-  <!-- List of the technologies used, for example: JavaScript, HTML, CSS, etc. -->
+ JavaScript, HTML, CSS
 
 
 **Credits**:
@@ -52,5 +53,11 @@ IntroImage: https://commons.wikimedia.org/wiki/File:Bertuch-fabelwesen.JPG#/medi
 
 Volcano: https://digi.ub.uni-heidelberg.de/diglit/bertuch1798bd3/0159/image
 
+
+Thank you to Google Fonts!
+Again, thank you to this article/article's comments that helped me fix the animation reset: https://css-tricks.com/restart-css-animation/
+
+
 **Next Steps**:
-  <!-- Planned future enhancements (icebox items). -->
+Create more environments, and randomize the choices.
+Refactor code

@@ -39,7 +39,7 @@ enviroArrays = [
   },
   {
     enviroName: "enviroConsolation", //environment when alive but < 3 feathers
-    image: "url('../images/Phoenix-Fabelwesen.jpeg')",
+    image: "url('../images/ConsolationPlaceholder.png')",
     message: `You need 3 feathers to move forward to find the phoenix, but at least you're still alive! Try again`,
   },
   {
@@ -213,7 +213,7 @@ function handleClickFind(evt) {
     locationCell.classList.add('featherImg')
 
     clearHoverColor()
-    //TODO  when cell is clicked, the feather image will appear over image, and then it disappears and reappears in the feather box in next environment, and feather count increases
+
     //todo locationCell.className = 'animate__animated animate__ANIMATION-NAME'
 
     if (enviro !== enviroArrays[6]){
@@ -254,6 +254,7 @@ function handleClickChoice(evt) {
   } else if (evt.target.id === "choice2-btn") {
     console.log("CHOICE 2")  //! delete later
     if (featherTotal > 0) {
+      mainImg.style.backgroundImage = "url('../images/Mountains.png')"
       alert(
         "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
         )
@@ -390,7 +391,6 @@ function randomLocation(){
 }
 
 function clearFoundFeathers() {
-  // cellEls.forEach((cell) => (cell.textContent = ""))
   cellEls.forEach(cell => cell.classList.remove('featherImg'))
 }
 

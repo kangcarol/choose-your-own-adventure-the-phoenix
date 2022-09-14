@@ -54,7 +54,6 @@ h1, h2 {
 }
 
 div.cell {
-  /* border: 1px solid black; */
   height: 100%;
   display: flex;
   justify-content: center;
@@ -66,7 +65,6 @@ section.locationCells {
   background-image: url('../images/Phoenix-Fabelwesen.jpeg');
   background-repeat: no-repeat;
   background-size:115%;
-  /* object-fit: none; */
   display: grid;
   grid-column-start: 2;
   grid-template-rows: repeat(5, 20vmin);

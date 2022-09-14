@@ -28,6 +28,7 @@ div.main {
   justify-content: center;
   margin: auto 0;
   height: 100%;
+  width: 400px;
   padding: 20px;
 }
 
@@ -90,4 +91,3 @@ footer {
   text-align: center;
   vertical-align: middle;
 }
-

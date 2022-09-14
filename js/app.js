@@ -87,6 +87,7 @@ const timerArea = document.getElementById("timer-area")
 const mainImg = document.querySelector(".locationCells")
 
 const wings = new Audio("../audio/wings.mp3")
+const animateObj = document.getElementById('imgAnimate')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -123,13 +124,15 @@ cellEls.forEach((cell) => {
 })
 
 /*-------------------------------- Functions --------------------------------*/
-// animate()
+
 init();
 
 function init() {
   resetTimer()
   clearHoverColor()
   clearFoundFeathers()
+  // clearAnimation()
+
   featherTotal = 0
   featherBox.textContent = featherTotal
   enviroGrid = new Array(25, null)
@@ -138,7 +141,6 @@ function init() {
   headerPhx.classList.remove('animate__fadeIn')
   headerPhx.offsetWidth = headerPhx.offsetWidth
   headerPhx.classList.add('animate__fadeIn')
-  // mainImg.classList.remove('animate__fadeOut')
 
   // LOADING & RESET WILL REVERT TO INTRO IMAGE & MESSAGE
   mainImg.style.backgroundImage = enviroArrays[0].image
@@ -157,7 +159,6 @@ function init() {
 
   enviro = enviroArrays[1]
 }
-
 
 function handleClickStart(evt) {
   renderEnvironment()
@@ -222,7 +223,6 @@ function handleClickFind(evt) {
 
     if (enviro !== enviroArrays[6]){
       featherTotal += 1
-      // locationCell.classList.remove('featherImg')
     }
     featherBox.textContent = featherTotal
     console.log("AFTER FIND feather total", `${featherTotal}`); //! delete later
@@ -243,7 +243,6 @@ function handleClickFind(evt) {
     clearFoundFeathers()
     animateObj.removeAttribute('hidden')
     animate()
-
   }
 }
 
@@ -339,7 +338,6 @@ function renderTimerDone() {
   choice2BtnAlt.setAttribute("hidden", true)
   featherBox.setAttribute("hidden", true)
   featherHeader.setAttribute("hidden", true)
-  // timerArea.setAttribute("hidden", true)
 }
 
 function renderConsolation() {
@@ -412,12 +410,12 @@ function clearFoundFeathers() {
   cellEls.forEach(cell => cell.classList.remove('featherImg'))
 }
 
-const animateObj = document.getElementById('featherImgAnimate')
+
 let xPos
 let yPos = 500
 
 function animate() {
-  xPos = 180
+  xPos = 160
   yPos -= 3
   animateObj.style.transform = `translate(${xPos}px ,${yPos}px)`
 
@@ -426,6 +424,17 @@ function animate() {
   }
   requestAnimationFrame(animate);
 }
+
+
+function clearAnimation() {
+  // xPos = 160
+  // yPos -= 3
+  animateObj.sndToAS("pause")
+  // if (Math.abs(yPos) >= 600) {
+  //   yPos = 500;
+  // }
+}
+
 /*-------------------------------- GOALS --------------------------------*/
 
 

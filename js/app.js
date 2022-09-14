@@ -28,14 +28,12 @@ enviroArrays = [
     image: "url('../images/Enviro3Catacombs.png')",
     message: "hint 3",
     secretLocation: randomLocation(),
-    // choiceMessage1: 'choice 3A',
-    // choiceMessage2: 'choice 3B',
   },
   {
     enviroName: "enviroStoryOver", //environment when story is over
     image: "url('../images/StoryOverPlaceholder.png')",
     message:
-      "You made a FATAL choice, and with zero feathers in your nest to resurrect you, it is the end.",
+    "You made a FATAL choice, and with zero feathers in your nest to resurrect you, it is the end.",
   },
   {
     enviroName: "enviroConsolation", //environment when alive but < 3 feathers
@@ -44,10 +42,22 @@ enviroArrays = [
   },
   {
     enviroName: "enviroPhoenix", //environment to find phoenix
-    image: "url('../images/Enviro4FindPhoenix.png')",
+    image: "url('../images/Enviro4FindPhoenix.png')", //! FIND A BETTER IMAGE
     message: "find phoenix message",
     secretLocation: randomLocation(),
-  }
+  },
+  {
+    enviroName: "enviroResurrection",
+    image: "url('../images/Mountains.png')",
+    message: "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!",
+    choiceMessage1: "CATACOMBS",
+    choiceMessage2: "SEA",
+  },
+  {
+    enviroName: "enviroOutOfTime", // timer ran out
+    image: "url('../images/StoryOverPlaceholder.png')",
+    message: 'You ran out of time! Story over!',
+  },
 ]
 
 /*-------------------------------- Variables --------------------------------*/
@@ -175,11 +185,8 @@ function renderEnvironment() {
   headerPhx.offsetWidth = headerPhx.offsetWidth
   headerPhx.classList.add('animate__fadeIn')
 
-  // IMAGE -> change out to Environment-1 image
   mainImg.style.backgroundImage = enviro.image
-  // MESSAGE -> change out to Environment-1 hint message
   messageEl.textContent = enviro.message;
-  // CHOICE BUTTONS -> descriptions change out
   choice1Btn.textContent = enviro.choiceMessage1
   choice2Btn.textContent = enviro.choiceMessage2
   choice1BtnAlt.textContent = enviro.choiceMessage1
@@ -213,8 +220,6 @@ function handleClickFind(evt) {
     locationCell.classList.add('featherImg')
 
     clearHoverColor()
-
-    //todo locationCell.className = 'animate__animated animate__ANIMATION-NAME'
 
     if (enviro !== enviroArrays[6]){
       featherTotal += 1
@@ -253,13 +258,15 @@ function handleClickChoice(evt) {
     renderEnvironment()
   } else if (evt.target.id === "choice2-btn") {
     console.log("CHOICE 2")  //! delete later
+    mainImg.style.backgroundImage = "url('../images/Mountains.png')"
     if (featherTotal > 0) {
-      mainImg.style.backgroundImage = "url('../images/Mountains.png')"
-      alert(
-        "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
-        )
-        featherTotal -= 1
-        featherBox.textContent = featherTotal
+      // alert(
+      //   "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
+      //   )
+      mainImg.style.backgroundImage = enviroArrays[7].image
+      messageEl.textContent = enviroArrays[7].message
+      featherTotal -= 1
+      featherBox.textContent = featherTotal
       console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
       enviro = enviroArrays[2]
       renderEnvironment()
@@ -287,9 +294,10 @@ function handleClickChoiceAlt(evt) {
   } else if (evt.target.id === "choice2-btn-alt") {
     console.log("CHOICE 2")  //! delete later
     if (featherTotal > 0) {
-      alert(
-        "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
-        )
+      // alert(
+      //   "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
+      //   )
+        // enviroArrays[7].image
         featherTotal -= 1
         featherBox.textContent = featherTotal
         console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
@@ -311,9 +319,6 @@ function renderStoryOver() {
   headerPhx.offsetWidth = headerPhx.offsetWidth
   headerPhx.classList.add('animate__fadeIn')
   clearFoundFeathers()
-  console.log("RENDER STORY OVER") //! delete later
-
-  clearFoundFeathers()
 
   mainImg.style.backgroundImage = enviroArrays[4].image
   messageEl.textContent = enviroArrays[4].message
@@ -322,6 +327,24 @@ function renderStoryOver() {
   choice1BtnAlt.setAttribute("hidden", true)
   choice2BtnAlt.setAttribute("hidden", true)
   timerArea.setAttribute("hidden", true)
+}
+
+function renderTimerDone() {
+  resetTimer()
+  headerPhx.classList.remove('animate__fadeIn')
+  headerPhx.offsetWidth = headerPhx.offsetWidth
+  headerPhx.classList.add('animate__fadeIn')
+  clearFoundFeathers()
+
+  mainImg.style.backgroundImage = enviroArrays[8].image
+  messageEl.textContent = enviroArrays[8].message
+  choice1Btn.setAttribute("hidden", true)
+  choice2Btn.setAttribute("hidden", true)
+  choice1BtnAlt.setAttribute("hidden", true)
+  choice2BtnAlt.setAttribute("hidden", true)
+  featherBox.setAttribute("hidden", true)
+  featherHeader.setAttribute("hidden", true)
+  // timerArea.setAttribute("hidden", true)
 }
 
 function renderConsolation() {
@@ -376,7 +399,7 @@ function startTimer(){
     if (timeLeft < 0) {
       countdownEl.textContent = "Time is up!"
       clearInterval(timer)
-      alert("You're out of time, try again!")
+      renderTimerDone()
     }
     console.log(timeLeft) //! delete this later
   }, 1000)
@@ -397,7 +420,6 @@ function clearFoundFeathers() {
 /*-------------------------------- GOALS --------------------------------*/
 
 //todo ADD PHOENIX RISING animation at the end
-//todo CHOICE BUTTONS (MAth.random the buttons??)
 
 /*-----------------------------------------------------------------------*/
 

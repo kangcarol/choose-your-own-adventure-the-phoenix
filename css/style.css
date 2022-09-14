@@ -91,19 +91,3 @@ footer {
   vertical-align: middle;
 }
 
-/* .featherClass > *{
-  animation: phxRising 20s linear infinite;
-  top: 0;
-  left: 0;
-  position: fixed;
-  z-index: 999;
-  pointer-events: none;
-}
-/* 1 is loop */
-
-@keyframes phxRising {
-  0% {
-        transform: translateX (60, 110vh
-        ); opacity: 1;
-  }
-} */

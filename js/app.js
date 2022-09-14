@@ -123,7 +123,7 @@ cellEls.forEach((cell) => {
 })
 
 /*-------------------------------- Functions --------------------------------*/
-
+// animate()
 init();
 
 function init() {
@@ -138,6 +138,7 @@ function init() {
   headerPhx.classList.remove('animate__fadeIn')
   headerPhx.offsetWidth = headerPhx.offsetWidth
   headerPhx.classList.add('animate__fadeIn')
+  // mainImg.classList.remove('animate__fadeOut')
 
   // LOADING & RESET WILL REVERT TO INTRO IMAGE & MESSAGE
   mainImg.style.backgroundImage = enviroArrays[0].image
@@ -239,8 +240,11 @@ function handleClickFind(evt) {
     findPhxBtn.setAttribute('hidden', true)
     resetTimer()
     messageEl.textContent = "Congratulations!"
-    mainImg.style.backgroundImage = enviroArrays[0].image
+    // mainImg.classList.add('animate__fadeOut')
+    // mainImg.style.backgroundImage = enviroArrays[0].image
     clearFoundFeathers()
+    animate()
+
   }
 }
 

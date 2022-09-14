@@ -78,10 +78,29 @@
       <div id="c22" class="cell"></div>
       <div id="c23" class="cell"></div>
       <div id="c24" class="cell"></div>
-    </section>
-  <!-- </div> -->
 
-<!-- <img id="featherImg" hidden src="./images/feather-silhouette-feather.png" width="100px" height="140px"> -->
+    </section>
+    <!-- </div> -->
+
+
+  <img id="featherImgAnimate" class="featherClass" src="./images/feather-silhouette-feather.png" width="100px" height="150px">
+
+  <script>
+    const animateObj = document.getElementById('featherImgAnimate')
+
+    let yPos = 0;
+
+    function animate() {
+      yPos += 3;
+      animateObj.style.transform = `translateY(${yPos}px)`
+
+      if (Math.abs(yPos) >= 900) {
+        yPos = -500;
+      }
+
+      requestAnimationFrame(animate);
+    }
+  </script>
 
 </body>
 </html>

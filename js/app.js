@@ -240,8 +240,6 @@ function handleClickFind(evt) {
     findPhxBtn.setAttribute('hidden', true)
     resetTimer()
     messageEl.textContent = "Congratulations!"
-    // mainImg.classList.add('animate__fadeOut')
-    // mainImg.style.backgroundImage = enviroArrays[0].image
     clearFoundFeathers()
     animateObj.removeAttribute('hidden')
     animate()
@@ -416,11 +414,10 @@ function clearFoundFeathers() {
 
 /*-------------------------------- GOALS --------------------------------*/
 
-//todo ADD PHOENIX RISING animation at the end
+
 
 /*-----------------------------------------------------------------------*/
 
-//todo NEXT WEEK
 //todo Images & copywrite the hints
 //todo Copy of messages/hints
 

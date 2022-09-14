@@ -47,11 +47,9 @@ enviroArrays = [
     secretLocation: randomLocation(),
   },
   {
-    enviroName: "enviroResurrection",
-    image: "url('../images/Mountains.png')",
+    enviroName: "enviro5Resurrection",
+    image: "url('../images/resurrection.png')",
     message: "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!",
-    choiceMessage1: "CATACOMBS",
-    choiceMessage2: "SEA",
   },
   {
     enviroName: "enviroOutOfTime", // timer ran out
@@ -241,6 +239,8 @@ function handleClickFind(evt) {
     findPhxBtn.setAttribute('hidden', true)
     resetTimer()
     messageEl.textContent = "Congratulations!"
+    mainImg.style.backgroundImage = enviroArrays[0].image
+    clearFoundFeathers()
   }
 }
 
@@ -258,13 +258,8 @@ function handleClickChoice(evt) {
     renderEnvironment()
   } else if (evt.target.id === "choice2-btn") {
     console.log("CHOICE 2")  //! delete later
-    mainImg.style.backgroundImage = "url('../images/Mountains.png')"
     if (featherTotal > 0) {
-      // alert(
-      //   "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
-      //   )
-      mainImg.style.backgroundImage = enviroArrays[7].image
-      messageEl.textContent = enviroArrays[7].message
+      window.open(href="../images/resurrection.png",'popUpWindow','height=200,width=200,left=100,top=100,resizable=yes,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
       featherTotal -= 1
       featherBox.textContent = featherTotal
       console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
@@ -294,24 +289,21 @@ function handleClickChoiceAlt(evt) {
   } else if (evt.target.id === "choice2-btn-alt") {
     console.log("CHOICE 2")  //! delete later
     if (featherTotal > 0) {
-      // alert(
-      //   "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!"
-      //   )
-        // enviroArrays[7].image
-        featherTotal -= 1
-        featherBox.textContent = featherTotal
-        console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
-        enviro = enviroArrays[3]
-        renderEnvironment()
-      } else {
-        renderStoryOver()
-      }
+      window.open(href="../images/resurrection.png",'popUpWindow','height=200,width=200,left=100,top=100,resizable=yes,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
+      featherTotal -= 1
+      featherBox.textContent = featherTotal
+      console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
+      enviro = enviroArrays[3]
+      renderEnvironment()
+    } else {
+      renderStoryOver()
     }
+  }
     choice1Btn.setAttribute("hidden", true)
     choice2Btn.setAttribute("hidden", true)
     choice1BtnAlt.setAttribute("hidden", true)
     choice2BtnAlt.setAttribute("hidden", true)
-  }
+}
 
 function renderStoryOver() {
   resetTimer()

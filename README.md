@@ -53,9 +53,9 @@ IntroImage: https://commons.wikimedia.org/wiki/File:Bertuch-fabelwesen.JPG#/medi
 
 Volcano: https://digi.ub.uni-heidelberg.de/diglit/bertuch1798bd3/0159/image
 
-
-Thank you to Google Fonts!
 Again, thank you to this article/article's comments that helped me fix the animation reset: https://css-tricks.com/restart-css-animation/
+
+Thank you to this article regarding pop up windows: https://www.quackit.com/javascript/popup_windows.cfm
 
 
 **Next Steps**:

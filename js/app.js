@@ -412,6 +412,20 @@ function clearFoundFeathers() {
   cellEls.forEach(cell => cell.classList.remove('featherImg'))
 }
 
+const animateObj = document.getElementById('featherImgAnimate')
+let xPos
+let yPos = 500
+
+function animate() {
+  xPos = 180
+  yPos -= 3
+  animateObj.style.transform = `translate(${xPos}px ,${yPos}px)`
+
+  if (Math.abs(yPos) >= 600) {
+    yPos = 500;
+  }
+  requestAnimationFrame(animate);
+}
 /*-------------------------------- GOALS --------------------------------*/
 
 

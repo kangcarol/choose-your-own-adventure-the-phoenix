@@ -79,22 +79,5 @@
     <div id="c24" class="cell"></div>
     <img id="featherImgAnimate" class="featherClass" hidden src="./images/phx-rising.png" width="380px" height="400px">
   </section>
-
-  <script>
-    const animateObj = document.getElementById('featherImgAnimate')
-
-    let yPos = 500;
-
-    function animate() {
-      yPos -= 3;
-      animateObj.style.transform = `translateY(${yPos}px)`
-
-      if (Math.abs(yPos) >= 600) {
-        yPos = 500;
-      }
-      requestAnimationFrame(animate);
-    }
-  </script>
-
 </body>
 </html>

@@ -62,6 +62,8 @@ enviroArrays = [
 
 let featherTotal, enviro, timer
 let enviroGrid = new Array(25, null)
+let xPos
+let yPos = 0
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -131,7 +133,7 @@ function init() {
   resetTimer()
   clearHoverColor()
   clearFoundFeathers()
-  // clearAnimation()
+  animateObj.setAttribute('hidden', true)
 
   featherTotal = 0
   featherBox.textContent = featherTotal
@@ -410,42 +412,22 @@ function clearFoundFeathers() {
   cellEls.forEach(cell => cell.classList.remove('featherImg'))
 }
 
-
-let xPos
-let yPos = 500
-
 function animate() {
   xPos = 160
   yPos -= 3
   animateObj.style.transform = `translate(${xPos}px ,${yPos}px)`
 
   if (Math.abs(yPos) >= 600) {
-    yPos = 500;
+    yPos = 0;
   }
   requestAnimationFrame(animate);
 }
 
-
-function clearAnimation() {
-  // xPos = 160
-  // yPos -= 3
-  animateObj.sndToAS("pause")
-  // if (Math.abs(yPos) >= 600) {
-  //   yPos = 500;
-  // }
-}
-
 /*-------------------------------- GOALS --------------------------------*/
 
-
-
-/*-----------------------------------------------------------------------*/
-
 //todo Images & copywrite the hints
-//todo Copy of messages/hints
 
 //todo Font
-//todo Add animation
 //todo README
 
 //todo check indentation

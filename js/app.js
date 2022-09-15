@@ -140,7 +140,6 @@ function init() {
   featherTotal = 0
   featherBox.textContent = featherTotal
   enviroGrid = new Array(25, null)
-  console.log("INIT", `feather total = ${featherTotal}`) //! delete this later
 
   headerPhx.classList.remove('animate__fadeIn')
   headerPhx.offsetWidth = headerPhx.offsetWidth
@@ -166,11 +165,9 @@ function init() {
 
 function handleClickStart(evt) {
   renderEnvironment()
-  console.log("START", `feather total = ${featherTotal}`) //! delete later
   startTimer()
   enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
-  console.log('SECRET LOCATION INIT: ', enviro.secretLocation) //! delete later
 }
 
 function renderEnvironment() {
@@ -230,7 +227,6 @@ function handleClickFind(evt) {
       featherTotal += 1
     }
     featherBox.textContent = featherTotal
-    console.log("AFTER FIND feather total", `${featherTotal}`); //! delete later
     enviroGrid = new Array(25, null); // this is so that feather count does not continue to increase by clicking the same cell
   }
 
@@ -256,8 +252,6 @@ function handleClickChoice(evt) {
 
   enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
-
-  console.log('SECRET LOCATION NEXT2: ', enviro.secretLocation)  //! delete later
 
   if (evt.target.id === "choice1-btn") {
     console.log("CHOICE 1") //! delete later

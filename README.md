@@ -20,7 +20,7 @@ You have two choices to move forward, one will be fatal.<br>
 
  6. You have one minute to find all three feathers and the phoenix.<br>
 <br>
-## Getting Started
+## Getting Started<br>
 [Start](https://carol-kang-cyoa-the-phoenix.netlify.app/) <br>
 Reminder, to find a feather, hover over the image.  When you see the highlight, click.<br>
 If any pop-up windows show up, close them before moving on.<br>
@@ -28,10 +28,10 @@ If any pop-up windows show up, close them before moving on.<br>
 ## Planning
 [Whimsical](https://whimsical.com/choose-your-own-adventure-the-phoenix-XCFTsaKJM1NAHhjj1KHafo)<br>
 <br>
-## Technologies Used:
+## Technologies Used
 JavaScript, HTML, CSS, Git<br>
 <br>
-## Credits:
+## Credits
 - [History/Text](https://en.wikipedia.org/wiki/Phoenix_(mythology))<br>
 <br>
 - Artwork: Friedrich Justin Bertuch

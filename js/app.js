@@ -8,24 +8,24 @@ enviroArrays = [
   },
   {
     enviroName: "enviro1",
-    image: "url('../images/Enviro1Volcano.png')",
+    image: "url('../images/Volcano.png')",
     message:
       "Some legends say it dies in a show of flames and combustion, others that it simply dies and decomposes before being born again. -- Wikipedia",
     secretLocation: randomLocation(),
-    choiceMessage1: "CAVE",
-    choiceMessage2: "MOUNTAINS",
-  },
-  {
-    enviroName: "enviro2",
-    image: "url('../images/Enviro2Cave.png')",
-    message: "hint 2",
-    secretLocation: randomLocation(),
-    choiceMessage1: "CATACOMBS",
+    choiceMessage1: "HILLS",
     choiceMessage2: "SEA",
   },
   {
+    enviroName: "enviro2",
+    image: "url('../images/Hills.png')",
+    message: "hint 2",
+    secretLocation: randomLocation(),
+    choiceMessage1: "CATACOMBS",
+    choiceMessage2: "MOUNTAINS",
+  },
+  {
     enviroName: "enviro3",
-    image: "url('../images/Enviro3Catacombs.png')",
+    image: "url('../images/Catacombs.png')",
     message: "hint 3",
     secretLocation: randomLocation(),
   },
@@ -42,7 +42,7 @@ enviroArrays = [
   },
   {
     enviroName: "enviroPhoenix", //environment to find phoenix
-    image: "url('../images/Enviro4FindPhoenix.png')", //! FIND A BETTER IMAGE
+    image: "url('../images/Cave.png')", //! FIND A BETTER IMAGE
     message: "find phoenix message",
     secretLocation: randomLocation(),
   },
@@ -416,7 +416,7 @@ function clearFoundFeathers() {
 }
 
 function animate() {
-  xPos = 18git 0
+  xPos = 180
   yPos -= 3
   animateObj.style.transform = `translate(${xPos}px ,${yPos}px)`
 

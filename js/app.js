@@ -311,13 +311,14 @@ function renderStoryOver() {
 }
 
 function renderTimerDone() {
+  enviroGrid[enviro.secretLocation] = "found"
   resetTimer()
   clearFoundFeathers()
   headerPhx.classList.remove('animate__fadeIn')
   headerPhx.offsetWidth = headerPhx.offsetWidth
   headerPhx.classList.add('animate__fadeIn')
 
-  mainImg.style.backgroundImage = enviroArrays[8].image
+  mainImg.style.backgroundImage = enviroArrays[8].image //enviroOutOfTime
   messageEl.textContent = enviroArrays[8].message
   choice1Btn.setAttribute("hidden", true)
   choice2Btn.setAttribute("hidden", true)
@@ -328,6 +329,7 @@ function renderTimerDone() {
 }
 
 function renderConsolation() {
+  enviroGrid[enviro.secretLocation] = "found"
   clearFoundFeathers()
   resetTimer()
   enviro = enviroArrays[5]

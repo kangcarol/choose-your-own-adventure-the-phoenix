@@ -41,3 +41,5 @@ JavaScript, HTML, CSS, Git<br>
  ## Next Steps<br>
 - Create more environments, and randomize the choices.<br>
 - Refactor code<br>
+- Make image names more consistent<br>
+- Make the Resurrection message more aesthetically pleasing to the eye<br>

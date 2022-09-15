@@ -28,10 +28,10 @@ If any pop-up windows show up, close them before moving on.<br>
 ## Planning
 [Whimsical](https://whimsical.com/choose-your-own-adventure-the-phoenix-XCFTsaKJM1NAHhjj1KHafo)<br>
 <br>
-## Technologies Used**:
+## Technologies Used:
 JavaScript, HTML, CSS, Git<br>
 <br>
-## Credits
+## Credits:
 - [History/Text](https://en.wikipedia.org/wiki/Phoenix_(mythology))<br>
 <br>
 - Artwork: Friedrich Justin Bertuch

@@ -13,18 +13,26 @@ You have two choices to move forward, one will be fatal.
 
 ## How to Choose Your Own Adventure
  You are on a journey to find the mythical phoenix.<br>
+
  You will pass through three scenerios, upon arriving you will have the opportunity to find one feather BEFORE moving on. Hovering in the image will lead you to it, click when you see the highlight.<br>
+
  You have two choices to move forward, one will be fatal.<br>
+
  It is not required to search for a feather, but without collecting all three you cannot move forward to find the phoenix.<br>
+
  The feathers will resurrect you if you make a perilous choice, but each time one will be deducted.<br>
+
  You have one minute to find all three feathers and the phoenix.<br>
+
 It is not required to search for a feather, but without collecting all three you cannot move forward to find the phoenix.<br>
+
 The feathers will resurrect you if you make a perilous choice, but each time one will be deducted.<br>
+
 
 ## Getting Started
 https://carol-kang-cyoa-the-phoenix.netlify.app/<br>
 Reminder, to find a feather, hover over the image.  When you see the highlight, click.<br>
-If any pop-up windows show up, close them before moving on.
+If any pop-up windows show up, close them before moving on.<br>
 
 ## Planning
 Whimsical (https://whimsical.com/choose-your-own-adventure-the-phoenix-XCFTsaKJM1NAHhjj1KHafo)

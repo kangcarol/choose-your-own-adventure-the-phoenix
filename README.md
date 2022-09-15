@@ -1,6 +1,6 @@
 # Choose Your Own Adventure : The Phoenix
-![Game-Image](/images/The%20Phoenix%20Screenshot.png`)
-<!-- SCREENSHOT -->
+![Game-Image](/images/ThePhoenixScreenshot.png)
+
 
  ## Goal of the Game
 The goal of the game is to have found three phoenix feathers before the timer runs out, and by the time you get to the end of the game, to earn the chance to find the phoenix.<br>

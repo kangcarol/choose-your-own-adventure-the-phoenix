@@ -416,7 +416,7 @@ function clearFoundFeathers() {
 }
 
 function animate() {
-  xPos = 160
+  xPos = 18git 0
   yPos -= 3
   animateObj.style.transform = `translate(${xPos}px ,${yPos}px)`
 

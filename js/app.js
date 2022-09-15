@@ -115,13 +115,13 @@ findPhxBtn.addEventListener("click", handleClickPhoenix)
 resetBtn.addEventListener("click", init)
 
 startBtn.addEventListener("click", function(evt){
-  wings.volume = .12
+  wings.volume = .14
   wings.play()
   })
 
 cellEls.forEach((cell) => {
   cell.addEventListener("click", function(evt){
-    wings.volume = .12
+    wings.volume = .14
     wings.play()
   })
 })
@@ -145,7 +145,6 @@ function init() {
   headerPhx.offsetWidth = headerPhx.offsetWidth
   headerPhx.classList.add('animate__fadeIn')
 
-  // LOADING & RESET WILL REVERT TO INTRO IMAGE & MESSAGE
   mainImg.style.backgroundImage = enviroArrays[0].image
   messageEl.textContent = enviroArrays[0].message
 
@@ -213,8 +212,6 @@ function clearHoverColor(){
 }
 
 function handleClickFind(evt) {
-  // player finds cell (handleClickFind) that feather is assigned for THIS environment by clicking on cell.
-
   const cellIdx = parseInt(evt.target.id.replace("c", ""))
 
   if (enviroGrid[cellIdx] === "found") {
@@ -249,21 +246,17 @@ function handleClickFind(evt) {
 
 function handleClickChoice(evt) {
   clearFoundFeathers()
-
   enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
 
   if (evt.target.id === "choice1-btn") {
-    console.log("CHOICE 1") //! delete later
     enviro = enviroArrays[2]
     renderEnvironment()
   } else if (evt.target.id === "choice2-btn") {
-    console.log("CHOICE 2")  //! delete later
     if (featherTotal > 0) {
       window.open(href="../images/resurrection.png",'popUpWindow','height=280,width=250,left=600,top=200,resizable=no,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
       featherTotal -= 1
       featherBox.textContent = featherTotal
-      console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
       enviro = enviroArrays[2]
       renderEnvironment()
       enviro.secretLocation = randomLocation()
@@ -279,7 +272,6 @@ function handleClickChoice(evt) {
 
 function handleClickChoiceAlt(evt) {
   clearFoundFeathers()
-
   enviroGrid[enviro.secretLocation] = "found"
 
   if (evt.target.id === "choice1-btn-alt") {
@@ -358,10 +350,8 @@ function renderConsolation() {
 
 function handleClickPhoenix() {
   clearFoundFeathers()
-
   enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
-  console.log('SECRET LOCATION PHOENIX ', enviro.secretLocation) //! delete later
 
   enviro = enviroArrays[6]
   renderEnvironment()
@@ -389,7 +379,6 @@ function startTimer(){
       clearInterval(timer)
       renderTimerDone()
     }
-    console.log(timeLeft) //! delete this later
   }, 1000)
 }
 
@@ -419,10 +408,6 @@ function animate() {
 /*-------------------------------- GOALS --------------------------------*/
 
 //todo Images & copywrite the hints
-
-//todo Font
 //todo README
-
 //todo check indentation
-//todo delete console.logs and unnecessary comments
 //! Make sure image doesn't get distored

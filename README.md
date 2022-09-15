@@ -32,6 +32,7 @@ JavaScript, HTML, CSS, Git<br>
   - [uni-heidelberg](https://digi.ub.uni-heidelberg.de/diglit/bertuch1798bd3/0159/image,thumbs#col_thumbs)
   - [Clip-Art](http://clipart-library.com/)
   - [Book-Art-Texture](https://lostandtaken.com/downloads/vintage-book-cover-textures-6/)
+  - [Font](https://fonts.google.com/)
 
 - Audio: [freesound.org](https://freesound.org/people/angelkunev/sounds/561287/)
 - Thank you (again) to this [article/comments](https://css-tricks.com/restart-css-animation/) that helped me fix the animation reset.

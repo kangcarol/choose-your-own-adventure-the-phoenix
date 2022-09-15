@@ -23,7 +23,7 @@ body {
 
 div.main {
   grid-column: 1;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
@@ -70,19 +70,24 @@ h1 {
 }
 
 #timer-area {
-  padding: 10px 0 `0 0;
+  padding: 10px 0 0 0;
 }
 
 #buttons {
-  display: flex
+  display: flex;
   padding: 20px 0 20px 0;
-  justify-content: center;
+  margin: 0 20px 0 0;
+  color: yellow;
+}
+
+.button-space {
+  width: 20px;
 }
 
 div.cell {
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 

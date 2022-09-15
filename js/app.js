@@ -9,8 +9,7 @@ enviroArrays = [
   {
     enviroName: "enviro1",
     image: "url('../images/Volcano.png')",
-    message:
-      "Some legends say it dies in a show of flames and combustion, others that it simply dies and decomposes before being born again. -- Wikipedia",
+    message: "Some legends say it dies in a show of flames and combustion, others that it simply dies and decomposes before being born again.",
     secretLocation: randomLocation(),
     choiceMessage1: "HILLS",
     choiceMessage2: "SEA",
@@ -60,7 +59,7 @@ enviroArrays = [
 
 /*-------------------------------- Variables --------------------------------*/
 
-let featherTotal, enviro, timer
+let featherTotal, enviro, timer, timeLeft
 let enviroGrid = new Array(25, null)
 let xPos
 let yPos = 0
@@ -84,7 +83,7 @@ const choice2BtnAlt = document.getElementById("choice2-btn-alt")
 const featherHeader = document.getElementById("feather-header")
 const featherBox = document.getElementById("feather-box")
 
-const timerArea = document.getElementById("timer-area")
+const countdownEl = document.getElementById("timer-area")
 
 const mainImg = document.querySelector(".locationCells")
 const instrLines = document.querySelector('.instruction-lines')
@@ -157,7 +156,7 @@ function init() {
   findPhxBtn.setAttribute("hidden", true)
   featherHeader.setAttribute("hidden", true)
   featherBox.setAttribute("hidden", true)
-  timerArea.setAttribute("hidden", true)
+  countdownEl.setAttribute("hidden", true)
   instrLines.removeAttribute('hidden')
   enviro = enviroArrays[1]
 }
@@ -178,7 +177,7 @@ function renderEnvironment() {
   choice2BtnAlt.setAttribute("hidden", true)
   featherHeader.removeAttribute("hidden")
   featherBox.removeAttribute("hidden")
-  timerArea.removeAttribute("hidden")
+  countdownEl.removeAttribute("hidden")
   instrLines.setAttribute('hidden', true)
   featherBox.textContent = featherTotal
 
@@ -368,8 +367,7 @@ function handleClickPhoenix() {
 }
 
 function startTimer(){
-  let countdownEl = document.getElementById("timer-area")
-  let timeLeft = 60
+  timeLeft = 60
 
   timer = setInterval(function () {
     countdownEl.textContent = timeLeft + " seconds remaining."

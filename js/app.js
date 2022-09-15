@@ -130,6 +130,7 @@ cellEls.forEach((cell) => {
 init();
 
 function init() {
+  
   resetTimer()
   clearHoverColor()
   clearFoundFeathers()

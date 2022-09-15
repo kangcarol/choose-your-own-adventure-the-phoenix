@@ -29,25 +29,21 @@ If any pop-up windows show up, close them before moving on.
 ## Planning
 Whimsical (https://whimsical.com/choose-your-own-adventure-the-phoenix-XCFTsaKJM1NAHhjj1KHafo)
 
+
 ## Technologies Used**:
 JavaScript, HTML, CSS, Git
-
-**Screenshot(s):**
-  <!-- A screenshot or two of your game. -->
-
-
 
 **Technologies Used**:
  JavaScript, HTML, CSS
 
-**Next Steps**:
+
 ## Next Steps
 Create more environments, and randomize the choices.<br>
 Refactor code
 
 
 ## Credits
-Text: https://en.wikipedia.org/wiki/Phoenix_(mythology)
+History & Text: https://en.wikipedia.org/wiki/Phoenix_(mythology)
 
 Artwork: Friedrich Justin Bertuch:
 https://commons.wikimedia.org/wiki/File:Bertuch-fabelwesen.JPG
@@ -60,13 +56,3 @@ Again, thank you to this article/article's comments that helped me fix the anima
 Thank you to this article/article's comments (referenced again) that helped me fix the animation reset: https://css-tricks.com/restart-css-animation/
 
 Thank you to this article regarding pop up windows: https://www.quackit.com/javascript/popup_windows.cfm
-
-
-
-
-
-Turkey: Konrul: https://en.wikipedia.org/wiki/Konrul
-China: Fenghuang: https://en.wikipedia.org/wiki/Fenghuang
-Slavic: Firebird: https://en.wikipedia.org/wiki/Firebird_(Slavic_folklore)
-Hindu: Garuda:  https://en.wikipedia.org/wiki/Garuda#/media/File:Raja_Ravi_Varma,_Lord_Garuda.jpg
-Persian: https://en.wikipedia.org/wiki/Persian_mythology

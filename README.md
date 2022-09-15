@@ -35,9 +35,9 @@ JavaScript, HTML, CSS, Git<br>
 
 - Audio: [freesound.org](https://freesound.org/people/angelkunev/sounds/561287/)
 - Thank you (again) to this [article/comments](https://css-tricks.com/restart-css-animation/) that helped me fix the animation reset.
-- Thank you to this [article](https://www.quackit.com/javascript/popup_windows.cfm) regarding pop up window.
+- Thank you to this [article](https://www.quackit.com/javascript/popup_windows.cfm) regarding pop up window.<br>
 <br>
-<br>
+
  ## Next Steps<br>
 - Create more environments, and randomize the choices.<br>
 - Refactor code<br>

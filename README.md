@@ -2,7 +2,7 @@
 
 <!-- SCREENSHOT -->
 <br>
-## Goal of the Game**
+## Goal of the Game<br>
 The goal of the game is to have found three phoenix feathers before the timer runs out, and by the time you get to the end of the game, to earn the chance to find the phoenix.<br>
 
 You have two choices to move forward, one will be fatal.<br>

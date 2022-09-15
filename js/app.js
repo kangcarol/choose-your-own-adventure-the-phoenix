@@ -11,16 +11,16 @@ enviroArrays = [
     image: "url('../images/Volcano.png')",
     message: "Some legends say it dies in a show of flames and combustion, others that it simply dies and decomposes before being born again.",
     secretLocation: randomLocation(),
-    choiceMessage1: "HILLS",
-    choiceMessage2: "SEA",
+    choiceMessage1: "The Hills",
+    choiceMessage2: "Sea",
   },
   {
     enviroName: "enviro2",
     image: "url('../images/Hills.png')",
     message: "hint 2",
     secretLocation: randomLocation(),
-    choiceMessage1: "CATACOMBS",
-    choiceMessage2: "MOUNTAINS",
+    choiceMessage1: "Catacombs",
+    choiceMessage2: "The Mountain",
   },
   {
     enviroName: "enviro3",
@@ -41,7 +41,7 @@ enviroArrays = [
   },
   {
     enviroName: "enviroPhoenix", //environment to find phoenix
-    image: "url('../images/Cave.png')", //! FIND A BETTER IMAGE
+    image: "url('../images/Cave.png')",
     message: "find phoenix message",
     secretLocation: randomLocation(),
   },
@@ -59,9 +59,8 @@ enviroArrays = [
 
 /*-------------------------------- Variables --------------------------------*/
 
-let featherTotal, enviro, timer, timeLeft
+let featherTotal, enviro, timer, timeLeft, xPos
 let enviroGrid = new Array(25, null)
-let xPos
 let yPos = 0
 
 /*------------------------ Cached Element References ------------------------*/
@@ -127,7 +126,7 @@ cellEls.forEach((cell) => {
 
 /*-------------------------------- Functions --------------------------------*/
 
-init();
+init()
 
 function init() {
 
@@ -260,6 +259,7 @@ function handleClickChoice(evt) {
       renderEnvironment()
       enviro.secretLocation = randomLocation()
     } else {
+      clearFoundFeathers()
       renderStoryOver()
     }
   }
@@ -284,6 +284,7 @@ function handleClickChoiceAlt(evt) {
       enviro = enviroArrays[3]
       renderEnvironment()
     } else {
+      clearFoundFeathers()
       renderStoryOver()
     }
   }
@@ -295,10 +296,10 @@ function handleClickChoiceAlt(evt) {
 
 function renderStoryOver() {
   resetTimer()
+  clearFoundFeathers()
   headerPhx.classList.remove('animate__fadeIn')
   headerPhx.offsetWidth = headerPhx.offsetWidth
   headerPhx.classList.add('animate__fadeIn')
-  clearFoundFeathers()
 
   mainImg.style.backgroundImage = enviroArrays[4].image
   messageEl.textContent = enviroArrays[4].message
@@ -306,15 +307,15 @@ function renderStoryOver() {
   choice2Btn.setAttribute("hidden", true)
   choice1BtnAlt.setAttribute("hidden", true)
   choice2BtnAlt.setAttribute("hidden", true)
-  timerArea.setAttribute("hidden", true)
+  countdownEl.setAttribute("hidden", true)
 }
 
 function renderTimerDone() {
   resetTimer()
+  clearFoundFeathers()
   headerPhx.classList.remove('animate__fadeIn')
   headerPhx.offsetWidth = headerPhx.offsetWidth
   headerPhx.classList.add('animate__fadeIn')
-  clearFoundFeathers()
 
   mainImg.style.backgroundImage = enviroArrays[8].image
   messageEl.textContent = enviroArrays[8].message
@@ -344,7 +345,7 @@ function renderConsolation() {
   choice2BtnAlt.setAttribute("hidden", true)
   findPhxBtn.setAttribute("hidden", true)
   featherBox.removeAttribute("hidden")
-  timerArea.setAttribute("hidden", true)
+  countdownEl.setAttribute("hidden", true)
 }
 
 function handleClickPhoenix() {
@@ -363,7 +364,7 @@ function handleClickPhoenix() {
   findPhxBtn.setAttribute("hidden", true)
   featherBox.setAttribute("hidden", true)
   featherHeader.setAttribute('hidden', true)
-  timerArea.setAttribute("hidden", true)
+  countdownEl.setAttribute("hidden", true)
 }
 
 function startTimer(){
@@ -405,7 +406,6 @@ function animate() {
 
 /*-------------------------------- GOALS --------------------------------*/
 
-//todo Images & copywrite the hints
-//todo README
+//todo copywrite the hints
 //todo check indentation
 //! Make sure image doesn't get distored

@@ -7,7 +7,7 @@ The goal of the game is to have found three feathers before the timer runs out, 
 <br>
  ## How to Choose Your Own Adventure
 
- 1. Upon arriving to each scenerio, you will have the opportunity to find a feather BEFORE making the choice for the next scenerio. Hovering over the scenerio will allow you to find it.<br>
+ 1. Upon arriving to each scenerio, you will have the opportunity to find a feather BEFORE making the choice for the next scenerio. Hovering over the scenerio will allow you to find it, don't forget to click!<br>
 
  2. The feathers you collect will give you a boon, that when consumed will save you from a perilous choice. Choose wisely!<br>
 

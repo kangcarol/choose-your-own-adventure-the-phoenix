@@ -130,7 +130,7 @@ cellEls.forEach((cell) => {
 init();
 
 function init() {
-  
+
   resetTimer()
   clearHoverColor()
   clearFoundFeathers()
@@ -242,7 +242,7 @@ function handleClickFind(evt) {
   if (enviro === enviroArrays[6]){
     findPhxBtn.setAttribute('hidden', true)
     resetTimer()
-    messageEl.textContent = "Congratulations!"
+    messageEl.textContent = `Congratulations!  "The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor." `
     clearFoundFeathers()
     animateObj.removeAttribute('hidden')
     animate()
@@ -264,7 +264,7 @@ function handleClickChoice(evt) {
   } else if (evt.target.id === "choice2-btn") {
     console.log("CHOICE 2")  //! delete later
     if (featherTotal > 0) {
-      window.open(href="../images/resurrection.png",'popUpWindow','height=200,width=200,left=100,top=100,resizable=yes,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
+      window.open(href="../images/resurrection.png",'popUpWindow','height=280,width=250,left=600,top=200,resizable=no,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
       featherTotal -= 1
       featherBox.textContent = featherTotal
       console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
@@ -294,7 +294,7 @@ function handleClickChoiceAlt(evt) {
   } else if (evt.target.id === "choice2-btn-alt") {
     console.log("CHOICE 2")  //! delete later
     if (featherTotal > 0) {
-      window.open(href="../images/resurrection.png",'popUpWindow','height=200,width=200,left=100,top=100,resizable=yes,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
+      window.open(href="../images/resurrection.png",'popUpWindow','height=325,width=275,left=500,top=500,resizable=no,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
       featherTotal -= 1
       featherBox.textContent = featherTotal
       console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
@@ -419,7 +419,7 @@ function animate() {
   animateObj.style.transform = `translate(${xPos}px ,${yPos}px)`
 
   if (Math.abs(yPos) >= 600) {
-    yPos = 0;
+    yPos = 100;
   }
   requestAnimationFrame(animate);
 }

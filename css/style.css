@@ -13,30 +13,30 @@ html {
 
 body {
   display: flex;
-  grid-template-columns: 30% 70%;
-  /* height: 768px;
-  width: 1366px; */
+  grid-template-columns: 40% 60%;
+  height: 768px;
+  /* width: 1366px; */
   justify-content: center;
-  color: gray;
+  color: white;
   font-family: 'Cormorant Garamond', serif;
 }
 
 div.main {
   grid-column: 1;
-  border: 3px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: auto 0;
-  height: 100%;
-  width: 400px;
+  height: 768px;
+  width: 65%;
   padding: 20px;
+  background-image: url('../images/red-texture.png');
 }
 
 h1, h2 {
   text-align: center;
   justify-content: center;
-  padding: 0 0 5px 0;
+  padding: 0 0 20px 0;
 }
 
 #feather-box {
@@ -52,7 +52,7 @@ h1, h2 {
 }
 
 #buttons {
-  padding: 10px 0 0 0;
+  padding: 20px 0 20px 0;
 }
 
 div.cell {
@@ -63,7 +63,6 @@ div.cell {
 }
 
 section.locationCells {
-  border: 3px solid blue;
   background-image: url('../images/Phoenix-Fabelwesen.jpeg');
   background-repeat: no-repeat;
   background-size:115%;
@@ -75,13 +74,16 @@ section.locationCells {
   text-align: center;
   margin: 0;
   justify-content: center;
+  height: 100%;
 }
 
 footer {
-  font-size: 12px;
+  display: flex;
+  font-size: 18px;
   text-align: left;
   margin: 10px 0 0 0;
-
+  padding: 10px 0 10px 0;
+  justify-content: baseline;
 }
 
 .featherImg {
@@ -91,4 +93,17 @@ footer {
   height: 100%;
   text-align: center;
   vertical-align: middle;
+}
+
+#feather-header {
+  font-size: 20px;
+}
+
+.instruction-lines {
+  font-size: 20px;
+  list-style: none;
+}
+
+.introDivs {
+  height: 30px;
 }

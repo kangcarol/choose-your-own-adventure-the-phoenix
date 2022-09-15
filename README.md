@@ -1,5 +1,5 @@
 # Choose Your Own Adventure : The Phoenix
-![Game-Image](/images/ThePhoenixScreenshot.png)
+<!-- ![Game-Image](/images/ThePhoenixScreenshot.png) -->
 
 
  ## Goal of the Game

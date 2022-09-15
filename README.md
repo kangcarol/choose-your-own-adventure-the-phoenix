@@ -3,17 +3,15 @@
 
 
  ## Goal of the Game
-The goal of the game is to have found three phoenix feathers before the timer runs out, and by the time you get to the end of the game, to earn the chance to find the phoenix.<br>
+The goal of the game is to have found three feathers before the timer runs out, and at the end earn the chance to find the phoenix.<br>
 <br>
  ## How to Choose Your Own Adventure
 
- 1. Upon arriving to the scenerio, you will have the opportunity to find a feather BEFORE moving on to the next scenerio. Hovering over the display will allow you to find it.<br>
+ 1. Upon arriving to each scenerio, you will have the opportunity to find a feather BEFORE making the choice for the next scenerio. Hovering over the scenerio will allow you to find it.<br>
 
- 2. The feathers you collect will give you a boon, that when consumed will save you from a perilous choice.<br>
+ 2. The feathers you collect will give you a boon, that when consumed will save you from a perilous choice. Choose wisely!<br>
 
- 3. When presented with the choices, choose wisely!<br>
-
- 4. It is not required to search for a feather, but without all three it will be impossible to find the phoenix.<br>
+ 3. It is not required to search for a feather, but without all three it will be impossible to find the phoenix.<br>
 
 
  ## Getting Started<br>

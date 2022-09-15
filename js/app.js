@@ -281,19 +281,15 @@ function handleClickChoiceAlt(evt) {
   clearFoundFeathers()
 
   enviroGrid[enviro.secretLocation] = "found"
-  console.log('SECRET LOCATION NEXT3: ', enviro.secretLocation) //! delete later
 
   if (evt.target.id === "choice1-btn-alt") {
-    console.log("CHOICE 1")  //! delete later
     enviro = enviroArrays[3]
     renderEnvironment()
   } else if (evt.target.id === "choice2-btn-alt") {
-    console.log("CHOICE 2")  //! delete later
     if (featherTotal > 0) {
       window.open(href="../images/resurrection.png",'popUpWindow','height=325,width=275,left=500,top=500,resizable=no,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
       featherTotal -= 1
       featherBox.textContent = featherTotal
-      console.log("SPEND FEATHER feather total", `${featherTotal}`) //! delete later
       enviro = enviroArrays[3]
       renderEnvironment()
     } else {

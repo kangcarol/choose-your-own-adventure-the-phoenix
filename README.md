@@ -1,13 +1,11 @@
 # Choose Your Own Adventure : The Phoenix
 
 <!-- SCREENSHOT -->
-<br>
-# # Goal of the Game<br>
-The goal of the game is to have found three phoenix feathers before the timer runs out, and by the time you get to the end of the game, to earn the chance to find the phoenix.<br>
 
-You have two choices to move forward, one will be fatal.<br>
+ ## Goal of the Game
+The goal of the game is to have found three phoenix feathers before the timer runs out, and by the time you get to the end of the game, to earn the chance to find the phoenix.<br>
 <br>
-# # How to Choose Your Own Adventure
+ ## How to Choose Your Own Adventure
  1. You are on a journey to find the mythical phoenix.<br>
 
  2. You will pass through three scenerios, upon arriving you will have the opportunity to find one feather BEFORE moving on. Hovering in the image will lead you to it, click when you see the highlight.<br>
@@ -20,18 +18,18 @@ You have two choices to move forward, one will be fatal.<br>
 
  6. You have one minute to find all three feathers and the phoenix.<br>
 <br>
-# # Getting Started<br>
+ ## Getting Started<br>
 [Start](https://carol-kang-cyoa-the-phoenix.netlify.app/) <br>
 Reminder, to find a feather, hover over the image.  When you see the highlight, click.<br>
 If any pop-up windows show up, close them before moving on.<br>
 <br>
-# # Planning
+ ## Planning
 [Whimsical](https://whimsical.com/choose-your-own-adventure-the-phoenix-XCFTsaKJM1NAHhjj1KHafo)<br>
 <br>
-# # Technologies Used
+ ## Technologies Used
 JavaScript, HTML, CSS, Git<br>
 <br>
-# # Credits
+ ## Credits
 - [History/Text](https://en.wikipedia.org/wiki/Phoenix_(mythology))<br>
 <br>
 - Artwork: Friedrich Justin Bertuch
@@ -44,6 +42,6 @@ JavaScript, HTML, CSS, Git<br>
 - Thank you (again) to this [article/comments](https://css-tricks.com/restart-css-animation/) that helped me fix the animation reset.
 - Thank you to this [article](https://www.quackit.com/javascript/popup_windows.cfm) regarding pop up window.
 <br>
-# # Next Steps
+ ## Next Steps
 - Create more environments, and randomize the choices.<br>
 - Refactor code<br>

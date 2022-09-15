@@ -87,6 +87,7 @@ const featherBox = document.getElementById("feather-box")
 const timerArea = document.getElementById("timer-area")
 
 const mainImg = document.querySelector(".locationCells")
+const instrLines = document.querySelector('.instruction-lines')
 
 const wings = new Audio("../audio/wings.mp3")
 const animateObj = document.getElementById('imgAnimate')
@@ -159,7 +160,7 @@ function init() {
   featherHeader.setAttribute("hidden", true)
   featherBox.setAttribute("hidden", true)
   timerArea.setAttribute("hidden", true)
-
+  instrLines.removeAttribute('hidden')
   enviro = enviroArrays[1]
 }
 
@@ -182,6 +183,7 @@ function renderEnvironment() {
   featherHeader.removeAttribute("hidden")
   featherBox.removeAttribute("hidden")
   timerArea.removeAttribute("hidden")
+  instrLines.setAttribute('hidden', true)
   featherBox.textContent = featherTotal
 
   headerPhx.classList.remove('animate__fadeIn')

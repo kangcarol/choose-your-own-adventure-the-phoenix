@@ -87,6 +87,7 @@ div.cell {
 }
 
 section.locationCells {
+  display: flex;
   background-image: url('../images/Phoenix-Fabelwesen.jpeg');
   background-repeat: no-repeat;
   background-size:115%;

@@ -1,5 +1,5 @@
 # Choose Your Own Adventure : The Phoenix
-
+![Game-Image](/images/The%20Phoenix%20Screenshot.png)
 <!-- SCREENSHOT -->
 
  ## Goal of the Game
@@ -39,6 +39,6 @@ JavaScript, HTML, CSS, Git<br>
 - Thank you (again) to this [article/comments](https://css-tricks.com/restart-css-animation/) that helped me fix the animation reset.
 - Thank you to this [article](https://www.quackit.com/javascript/popup_windows.cfm) regarding pop up window.
 <br>
- ## Next Steps
+ ## Next Steps<br>
 - Create more environments, and randomize the choices.<br>
 - Refactor code<br>

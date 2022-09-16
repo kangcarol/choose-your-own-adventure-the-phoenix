@@ -313,7 +313,7 @@ function renderStoryOver() {
   resetTimer()
   clearFoundFeathers()
   enviroGrid = new Array(25, null)
-  enviro.secretLocation = randomLocation()
+  enviro.secretLocation = null
   enviroGrid[enviro.secretLocation] = "found"
   headerPhx.classList.remove('animate__fadeIn')
   headerPhx.offsetWidth = headerPhx.offsetWidth
@@ -371,9 +371,10 @@ function renderConsolation() {
 
 function handleClickPhoenix() {
   clearFoundFeathers()
+  enviroGrid = new Array(25, null)
   enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
-  enviroGrid = new Array(25, null)
+
   enviro = enviroArrays[6]
   renderEnvironment()
   startBtn.setAttribute("hidden", true)

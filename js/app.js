@@ -275,6 +275,10 @@ function handleClickChoiceAlt(evt) {
   if (evt.target.id === "choice1-btn-alt") {
     enviro = enviroArrays[3]
     renderEnvironment()
+    choice1Btn.setAttribute("hidden", true)
+    choice2Btn.setAttribute("hidden", true)
+    choice1BtnAlt.setAttribute("hidden", true)
+    choice2BtnAlt.setAttribute("hidden", true)
   } else if (evt.target.id === "choice2-btn-alt") {
     if (featherTotal > 0) {
       window.open(href="../images/resurrection.png",'popUpWindow','height=280,width=250,left=600,top=200,resizable=no,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
@@ -285,12 +289,12 @@ function handleClickChoiceAlt(evt) {
     } else {
       clearFoundFeathers()
       renderStoryOver()
+      choice1Btn.setAttribute("hidden", true)
+      choice2Btn.setAttribute("hidden", true)
+      choice1BtnAlt.setAttribute("hidden", true)
+      choice2BtnAlt.setAttribute("hidden", true)
     }
   }
-    choice1Btn.setAttribute("hidden", true)
-    choice2Btn.setAttribute("hidden", true)
-    choice1BtnAlt.setAttribute("hidden", true)
-    choice2BtnAlt.setAttribute("hidden", true)
 }
 
 function renderStoryOver() {

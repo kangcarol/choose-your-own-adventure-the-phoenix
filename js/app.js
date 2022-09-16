@@ -6,12 +6,12 @@ enviroArrays = [
     enviroName: "enviroIntro",
     image: "url('../images/Phoenix-Fabelwesen.jpeg')",
     message:
-      '"The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor."  -Wikipedia',
+      '"The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor."',
   },
   {
     enviroName: "enviro1",
     image: "url('../images/Volcano.png')",
-    message: "The fabled bird is said to live 500 years or more, and when the bird is tired, it flies to the City of the Sun to build a nest to die in.",
+    message: '"The Greeks rooted the tale of the phoenix in Western imagination more than 2,500 years ago, but its story began in ancient Egypt and Arabia."',
     secretLocation: randomLocation(),
     choiceMessage1: "The Hills",
     choiceMessage2: "Sea",
@@ -19,7 +19,7 @@ enviroArrays = [
   {
     enviroName: "enviro2",
     image: "url('../images/Hills.png')",
-    message: "A new, young phoenix emerges from the ashes to live another life cycle.",
+    message: '"Slavic lore hosts two mythical birds, the traditional firebird (star of Stravinsky’s ballet) and Finist the Bright Falcon, whose name is derived from the Greek phoenix."',
     secretLocation: randomLocation(),
     choiceMessage1: "Catacombs",
     choiceMessage2: "Forest",
@@ -27,7 +27,7 @@ enviroArrays = [
   {
     enviroName: "enviro3",
     image: "url('../images/Catacombs.png')",
-    message: "Some tales claim the phoenix has magical healing powers.",
+    message: '"The Chinese phoenix Feng Huang (Ho-o in Japan) is a completely separate bird dating back at least 7,000 years. This celestial fowl became entwined with the Western phoenix."',
     secretLocation: randomLocation(),
   },
   {
@@ -218,7 +218,7 @@ function handleClickFind(evt) {
       featherTotal += 1
     }
     featherBox.textContent = featherTotal
-    enviroGrid = new Array(25, null); // this is so that feather count does not continue to increase by clicking the same cell
+    enviroGrid = new Array(25, null) // this is so that feather count does not continue to increase by clicking the same cell
   }
 
   if (featherTotal === 3) {
@@ -231,7 +231,7 @@ function handleClickFind(evt) {
   if (enviro === enviroArrays[6]){
     findPhxBtn.setAttribute('hidden', true)
     resetTimer()
-    messageEl.textContent = `Congratulations!  "The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor." `
+    messageEl.textContent = `Congratulations you have found the mythical phoenix!`
     clearFoundFeathers()
     animateObj.removeAttribute('hidden')
     animate()
@@ -240,6 +240,7 @@ function handleClickFind(evt) {
 
 function handleClickChoice(evt) {
   clearFoundFeathers()
+  enviroGrid = new Array(25, null)
   enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
 
@@ -275,6 +276,7 @@ function handleClickChoice(evt) {
 
 function handleClickChoiceAlt(evt) {
   clearFoundFeathers()
+  enviroGrid = new Array(25, null)
   enviroGrid[enviro.secretLocation] = "found"
 
   if (evt.target.id === "choice1-btn-alt") {
@@ -423,8 +425,3 @@ function animate() {
 function openGuide(){
   window.open(href="../images/guide.png",'popUpWindow','height=1000,width=800,left=700,top=100,resizable=yes,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no')
 }
-
-/*-------------------------------- GOALS --------------------------------*/
-
-//todo copywrite the hints
-//todo check indentation

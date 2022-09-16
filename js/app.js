@@ -225,7 +225,7 @@ function handleClickFind(evt) {
   }
 
   if (featherTotal < 3 && enviro === enviroArrays[3]) {
-    renderConsolation()
+    setTimeout(renderConsolation,1000)
   }
 
   // PHX ENVIRO SPECIFICATIONS

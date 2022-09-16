@@ -85,7 +85,7 @@ const featherBox = document.getElementById("feather-box")
 const countdownEl = document.getElementById("timer-area")
 
 const mainImg = document.querySelector(".locationCells")
-// const instrLines = document.querySelector('.instruction-lines')
+const guide = document.getElementById('guide')
 
 const wings = new Audio("../audio/wings.mp3")
 const animateObj = document.getElementById('imgAnimate')
@@ -109,8 +109,8 @@ choice1BtnAlt.addEventListener("click", handleClickChoiceAlt)
 choice2BtnAlt.addEventListener("click", handleClickChoiceAlt)
 
 findPhxBtn.addEventListener("click", handleClickPhoenix)
-
 resetBtn.addEventListener("click", init)
+guide.addEventListener("click", openGuide)
 
 startBtn.addEventListener("click", function(evt){
   wings.volume = .14
@@ -147,6 +147,7 @@ function init() {
   messageEl.textContent = enviroArrays[0].message
 
   startBtn.removeAttribute("hidden")
+  guide.removeAttribute('hidden')
   resetBtn.setAttribute("hidden", true)
   choice1Btn.setAttribute("hidden", true)
   choice2Btn.setAttribute("hidden", true)
@@ -156,7 +157,6 @@ function init() {
   featherHeader.setAttribute("hidden", true)
   featherBox.setAttribute("hidden", true)
   countdownEl.setAttribute("hidden", true)
-  // instrLines.removeAttribute('hidden')
   enviro = enviroArrays[1]
 }
 
@@ -169,6 +169,7 @@ function handleClickStart(evt) {
 
 function renderEnvironment() {
   startBtn.setAttribute("hidden", true)
+  guide.setAttribute("hidden", true)
   resetBtn.removeAttribute("hidden")
   choice1Btn.removeAttribute("hidden")
   choice2Btn.removeAttribute("hidden")
@@ -177,7 +178,6 @@ function renderEnvironment() {
   featherHeader.removeAttribute("hidden")
   featherBox.removeAttribute("hidden")
   countdownEl.removeAttribute("hidden")
-  // instrLines.setAttribute('hidden', true)
   featherBox.textContent = featherTotal
 
   headerPhx.classList.remove('animate__fadeIn')
@@ -215,7 +215,6 @@ function handleClickFind(evt) {
   if (enviroGrid[cellIdx] === "found") {
     let locationCell = cellEls[cellIdx]
     locationCell.classList.add('featherImg')
-
     clearHoverColor()
 
     if (enviro !== enviroArrays[6]){
@@ -367,7 +366,7 @@ function handleClickPhoenix() {
   findPhxBtn.setAttribute("hidden", true)
   featherBox.setAttribute("hidden", true)
   featherHeader.setAttribute('hidden', true)
-  countdownEl.setAttribute("hidden", true)
+  countdownEl.removeAttribute("hidden")
 }
 
 function startTimer(){
@@ -407,17 +406,11 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
+function openGuide(){
+  window.open(href="../images/guide.png",'popUpWindow','height=1000,width=800,left=700,top=100,resizable=yes,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no')
+}
+
 /*-------------------------------- GOALS --------------------------------*/
 
 //todo copywrite the hints
 //todo check indentation
-//! Make sure image doesn't get distored
-
-
-{/* <li class="instruction-lines">
-        <ul>----------------------------------------------------------------------------------</ul>
-        <ul>The goal of the game is to have found three feathers before the timer runs out, and at the end earn the chance to find the phoenix.</ul>
-        <ol>Upon arriving to each scenerio, you will have the opportunity to find a feather BEFORE making the choice for the next scenerio. Hovering over the scenerio will allow you to find it. Don't forget to click!</ol>
-        <ul>The feathers you collect will give you a boon, that when consumed will save you from a perilous choice. Choose wisely!</ul>
-        <ul>It is not required to search for a feather, but without all three it will be impossible to find the phoenix.</ul>
-      </li> */}

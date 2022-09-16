@@ -6,12 +6,12 @@ enviroArrays = [
     enviroName: "enviroIntro",
     image: "url('../images/Phoenix-Fabelwesen.jpeg')",
     message:
-      '"The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor." - Wikipedia',
+      '"The phoenix is an immortal bird associated with Greek mythology (with analogs in many cultures) that cyclically regenerates or is otherwise born again. Associated with the sun, a phoenix obtains new life by arising from the ashes of its predecessor."  -Wikipedia',
   },
   {
     enviroName: "enviro1",
     image: "url('../images/Volcano.png')",
-    message: "Where has the phoenix left a trail? Is the phoenix's feather in the hills, or by the sea?",
+    message: "The fabled bird is said to live 500 years or more, and when the bird is tired, it flies to the City of the Sun to build a nest to die in.",
     secretLocation: randomLocation(),
     choiceMessage1: "The Hills",
     choiceMessage2: "Sea",
@@ -19,27 +19,27 @@ enviroArrays = [
   {
     enviroName: "enviro2",
     image: "url('../images/Hills.png')",
-    message: "Is the phoenix's feather deep in the catacombs, or hidden in trees of the mountainside",
+    message: "A new, young phoenix emerges from the ashes to live another life cycle.",
     secretLocation: randomLocation(),
     choiceMessage1: "Catacombs",
-    choiceMessage2: "The Mountain",
+    choiceMessage2: "Forest",
   },
   {
     enviroName: "enviro3",
     image: "url('../images/Catacombs.png')",
-    message: "This is the last chance to find a feather!",
+    message: "Some tales claim the phoenix has magical healing powers.",
     secretLocation: randomLocation(),
   },
   {
     enviroName: "enviroStoryOver", //environment when story is over
     image: "url('../images/StoryOverPlaceholder.png')",
     message:
-    "You made a FATAL choice, and with zero feathers in your nest to resurrect you, it is the end.",
+    "You made a FATAL choice, and with zero feathers collected for a resurrection, it is the end.",
   },
   {
     enviroName: "enviroConsolation", //environment when alive but < 3 feathers
     image: "url('../images/ConsolationPlaceholder.png')",
-    message: `You need 3 feathers to move forward to find the phoenix, but at least you're still alive! Try again`,
+    message: `You don't have the 3 feathers required to move forward to find the phoenix, but at least you're still alive! Try again.`,
   },
   {
     enviroName: "enviroPhoenix", //environment to find phoenix
@@ -48,14 +48,9 @@ enviroArrays = [
     secretLocation: randomLocation(),
   },
   {
-    enviroName: "enviro5Resurrection",
-    image: "url('../images/resurrection.png')",
-    message: "You have chosen a FATAL scenerio, but you have a feather in your bank to grant you another life!",
-  },
-  {
     enviroName: "enviroOutOfTime", // timer ran out
     image: "url('../images/StoryOverPlaceholder.png')",
-    message: 'You ran out of time! Story over!',
+    message: 'Story over!',
   },
 ]
 
@@ -337,8 +332,8 @@ function renderTimerDone() {
   headerPhx.offsetWidth = headerPhx.offsetWidth
   headerPhx.classList.add('animate__fadeIn')
 
-  mainImg.style.backgroundImage = enviroArrays[8].image //enviroOutOfTime
-  messageEl.textContent = enviroArrays[8].message
+  mainImg.style.backgroundImage = enviroArrays[7].image //enviroOutOfTime
+  messageEl.textContent = enviroArrays[7].message
   choice1Btn.setAttribute("hidden", true)
   choice2Btn.setAttribute("hidden", true)
   choice1BtnAlt.setAttribute("hidden", true)

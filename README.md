@@ -25,7 +25,8 @@ If any pop-up windows show up, close them before moving on.<br>
 JavaScript, HTML, CSS, Git<br>
 <br>
  ## Credits
-- [History/Text](https://en.wikipedia.org/wiki/Phoenix_(mythology))
+- [Wikipedia](https://en.wikipedia.org/wiki/Phoenix_(mythology))
+- [The Phoenix Through the Ages, by Heather Shumaker](https://www.swarthmore.edu/bulletin/archive/wp/october-2008_the-phoenix-through-the-ages.html)
 - Artwork: Friedrich Justin Bertuch
   - [Wikipedia](https://commons.wikimedia.org/wiki/File:Bertuch-fabelwesen.JPG)
   - [uni-heidelberg](https://digi.ub.uni-heidelberg.de/diglit/bertuch1798bd3/0159/image,thumbs#col_thumbs)

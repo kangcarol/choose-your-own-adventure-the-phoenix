@@ -277,6 +277,7 @@ function handleClickChoice(evt) {
 function handleClickChoiceAlt(evt) {
   clearFoundFeathers()
   enviroGrid = new Array(25, null)
+  enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
 
   if (evt.target.id === "choice1-btn-alt") {
@@ -298,6 +299,7 @@ function handleClickChoiceAlt(evt) {
       choice1BtnAlt.setAttribute("hidden", true)
       choice2BtnAlt.setAttribute("hidden", true)
     } else {
+      enviroGrid = new Array(25, null)
       renderStoryOver()
       choice1Btn.setAttribute("hidden", true)
       choice2Btn.setAttribute("hidden", true)
@@ -310,7 +312,9 @@ function handleClickChoiceAlt(evt) {
 function renderStoryOver() {
   resetTimer()
   clearFoundFeathers()
-  clearHoverColor()
+  enviroGrid = new Array(25, null)
+  enviro.secretLocation = randomLocation()
+  enviroGrid[enviro.secretLocation] = "found"
   headerPhx.classList.remove('animate__fadeIn')
   headerPhx.offsetWidth = headerPhx.offsetWidth
   headerPhx.classList.add('animate__fadeIn')
@@ -369,7 +373,7 @@ function handleClickPhoenix() {
   clearFoundFeathers()
   enviro.secretLocation = randomLocation()
   enviroGrid[enviro.secretLocation] = "found"
-
+  enviroGrid = new Array(25, null)
   enviro = enviroArrays[6]
   renderEnvironment()
   startBtn.setAttribute("hidden", true)

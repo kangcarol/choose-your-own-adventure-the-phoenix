@@ -22,7 +22,7 @@ If any pop-up windows show up, close them before moving on.<br>
 [Whimsical](https://whimsical.com/choose-your-own-adventure-the-phoenix-XCFTsaKJM1NAHhjj1KHafo)<br>
 <br>
  ## Technologies Used
-JavaScript, HTML, CSS, Git<br>
+JavaScript, HTML, CSS, Git, Bootstrap<br>
 <br>
  ## Credits
 - [Wikipedia](https://en.wikipedia.org/wiki/Phoenix_(mythology))

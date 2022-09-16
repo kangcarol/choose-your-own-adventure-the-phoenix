@@ -54,7 +54,7 @@ h1 {
 
 #feather-header {
   font-size: 32px;
-  margin: 20px 0 10px 0;
+  margin: 15px 0px 0 10px 0;
 }
 
 #outside-featherbox-div {
@@ -161,4 +161,14 @@ footer {
   height: 100%;
   text-align: center;
   vertical-align: middle;
+}
+
+#credit {
+  color: white
+}
+
+.credits-all {
+  list-style-type: none;
+  line-height: 5px;
+  text-align: center;
 }

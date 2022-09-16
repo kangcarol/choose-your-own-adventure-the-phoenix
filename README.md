@@ -28,7 +28,7 @@ JavaScript, HTML, CSS, Git<br>
 - [Wikipedia](https://en.wikipedia.org/wiki/Phoenix_(mythology))
 - [The Phoenix Through the Ages, by Heather Shumaker](https://www.swarthmore.edu/bulletin/archive/wp/october-2008_the-phoenix-through-the-ages.html)
 - Artwork: Friedrich Justin Bertuch
-  - [Wikipedia](https://commons.wikimedia.org/wiki/File:Bertuch-fabelwesen.JPG)
+  - [Wikipedia](https://en.wikipedia.org/wiki/Phoenix_(mythology))
   - [uni-heidelberg](https://digi.ub.uni-heidelberg.de/diglit/bertuch1798bd3/0159/image,thumbs#col_thumbs)
   - [Clip-Art](http://clipart-library.com/)
   - [Book-Art-Texture](https://lostandtaken.com/downloads/vintage-book-cover-textures-6/)

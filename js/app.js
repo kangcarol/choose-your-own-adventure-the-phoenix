@@ -1,4 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
+
+// Some legends say it dies in a show of flames and combustion, others that it simply dies and decomposes before being born again.
 enviroArrays = [
   {
     enviroName: "enviroIntro",
@@ -9,7 +11,7 @@ enviroArrays = [
   {
     enviroName: "enviro1",
     image: "url('../images/Volcano.png')",
-    message: "Some legends say it dies in a show of flames and combustion, others that it simply dies and decomposes before being born again.",
+    message: "Where has the phoenix left a trail? Is the phoenix's feather in the hills, or by the sea?",
     secretLocation: randomLocation(),
     choiceMessage1: "The Hills",
     choiceMessage2: "Sea",
@@ -17,7 +19,7 @@ enviroArrays = [
   {
     enviroName: "enviro2",
     image: "url('../images/Hills.png')",
-    message: "hint 2",
+    message: "Is the phoenix's feather deep in the catacombs, or hidden in trees of the mountainside",
     secretLocation: randomLocation(),
     choiceMessage1: "Catacombs",
     choiceMessage2: "The Mountain",
@@ -25,7 +27,7 @@ enviroArrays = [
   {
     enviroName: "enviro3",
     image: "url('../images/Catacombs.png')",
-    message: "hint 3",
+    message: "This is the last chance to find a feather!",
     secretLocation: randomLocation(),
   },
   {
@@ -249,6 +251,10 @@ function handleClickChoice(evt) {
   if (evt.target.id === "choice1-btn") {
     enviro = enviroArrays[2]
     renderEnvironment()
+    choice1Btn.setAttribute("hidden", true)
+    choice2Btn.setAttribute("hidden", true)
+    choice1BtnAlt.removeAttribute("hidden")
+    choice2BtnAlt.removeAttribute("hidden")
   } else if (evt.target.id === "choice2-btn") {
     if (featherTotal > 0) {
       window.open(href="../images/resurrection.png",'popUpWindow','height=280,width=250,left=600,top=200,resizable=no,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
@@ -257,15 +263,19 @@ function handleClickChoice(evt) {
       enviro = enviroArrays[2]
       renderEnvironment()
       enviro.secretLocation = randomLocation()
+      choice1Btn.setAttribute("hidden", true)
+      choice2Btn.setAttribute("hidden", true)
+      choice1BtnAlt.removeAttribute("hidden")
+      choice2BtnAlt.removeAttribute("hidden")
     } else {
       clearFoundFeathers()
       renderStoryOver()
+      choice1Btn.setAttribute("hidden", true)
+      choice2Btn.setAttribute("hidden", true)
+      choice1BtnAlt.setAttribute("hidden", true)
+      choice2BtnAlt.setAttribute("hidden", true)
     }
   }
-  choice1Btn.setAttribute("hidden", true)
-  choice2Btn.setAttribute("hidden", true)
-  choice1BtnAlt.removeAttribute("hidden")
-  choice2BtnAlt.removeAttribute("hidden")
 }
 
 function handleClickChoiceAlt(evt) {
@@ -286,6 +296,10 @@ function handleClickChoiceAlt(evt) {
       featherBox.textContent = featherTotal
       enviro = enviroArrays[3]
       renderEnvironment()
+      choice1Btn.setAttribute("hidden", true)
+      choice2Btn.setAttribute("hidden", true)
+      choice1BtnAlt.setAttribute("hidden", true)
+      choice2BtnAlt.setAttribute("hidden", true)
     } else {
       clearFoundFeathers()
       renderStoryOver()
@@ -300,6 +314,7 @@ function handleClickChoiceAlt(evt) {
 function renderStoryOver() {
   resetTimer()
   clearFoundFeathers()
+  clearHoverColor()
   headerPhx.classList.remove('animate__fadeIn')
   headerPhx.offsetWidth = headerPhx.offsetWidth
   headerPhx.classList.add('animate__fadeIn')

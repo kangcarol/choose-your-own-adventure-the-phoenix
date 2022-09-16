@@ -44,13 +44,13 @@ enviroArrays = [
   {
     enviroName: "enviroPhoenix", //environment to find phoenix
     image: "url('../images/Cave.png')",
-    message: "find phoenix message",
+    message: "Find the elusive phoenix!",
     secretLocation: randomLocation(),
   },
   {
     enviroName: "enviroOutOfTime", // timer ran out
     image: "url('../images/StoryOverPlaceholder.png')",
-    message: 'Story over!',
+    message: 'The story is over!',
   },
 ]
 
@@ -213,17 +213,18 @@ function handleClickFind(evt) {
     let locationCell = cellEls[cellIdx]
     locationCell.classList.add('featherImg')
     clearHoverColor()
-
-    if (enviro !== enviroArrays[6]){
-      featherTotal += 1
-    }
-    featherBox.textContent = featherTotal
-    enviroGrid = new Array(25, null) // this is so that feather count does not continue to increase by clicking the same cell
   }
+
+  if (enviro !== enviroArrays[6]){
+      featherTotal += 1
+      featherBox.textContent = featherTotal
+    }
 
   if (featherTotal === 3) {
     findPhxBtn.removeAttribute("hidden")
-  } else if (featherTotal < 3 && enviro === enviroArrays[3]) {
+  }
+
+  if (featherTotal < 3 && enviro === enviroArrays[3]) {
     renderConsolation()
   }
 
@@ -264,7 +265,6 @@ function handleClickChoice(evt) {
       choice1BtnAlt.removeAttribute("hidden")
       choice2BtnAlt.removeAttribute("hidden")
     } else {
-      clearFoundFeathers()
       renderStoryOver()
       choice1Btn.setAttribute("hidden", true)
       choice2Btn.setAttribute("hidden", true)
@@ -298,7 +298,6 @@ function handleClickChoiceAlt(evt) {
       choice1BtnAlt.setAttribute("hidden", true)
       choice2BtnAlt.setAttribute("hidden", true)
     } else {
-      clearFoundFeathers()
       renderStoryOver()
       choice1Btn.setAttribute("hidden", true)
       choice2Btn.setAttribute("hidden", true)
@@ -345,10 +344,10 @@ function renderTimerDone() {
 }
 
 function renderConsolation() {
-  enviroGrid[enviro.secretLocation] = "found"
-  clearFoundFeathers()
+  enviroGrid = new Array(25, null)
   resetTimer()
   enviro = enviroArrays[5]
+  clearFoundFeathers()
 
   headerPhx.classList.remove('animate__fadeIn')
   headerPhx.offsetWidth = headerPhx.offsetWidth

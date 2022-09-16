@@ -3,7 +3,7 @@
 
 
  ## Goal of the Game
-The goal of the game is to have found three feathers before the timer runs out, and at the end earn the chance to find the phoenix.<br>
+The goal of the game is to have found three feathers before the timer runs out, and earn the chance to find the phoenix at the end.<br>
 <br>
  ## How to Choose Your Own Adventure
 

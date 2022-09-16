@@ -85,7 +85,7 @@ const featherBox = document.getElementById("feather-box")
 const countdownEl = document.getElementById("timer-area")
 
 const mainImg = document.querySelector(".locationCells")
-const instrLines = document.querySelector('.instruction-lines')
+// const instrLines = document.querySelector('.instruction-lines')
 
 const wings = new Audio("../audio/wings.mp3")
 const animateObj = document.getElementById('imgAnimate')
@@ -156,7 +156,7 @@ function init() {
   featherHeader.setAttribute("hidden", true)
   featherBox.setAttribute("hidden", true)
   countdownEl.setAttribute("hidden", true)
-  instrLines.removeAttribute('hidden')
+  // instrLines.removeAttribute('hidden')
   enviro = enviroArrays[1]
 }
 
@@ -177,7 +177,7 @@ function renderEnvironment() {
   featherHeader.removeAttribute("hidden")
   featherBox.removeAttribute("hidden")
   countdownEl.removeAttribute("hidden")
-  instrLines.setAttribute('hidden', true)
+  // instrLines.setAttribute('hidden', true)
   featherBox.textContent = featherTotal
 
   headerPhx.classList.remove('animate__fadeIn')
@@ -278,7 +278,7 @@ function handleClickChoiceAlt(evt) {
     renderEnvironment()
   } else if (evt.target.id === "choice2-btn-alt") {
     if (featherTotal > 0) {
-      window.open(href="../images/resurrection.png",'popUpWindow','height=325,width=275,left=500,top=500,resizable=no,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
+      window.open(href="../images/resurrection.png",'popUpWindow','height=280,width=250,left=600,top=200,resizable=no,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
       featherTotal -= 1
       featherBox.textContent = featherTotal
       enviro = enviroArrays[3]
@@ -308,6 +308,7 @@ function renderStoryOver() {
   choice1BtnAlt.setAttribute("hidden", true)
   choice2BtnAlt.setAttribute("hidden", true)
   countdownEl.setAttribute("hidden", true)
+  countdownEl.removeAttribute("hidden")
 }
 
 function renderTimerDone() {
@@ -373,7 +374,7 @@ function startTimer(){
   timeLeft = 60
 
   timer = setInterval(function () {
-    countdownEl.textContent = timeLeft + " seconds remaining."
+    countdownEl.textContent = timeLeft + " seconds remaining"
     timeLeft -= 1
     if (timeLeft < 0) {
       countdownEl.textContent = "Time is up!"
@@ -411,3 +412,12 @@ function animate() {
 //todo copywrite the hints
 //todo check indentation
 //! Make sure image doesn't get distored
+
+
+{/* <li class="instruction-lines">
+        <ul>----------------------------------------------------------------------------------</ul>
+        <ul>The goal of the game is to have found three feathers before the timer runs out, and at the end earn the chance to find the phoenix.</ul>
+        <ol>Upon arriving to each scenerio, you will have the opportunity to find a feather BEFORE making the choice for the next scenerio. Hovering over the scenerio will allow you to find it. Don't forget to click!</ol>
+        <ul>The feathers you collect will give you a boon, that when consumed will save you from a perilous choice. Choose wisely!</ul>
+        <ul>It is not required to search for a feather, but without all three it will be impossible to find the phoenix.</ul>
+      </li> */}

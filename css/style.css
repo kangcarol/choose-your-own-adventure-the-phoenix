@@ -103,9 +103,11 @@ button {
   height: 35px;
   width: 150px;
   text-align: center;
+  vertical-align: middle;
   font-size: 18px;
-  border-radius: 10%;
+  border-radius: 10px;
   border: 3px solid rgb(158, 135, 4);
+  padding: px;
 }
 
 #guide, #reset-btn {

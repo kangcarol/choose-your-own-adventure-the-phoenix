@@ -79,7 +79,7 @@ const choice2BtnAlt = document.getElementById("choice2-btn-alt")
 const featherHeader = document.getElementById("feather-header")
 const featherBox = document.getElementById("feather-box")
 
-const countdownEl = document.getElementById("timer-area")
+const timerArea = document.getElementById("timer-area")
 
 const mainImg = document.querySelector(".locationCells")
 const guide = document.getElementById('guide')
@@ -153,7 +153,7 @@ function init() {
   findPhxBtn.setAttribute("hidden", true)
   featherHeader.setAttribute("hidden", true)
   featherBox.setAttribute("hidden", true)
-  countdownEl.setAttribute("hidden", true)
+  timerArea.setAttribute("hidden", true)
   enviro = enviroArrays[1]
 }
 
@@ -174,7 +174,7 @@ function renderEnvironment() {
   choice2BtnAlt.setAttribute("hidden", true)
   featherHeader.removeAttribute("hidden")
   featherBox.removeAttribute("hidden")
-  countdownEl.removeAttribute("hidden")
+  timerArea.removeAttribute("hidden")
   featherBox.textContent = featherTotal
 
   headerPhx.classList.remove('animate__fadeIn')
@@ -325,8 +325,8 @@ function renderStoryOver() {
   choice2Btn.setAttribute("hidden", true)
   choice1BtnAlt.setAttribute("hidden", true)
   choice2BtnAlt.setAttribute("hidden", true)
-  countdownEl.setAttribute("hidden", true)
-  countdownEl.removeAttribute("hidden")
+  timerArea.setAttribute("hidden", true)
+  timerArea.removeAttribute("hidden")
 }
 
 function renderTimerDone() {
@@ -366,7 +366,7 @@ function renderConsolation() {
   choice2BtnAlt.setAttribute("hidden", true)
   findPhxBtn.setAttribute("hidden", true)
   featherBox.removeAttribute("hidden")
-  countdownEl.setAttribute("hidden", true)
+  timerArea.setAttribute("hidden", true)
 }
 
 function handleClickPhoenix() {
@@ -386,17 +386,17 @@ function handleClickPhoenix() {
   findPhxBtn.setAttribute("hidden", true)
   featherBox.setAttribute("hidden", true)
   featherHeader.setAttribute('hidden', true)
-  countdownEl.removeAttribute("hidden")
+  timerArea.removeAttribute("hidden")
 }
 
 function startTimer(){
   timeLeft = 60
 
   timer = setInterval(function () {
-    countdownEl.textContent = timeLeft + " seconds remaining"
+    timerArea.textContent = timeLeft + " seconds remaining"
     timeLeft -= 1
     if (timeLeft < 0) {
-      countdownEl.textContent = "Time is up!"
+      timerArea.textContent = "Time is up!"
       clearInterval(timer)
       renderTimerDone()
     }

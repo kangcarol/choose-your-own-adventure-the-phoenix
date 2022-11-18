@@ -399,6 +399,8 @@ function startTimer(){
       timerArea.textContent = "Time is up!"
       clearInterval(timer)
       renderTimerDone()
+      clearFoundFeathers()
+      enviroGrid = new Array(25, null)
     }
   }, 1000)
 }

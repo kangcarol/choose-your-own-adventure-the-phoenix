@@ -213,6 +213,7 @@ function handleClickFind(evt) {
     let locationCell = cellEls[cellIdx]
     locationCell.classList.add('featherImg')
     clearHoverColor()
+    enviroGrid = new Array(25, null)
   }
 
   if (enviro !== enviroArrays[6]){
@@ -290,6 +291,7 @@ function handleClickChoiceAlt(evt) {
   } else if (evt.target.id === "choice2-btn-alt") {
     if (featherTotal > 0) {
       window.open(href="../images/resurrection.png",'popUpWindow','height=280,width=250,left=600,top=200,resizable=no,scrollbars=no,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
+      enviroGrid = new Array(25, null)
       featherTotal -= 1
       featherBox.textContent = featherTotal
       enviro = enviroArrays[3]
